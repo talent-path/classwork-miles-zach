@@ -10,5 +10,11 @@ public class Computer {
             computerMove = rng.nextInt(9);
         }
         Board.moves[computerMove] = 'O';
+        Board.computerMoves.push(computerMove);
+    }
+
+    public static void checkIfGoingToLose() {
+        //check if user has possibility of diagonal/row/column win
+
     }
 }

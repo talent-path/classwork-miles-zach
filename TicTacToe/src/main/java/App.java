@@ -24,7 +24,8 @@ public class App {
                 rounds--;
                 ties++;
                 turns = 0;
-                System.out.println("You tied!");
+                Board.display();
+                System.out.println("You tied!\n");
                 Board.initialize();
                 continue;
             }
@@ -34,7 +35,8 @@ public class App {
                 rounds--;
                 wins++;
                 turns = 0;
-                System.out.println("You win!");
+                Board.display();
+                System.out.println("You win!\n");
                 Board.initialize();
                 continue;
             }
@@ -43,12 +45,18 @@ public class App {
                 rounds--;
                 losses++;
                 turns = 0;
-                System.out.println("You lost!");
+                Board.display();
+                System.out.println("You lost!\n");
                 Board.initialize();
                 continue;
             }
+
             turns++;
+
+            if(turns > 0) {
+               Board.askUser();
+            }
         }
-        System.out.println("Wins: " + wins + "\nLosses: " + losses + "\nTies: " + ties + "\nRounds: " + rounds);
+        System.out.println("Wins: " + wins + "\nLosses: " + losses + "\nTies: " + ties);
     }
 }
