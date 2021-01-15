@@ -68,25 +68,11 @@ public class Board {
     }
 
     public static boolean checkForRowWin(char check, int idx) {
-        boolean win = true;
-        for(int i = idx + 1; i < idx + 3; i++) {
-            if(moves[i] != check) {
-                win = false;
-                break;
-            }
-        }
-        return win;
+        return moves[idx+1] == check && moves[idx+2] == check;
     }
 
     public static boolean checkForColumnWin(char check, int idx) {
-        boolean win = true;
-        for(int i = idx; i < 3; i++) {
-            if(moves[i+3] != check || moves[i+6] != check) {
-                win = false;
-                break;
-            }
-        }
-        return win;
+        return moves[idx+3] == check && moves[idx+6] == check;
     }
 
     public static boolean checkForDiagonalWin(char check) {
