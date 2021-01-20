@@ -1,9 +1,20 @@
+import java.util.Arrays;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.println(canBalance(new int[]{1, 2, 3, 4, 4, 3, 2, 1}));
-        System.out.println(canBalance(new int[]{2, 8, 5, 5}));
-        System.out.println(canBalance(new int[]{2, 8, 1, 5, 5}));
+//        System.out.println(canBalance(new int[]{1, 2, 3, 4, 4, 3, 2, 1}));
+//        System.out.println(canBalance(new int[]{2, 8, 5, 5}));
 //        System.out.println(canBalance(new int[]{2, 8, 1, 5, 5}));
+//        System.out.println(canBalance(new int[]{2, 8, 1, 5, 5}));
+        int[] left = new int[100];
+        int[] right = new int[100];
+
+        for(int i = 0; i < 100; i++) {
+            left[i] = 9;
+            right[i] = 8;
+        }
+
+        System.out.println(Arrays.toString(addBigNum(left, right)));
     }
 
     public static boolean canBalance(int[] nums) {
@@ -30,4 +41,23 @@ public class Application {
         }
         return isBalanced;
     }
+
+    public static int[] addBigNum(int[] left, int[] right) {
+        int[] output = new int[Math.max(left.length, right.length) + 1];
+        int remainder = 0;
+        int sum;
+        for(int i = 0; i < 100; i++) {
+            sum = left[i] + right[i];
+            if(sum > 9) {
+                output[i] = sum % 10 + remainder;
+                remainder = 1;
+            } else {
+                output[i] = sum + remainder;
+                remainder = 0;
+            }
+        }
+        output[100] = remainder;
+        return output;
+    }
+
 }
