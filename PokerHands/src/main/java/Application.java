@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -34,53 +32,25 @@ public class Application {
 //        PlayingCard.setCardValue( FaceValue.ACE );
 //        PlayingCard.setCardSuit( Suit.DIAMONDS );
 
+        Card[] player1Cards = new Card[7];
+        Card[] player2Cards = new Card[7];
+        int[] pokerTable = generatePokerHands(9);
 
-
-
-        //                   straight flush vs 4 of a kind
-        //                   2D  3D 4D 5D  6D  7S  7D  7C  7H  8S
-        int[] bothHands = generatePokerHands();
-        Card[] hand1Cards = new Card[5];
-        Card[] hand2Cards = new Card[5];
-
-        for( int i = 0; i < bothHands.length; i++ ){
-            if( i < 5 ){
-                hand1Cards[i] = new Card(bothHands[i]);
+        for(int i = 0; i < 9; i++) {
+            if(i < 2) {
+                player1Cards[i] = new Card(pokerTable[i]);
+            } else if(i < 4) {
+                player2Cards[i - 2] = new Card(pokerTable[i]);
             } else {
-                hand2Cards[i-5] = new Card(bothHands[i]);
+                player1Cards[i - 2] = new Card(pokerTable[i]);
+                player2Cards[i - 2] = new Card(pokerTable[i]);
             }
+
         }
 
-        PokerHand hand1 = new PokerHand(hand1Cards);
-        PokerHand hand2 = new PokerHand(hand2Cards);
-
-        //test suit and face value counts
-        Map<FaceValue,Integer> valueCountsH1 = hand1.countFaceValues();
-        Map<FaceValue,Integer> valueCountsH2 = hand2.countFaceValues();
-
-        Map<Suit, Integer> suitCountsH1 = hand1.countSuits();
-        Map<Suit, Integer> suitCountsH2 = hand2.countSuits();
-
-        System.out.println("hand 1: ");
-        for( FaceValue key : valueCountsH1.keySet() ){
-            System.out.println( key + ": " + valueCountsH1.get(key) );
-        }
-
-        for( Suit key : suitCountsH1.keySet() ){
-            System.out.println( key + ": " + suitCountsH1.get(key) );
-        }
-
-        System.out.println("hand 2: ");
-        for( FaceValue key : valueCountsH2.keySet() ){
-            System.out.println( key + ": " + valueCountsH2.get(key) );
-        }
-
-        for( Suit key : suitCountsH2.keySet() ){
-            System.out.println( key + ": " + suitCountsH2.get(key) );
-        }
-
-
-        int hand1WinsResult = hand1.compareTo(hand2);
+        PokerHand player1Hand = texasHoldEm(player1Cards);
+        PokerHand player2Hand = texasHoldEm(player2Cards);
+        int hand1WinsResult = player1Hand.compareTo(player2Hand);
 
         if( hand1WinsResult < 0 ){
             //should see this
@@ -90,6 +60,62 @@ public class Application {
         } else {
             System.out.println("tie!");
         }
+
+
+
+        //                   straight flush vs 4 of a kind
+        //                   2D  3D 4D 5D  6D  7S  7D  7C  7H  8S
+//        int[] bothHands = generatePokerHands(10);
+//        Card[] hand1Cards = new Card[5];
+//        Card[] hand2Cards = new Card[5];
+//
+//        for( int i = 0; i < bothHands.length; i++ ){
+//            if( i < 5 ){
+//                hand1Cards[i] = new Card(bothHands[i]);
+//            } else {
+//                hand2Cards[i-5] = new Card(bothHands[i]);
+//            }
+//        }
+//
+//        PokerHand hand1 = new PokerHand(hand1Cards);
+//        PokerHand hand2 = new PokerHand(hand2Cards);
+//
+//        //test suit and face value counts
+//        Map<FaceValue,Integer> valueCountsH1 = hand1.countFaceValues();
+//        Map<FaceValue,Integer> valueCountsH2 = hand2.countFaceValues();
+//
+//        Map<Suit, Integer> suitCountsH1 = hand1.countSuits();
+//        Map<Suit, Integer> suitCountsH2 = hand2.countSuits();
+//
+//        System.out.println("hand 1: ");
+//        for( FaceValue key : valueCountsH1.keySet() ){
+//            System.out.println( key + ": " + valueCountsH1.get(key) );
+//        }
+//
+//        for( Suit key : suitCountsH1.keySet() ){
+//            System.out.println( key + ": " + suitCountsH1.get(key) );
+//        }
+//
+//        System.out.println("hand 2: ");
+//        for( FaceValue key : valueCountsH2.keySet() ){
+//            System.out.println( key + ": " + valueCountsH2.get(key) );
+//        }
+//
+//        for( Suit key : suitCountsH2.keySet() ){
+//            System.out.println( key + ": " + suitCountsH2.get(key) );
+//        }
+//
+//
+//        int hand1WinsResult = hand1.compareTo(hand2);
+//
+//        if( hand1WinsResult < 0 ){
+//            //should see this
+//            System.out.println("player 1 wins");
+//        } else if( hand1WinsResult > 0 ){
+//            System.out.println( "player 2 wins");
+//        } else {
+//            System.out.println("tie!");
+//        }
 
     }
 
@@ -103,9 +129,9 @@ public class Application {
     //the values are 0-51
     //the suit is value%4            (0-spades, 1-diamonds, 2-clubs, 3-hearts)
     //the card is value/4 + 2       J = 11, Q = 12, K = 13, A = 14
-    public static int[] generatePokerHands(){
-        int [] cards = new int[10];
-        for( int i = 0; i < 10; i++ ){
+    public static int[] generatePokerHands(int n){
+        int [] cards = new int[n];
+        for( int i = 0; i < n; i++ ){
             int card = Integer.MIN_VALUE;
 
             while( card == Integer.MIN_VALUE ){
@@ -123,5 +149,69 @@ public class Application {
 
         return cards;
     }
+
+    public static void sevenChooseFiveCards(Card [] hand, int next, List<Card> current, List<List<Card>> allCombinations){
+        int chosenNum = current.size();
+        int remainingNum = 5 - chosenNum;
+        int availableCards = hand.length - next;
+
+        //base cases
+        if(current.size() == 5)
+        {
+            List<Card> copy = new ArrayList<>();
+            for(Card toCopy : current) {
+                copy.add(toCopy);
+            }
+            allCombinations.add(copy);
+            return;
+        }
+
+        if(availableCards < remainingNum)
+        {
+            return;
+        }
+
+        current.add(hand[next]);
+        sevenChooseFiveCards(hand, next+1, current,allCombinations);
+        current.remove(current.size()-1);
+        sevenChooseFiveCards(hand, next+1, current,allCombinations);
+    }
+
+    public static PokerHand texasHoldEm(Card[] player1){
+        List<Card> deck = new ArrayList<>();
+        List<List<Card>> deckCombo = new ArrayList<>();
+        List<PokerHand> handLists = new ArrayList<>();
+        sevenChooseFiveCards(player1, 0, deck,deckCombo);
+        for(List<Card> combos: deckCombo)
+        {
+            Card [] newCards = new Card[5];
+            for (int i = 0; i < combos.size(); i++) {
+                newCards[i] = combos.get(i);
+                System.out.print(combos.get(i).cardValue + "of" + combos.get(i).getCardSuit()+" | ");
+            }
+            System.out.println();
+            PokerHand poker = new PokerHand(newCards);
+            handLists.add(poker);
+        }
+
+        //here we compare the best hands and then print
+        PokerHand bestHand = handLists.get(0);
+        for (int i = 1; i < handLists.size(); i++) {
+            //bestHand wins = -1
+            //tie = 0
+            //loses = 1
+            if (bestHand.compareTo(handLists.get(i)) == 1){
+                bestHand = handLists.get(i);
+            }
+        }
+
+        System.out.println("The best hand is: \n ");
+        for (int i = 0; i < 5; i++) {
+            Card card = bestHand.getCards()[i];
+            System.out.println("Value: "+ card.getCardValue() + " Suit: " +card.getCardSuit());
+        }
+        return bestHand;
+    }
+
 
 }

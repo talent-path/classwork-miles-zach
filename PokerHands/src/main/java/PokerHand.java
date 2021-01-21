@@ -194,9 +194,20 @@ public class PokerHand {
             result = 1;
         } else if(this.isStraightFlush() && !that.isStraightFlush()) {
             result = -1;
-        } else if(that.isStraightFlush()) {
+        } else if(that.isStraightFlush() && !this.isStraightFlush()) {
             result = 1;
-        } else if(this.fourOfAKindValue() != null && that.fourOfAKindValue() != null) {
+        }else if(this.isStraightFlush() && that.isStraightFlush())
+        {
+            if(this.straightHighCardValue().value > that.straightHighCardValue().value)
+            {
+                result = -1;
+            }
+            else if(this.straightHighCardValue().value < that.straightHighCardValue().value)
+            {
+                result = 1;
+            }
+        }
+        else if(this.fourOfAKindValue() != null && that.fourOfAKindValue() != null) {
             if(this.fourOfAKindValue().value > that.fourOfAKindValue().value) {
                 result = -1;
             }
@@ -226,19 +237,14 @@ public class PokerHand {
         } else if(that.threeOfAKindValue() != null) {
             result = 1;
         } else if(this.pairValue() != null && that.pairValue() != null) {
-            if(this.pairValue().value == that.pairValue().value) {
-                if(this.lowerPairValue().value > that.lowerPairValue().value) {
-                    result = -1;
-                } else {
-                    result = 1;
-                }
-            } else if(this.pairValue().value > that.pairValue().value){
+            if(this.pairValue().value > that.pairValue().value) {
                 result = -1;
-            } else result = 1;
+
+            } else {
+                result = 1;
+            }
         } else if(this.pairValue() != null && that.pairValue() == null) {
             result = -1;
-        } else if(that.lowerPairValue() != null) {
-            result = 1;
         }
 
         return result;

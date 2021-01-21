@@ -1,13 +1,34 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class App {
 
     public static void main(String[] args) {
-        System.out.println(middleOfThree(1, 2, 3));
-        System.out.println(middleOfThree(1, 3, 2));
-        System.out.println(middleOfThree(2, 1, 3));
-        System.out.println(middleOfThree(2, 3, 1));
-        System.out.println(middleOfThree(3, 1, 2));
-        System.out.println(middleOfThree(3, 2, 1));
-        fizzBuzz();
+//        System.out.println(middleOfThree(1, 2, 3));
+//        System.out.println(middleOfThree(1, 3, 2));
+//        System.out.println(middleOfThree(2, 1, 3));
+//        System.out.println(middleOfThree(2, 3, 1));
+//        System.out.println(middleOfThree(3, 1, 2));
+//        System.out.println(middleOfThree(3, 2, 1));
+//        fizzBuzz();
+
+        String[] names = { "Rob", "Bob", "Robert", "Bobby", "Alice", "Alicia" };
+        System.out.println(getFirstTwoLetters(names));
+
+    }
+
+    public static Map<String, List<String>> getFirstTwoLetters(String[] names) {
+        Map<String, List<String>> map = new HashMap<>();
+        List<String> namesToAdd;
+        for(String name : names) {
+            String firstTwoLetters = name.substring(0, 2).toLowerCase();
+            namesToAdd = map.getOrDefault(firstTwoLetters, new ArrayList<>());
+            namesToAdd.add(name);
+            map.put(firstTwoLetters, namesToAdd);
+        }
+        return map;
     }
 
     public static int middleOfThree(int a, int b, int c) {
