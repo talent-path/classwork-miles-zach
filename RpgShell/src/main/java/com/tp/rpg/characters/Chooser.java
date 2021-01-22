@@ -1,4 +1,4 @@
-package com.tp.rpg;
+package com.tp.rpg.characters;
 
 //the object that implements this interface
 //provides a choice of action

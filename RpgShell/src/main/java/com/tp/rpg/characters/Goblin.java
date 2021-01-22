@@ -1,4 +1,4 @@
-package com.tp.rpg;
+package com.tp.rpg.characters;
 
 import com.tp.rpg.armors.Armor;
 import com.tp.rpg.weapons.Weapon;
