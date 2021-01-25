@@ -14,9 +14,23 @@ public class App {
 //        System.out.println(middleOfThree(3, 2, 1));
 //        fizzBuzz();
 
-        String[] names = { "Rob", "Bob", "Robert", "Bobby", "Alice", "Alicia" };
-        System.out.println(getFirstTwoLetters(names));
+//        String[] names = { "Rob", "Bob", "Robert", "Bobby", "Alice", "Alicia" };
+//        System.out.println(getFirstTwoLetters(names));
 
+        System.out.println(flipInt(112)); //211
+        System.out.println(flipInt(321)); //123
+        System.out.println(flipInt(100)); //1
+        System.out.println(flipInt(59642)); //24695
+    }
+
+    public static int flipInt(int num) {
+        int reversed = 0;
+        while(num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        return reversed;
     }
 
     public static Map<String, List<String>> getFirstTwoLetters(String[] names) {

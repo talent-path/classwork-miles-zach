@@ -73,8 +73,8 @@ public class Application {
             defender = temp;
 
             //TODO: display HP status?
-            System.out.println("Defender HP: " + b.getHp() +
-                    " | Attacker HP: " + a.getHp());
+            System.out.println(attacker.getClass().getName() + "(" + attacker.getHp() + ")" +
+                    " vs. " + defender.getClass().getName() + "(" + defender.getHp() + ")");
         }
     }
 

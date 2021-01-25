@@ -24,7 +24,7 @@ public class PlayerCharacter extends Character {
 
     @Override
     public void drinkPotion() {
-        int hp = this.getHp();
-        this.setHp(hp + 10);
+        if(hp + 10 < 100) this.setHp(hp + 10);
+        else this.setHp((100 - hp) + hp);
     }
 }
