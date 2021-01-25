@@ -5,8 +5,8 @@ import com.tp.rpg.weapons.Weapon;
 
 public abstract class NonPlayerCharacter extends Character {
 
-    public NonPlayerCharacter(Armor armor, Weapon weapon, int hp) {
-        super(armor, weapon, hp);
+    public NonPlayerCharacter(String name, Armor armor, Weapon weapon, int hp) {
+        super(name, armor, weapon, hp);
     }
 
     public abstract void setArmor(Armor armor);

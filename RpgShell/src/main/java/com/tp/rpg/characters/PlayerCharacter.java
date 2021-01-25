@@ -11,7 +11,7 @@ public class PlayerCharacter extends Character {
     private static Scanner scanner = new Scanner(System.in);
 
     public PlayerCharacter(Armor armor, Weapon weapon) {
-        super(armor, weapon);
+        super("Player", armor, weapon);
     }
 
     //use scanner here to get something from the user

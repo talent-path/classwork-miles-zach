@@ -7,7 +7,7 @@ import com.tp.rpg.weapons.Weapon;
 public class Goblin extends NonPlayerCharacter {
 
     public Goblin(Armor armor, Weapon weapon, int hp) {
-        super(armor, weapon, hp);
+        super("Goblin", armor, weapon, hp);
     }
 
     @Override

@@ -17,16 +17,19 @@ import com.tp.rpg.weapons.Weapon;
 public abstract class Character implements Chooser {
 
     //TODO: add fields for armor(s) and weapon(s)
+    protected String name;
     protected Armor armor;
     protected Weapon weapon;
     protected int hp = 100;
 
-    public Character(Armor armor, Weapon weapon) {
+    public Character(String name, Armor armor, Weapon weapon) {
+        this.name = name;
         this.armor = armor;
         this.weapon = weapon;
     }
 
-    public Character(Armor armor, Weapon weapon, int hp) {
+    public Character(String name, Armor armor, Weapon weapon, int hp) {
+        this.name = name;
         this.armor = armor;
         this.weapon = weapon;
         this.hp = hp;
@@ -50,11 +53,15 @@ public abstract class Character implements Chooser {
         this.hp = hp;
     }
     public Armor getArmor() {
-        return this.armor;
+        return armor;
     }
     public int getHp() {
-        return this.hp;
+        return hp;
     }
 
     public abstract void drinkPotion();
+
+    public String getName() {
+        return name;
+    }
 }
