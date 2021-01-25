@@ -1,8 +1,8 @@
 package com.tp.rpg.weapons;
 
-public class Bow implements Weapon{
+public class Bow extends Weapon{
     @Override
     public int generateDamage() {
-        return 20;
+        return rng.nextInt(20) + 15;
     }
 }

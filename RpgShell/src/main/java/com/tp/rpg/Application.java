@@ -61,11 +61,13 @@ public class Application {
         Character defender = b;
 
         while( attacker.isAlive() && defender.isAlive() ){
-            if( attacker.makeChoice().equalsIgnoreCase("attack")) {
+            String userChoice = attacker.makeChoice();
+            if( userChoice.equalsIgnoreCase("attack")) {
                 attacker.attack(defender);
-            } else {
-                //TODO: consider other actions
+            } else if(userChoice.equalsIgnoreCase("heal")){
                 attacker.drinkPotion();
+            } else {
+                //block implementation
             }
 
             Character temp = attacker;

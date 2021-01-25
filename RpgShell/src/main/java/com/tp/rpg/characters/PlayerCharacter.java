@@ -17,7 +17,7 @@ public class PlayerCharacter extends Character {
     //use scanner here to get something from the user
     @Override
     public String makeChoice() {
-        Console.print("Would you like to attack or defend?\n");
+        Console.print("Would you like to attack, block, or heal?\n");
         String userChoice = scanner.nextLine();
         return userChoice;
     }

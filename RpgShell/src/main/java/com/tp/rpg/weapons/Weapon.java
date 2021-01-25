@@ -1,8 +1,11 @@
 package com.tp.rpg.weapons;
 
-public interface Weapon {
+import java.util.Random;
+
+public abstract class Weapon {
+    Random rng = new Random();
 
     //generate some amount of damage to be dealt
-    int generateDamage();
+    public abstract int generateDamage();
 
 }
