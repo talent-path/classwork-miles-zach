@@ -21,6 +21,11 @@ public class App {
         System.out.println(flipInt(321)); //123
         System.out.println(flipInt(100)); //1
         System.out.println(flipInt(59642)); //24695
+
+        System.out.println(perfectNum(6));
+        System.out.println(perfectNum(496));
+
+        //m
     }
 
     public static int flipInt(int num) {
@@ -77,5 +82,15 @@ public class App {
                 System.out.println(i);
             }
         }
+    }
+
+    public static boolean perfectNum(int num) {
+        int sum = 1;
+        for(int i = 2; i * i < num; i++) {
+            if(num % i == 0) {
+                sum += i + (num / i);
+            }
+        }
+        return sum == num;
     }
 }

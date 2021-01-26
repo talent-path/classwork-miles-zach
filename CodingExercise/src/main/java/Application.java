@@ -6,15 +6,17 @@ public class Application {
 //        System.out.println(canBalance(new int[]{2, 8, 5, 5}));
 //        System.out.println(canBalance(new int[]{2, 8, 1, 5, 5}));
 //        System.out.println(canBalance(new int[]{2, 8, 1, 5, 5}));
-        int[] left = new int[100];
-        int[] right = new int[100];
+//        int[] left = new int[100];
+//        int[] right = new int[100];
+//
+//        for(int i = 0; i < 100; i++) {
+//            left[i] = 9;
+//            right[i] = 8;
+//        }
+//
+//        System.out.println(Arrays.toString(addBigNum(left, right)));
 
-        for(int i = 0; i < 100; i++) {
-            left[i] = 9;
-            right[i] = 8;
-        }
-
-        System.out.println(Arrays.toString(addBigNum(left, right)));
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
     }
 
     public static boolean canBalance(int[] nums) {
@@ -60,4 +62,32 @@ public class Application {
         return output;
     }
 
+    public static int lengthOfLongestSubstring(String s) {
+        int length = 0;
+        String sub = "";
+        for(int i = 0; i < s.length(); i++) {
+            //loop through rest of string to see if the current character is present in any of the other substring
+            //if it is then store the length of substring and reset its value to the next character in the string
+            if(sub.length() > length) length = sub.length();
+            String character = s.substring(i, i + 1);
+            sub = character;
+            for(int j = i + 1; j < s.length(); j++) {
+                character = s.substring(j, j + 1);
+                if(sub.contains(character)) {
+                    break;
+                } else {
+                    sub += character;
+                }
+            }
+        }
+        return length;
+    }
+
 }
+
+//if(sub.contains(character)) {
+//                    if(length < sub.length()) length = sub.length();
+//                    sub = character;
+//                } else {
+//                    sub += character;
+//                }
