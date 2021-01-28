@@ -40,18 +40,11 @@ public class ConnectFourService {
             throw new NullGameIdException("You must provide a game id");
         }
 
-        List<ConnectFourGame> allGames = getAllGames();
-        List<Integer> gameIds = allGames.stream()
-                .map(ConnectFourGame::getGameId).collect(Collectors.toList());
-
-        if(!gameIds.contains(request.getGameId())) {
-            throw new InvalidGameIdException("That was an invalid game id");
-        }
-
-        ConnectFourGame game = allGames.stream()
+        //Finding the game with requested game id and throwing an exception if nothing is found
+        ConnectFourGame game = getAllGames().stream()
                 .filter(e -> e.getGameId() == request.getGameId())
                 .findAny()
-                .orElseThrow();
+                .orElseThrow(InvalidGameIdException::new);
 
         if(!isValidColumn(game.getGameBoard(), request.getColumn())) {
             throw new InvalidColumnException("That is an invalid column or the column is full.");

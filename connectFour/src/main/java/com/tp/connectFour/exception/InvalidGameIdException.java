@@ -8,4 +8,8 @@ public class InvalidGameIdException extends Exception {
     public InvalidGameIdException(String message, Throwable innerException){
         super(message, innerException);
     }
+
+    public InvalidGameIdException() {
+        
+    }
 }
