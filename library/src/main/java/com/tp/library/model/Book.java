@@ -1,5 +1,6 @@
 package com.tp.library.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Book {
@@ -9,17 +10,18 @@ public class Book {
     private Set<String> authors;
     private Integer publicationYear;
 
-    public Book(Integer bookId, String title, Set<String> authors, Integer publicationYear) {
-        this.bookId = bookId;
+    public Book(String title, Set<String> authors, Integer publicationYear) {
         this.title = title;
         this.authors = authors;
         this.publicationYear = publicationYear;
     }
 
-    public Book(String title, Set<String> authors, Integer publicationYear) {
-        this.title = title;
-        this.authors = authors;
-        this.publicationYear = publicationYear;
+    public Book(Book that) {
+        this.bookId = that.bookId;
+        this.title = that.title;
+        this.authors = new HashSet<>();
+        this.publicationYear = that.publicationYear;
+        this.authors.addAll(that.authors);
     }
 
     public Book() {

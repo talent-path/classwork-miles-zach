@@ -29,7 +29,7 @@ public class LibraryServiceTests {
 
     @BeforeEach
     public void setup() throws NullFieldException,
-            InvalidPublicationYearException, EmptyFieldException, MissingAuthorException {
+            InvalidPublicationYearException, EmptyFieldException, MissingAuthorException, EmptyCollectionException, BookNotFoundException {
         for(Book book : libraryService.getAllBooks()) {
             libraryService.deleteBook(book.getBookId());
         }
@@ -56,17 +56,17 @@ public class LibraryServiceTests {
 
     @Test
     public void gettingAllBooksWithNullTitleShouldThrowException() {
-        assertThrows(NullPointerException.class, () -> libraryService.getBooksByTitle(null));
+        assertThrows(NullFieldException.class, () -> libraryService.getBooksByTitle(null));
     }
 
     @Test
     public void gettingAllBooksWithNullAuthorShouldThrowException() {
-        assertThrows(NullPointerException.class, () -> libraryService.getBooksByAuthor(null));
+        assertThrows(NullFieldException.class, () -> libraryService.getBooksByAuthor(null));
     }
 
     @Test
     public void gettingAllBooksWithNullYearShouldThrowException() {
-        assertThrows(NullPointerException.class, () -> libraryService.getBooksByPublicationYear(null));
+        assertThrows(NullFieldException.class, () -> libraryService.getBooksByPublicationYear(null));
     }
 
     @Test

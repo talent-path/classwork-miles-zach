@@ -5,82 +5,79 @@ import com.tp.library.model.Book;
 import com.tp.library.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Controller
+@RestController
 public class LibraryController {
 
     @Autowired
     LibraryService libraryService;
 
     @GetMapping("/books")
-    public ResponseEntity<List<Book>> getAllBooks() {
-        ResponseEntity<List<Book>> entity;
+    public ResponseEntity getAllBooks() {
+        ResponseEntity entity;
         try {
             entity = ResponseEntity.ok(libraryService.getAllBooks());
-        } catch(Exception e) {
-            entity = ResponseEntity.badRequest().build();
+        } catch(EmptyCollectionException e) {
+            entity = ResponseEntity.badRequest().body(e.getMessage());
         }
         return entity;
     }
 
     @GetMapping("/books/id/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Integer id) {
-        ResponseEntity<Book> entity;
+    public ResponseEntity getBookById(@PathVariable Integer id) {
+        ResponseEntity entity;
         try {
             entity = ResponseEntity.ok(libraryService.getBookById(id));
-        } catch( NoSuchElementException e) {
-            entity = ResponseEntity.badRequest().build();
+        } catch( InvalidBookIdException | BookNotFoundException e) {
+            entity = ResponseEntity.badRequest().body(e.getMessage());
         }
         return entity;
     }
 
     @GetMapping("/books/title/{title}")
-    public ResponseEntity<List<Book>> getBooksByTitle(@PathVariable String title) {
-        ResponseEntity<List<Book>> entity;
+    public ResponseEntity getBooksByTitle(@PathVariable String title) {
+        ResponseEntity entity;
         try {
             entity = ResponseEntity.ok(libraryService.getBooksByTitle(title));
-        } catch(EmptyFieldException e) {
-            entity = ResponseEntity.badRequest().build();
+        } catch(EmptyFieldException | EmptyCollectionException e) {
+            entity = ResponseEntity.badRequest().body(e.getMessage());
         }
         return entity;
     }
 
     @GetMapping("/books/author/{author}")
-    public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable String author) {
-        ResponseEntity<List<Book>> entity;
+    public ResponseEntity getBooksByAuthor(@PathVariable String author) {
+        ResponseEntity entity;
         try {
             entity = ResponseEntity.ok(libraryService.getBooksByAuthor(author));
-        } catch(EmptyFieldException e) {
-            entity = ResponseEntity.badRequest().build();
+        } catch(EmptyFieldException | EmptyCollectionException e) {
+            entity = ResponseEntity.badRequest().body(e.getMessage());
         }
         return entity;
     }
 
     @GetMapping("/books/year/{publicationYear}")
-    public ResponseEntity<List<Book>> getBooksByPublicationYear(@PathVariable Integer publicationYear) {
-        ResponseEntity<List<Book>> entity;
+    public ResponseEntity getBooksByPublicationYear(@PathVariable Integer publicationYear) {
+        ResponseEntity entity;
         try {
             entity = ResponseEntity.ok(libraryService.getBooksByPublicationYear(publicationYear));
-        } catch(InvalidPublicationYearException e) {
-            entity = ResponseEntity.badRequest().build();
-        } catch(NoSuchElementException ex) {
-            entity = ResponseEntity.notFound().build();
+        } catch(InvalidPublicationYearException | EmptyCollectionException e) {
+            entity = ResponseEntity.badRequest().body(e.getMessage());
         }
        return entity;
     }
 
     @PostMapping("/books")
-    public ResponseEntity<Book> addBook(@RequestBody Book book) {
-        ResponseEntity<Book> entity;
+    public ResponseEntity addBook(@RequestBody Book book) {
+        ResponseEntity entity;
         try {
             entity = ResponseEntity.ok(libraryService.saveBook(book));
         } catch(NullFieldException | EmptyFieldException | InvalidPublicationYearException | MissingAuthorException e) {
-            entity = ResponseEntity.badRequest().build();
+            entity = ResponseEntity.badRequest().body(e.getMessage());
         }
         return entity;
     }
@@ -90,10 +87,9 @@ public class LibraryController {
         ResponseEntity response;
         try {
             libraryService.updateBook(id, book);
-            response = ResponseEntity.accepted().build();
-        } catch(NoSuchElementException | NullFieldException | InvalidPublicationYearException | MissingAuthorException | EmptyFieldException e) {
-            System.out.println(e.getMessage());
-            response = ResponseEntity.badRequest().build();
+            response = ResponseEntity.ok(book);
+        } catch(BookNotFoundException | NullFieldException | InvalidPublicationYearException | MissingAuthorException | EmptyFieldException e) {
+            response = ResponseEntity.badRequest().body(e.getMessage());
         }
         return response;
     }
@@ -104,8 +100,7 @@ public class LibraryController {
         try {
             libraryService.deleteBook(id);
             response = ResponseEntity.accepted().build();
-        } catch(NoSuchElementException e) {
-            System.out.println(e.getMessage());
+        } catch(BookNotFoundException e) {
             response = ResponseEntity.notFound().build();
         }
         return response;

@@ -1,11 +1,11 @@
 package com.tp.library.persistence;
 
+import com.tp.library.exceptions.BookNotFoundException;
 import com.tp.library.model.Book;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Repository
@@ -43,20 +43,20 @@ public class LibraryInMemDao implements LibraryDao {
     }
 
     @Override
-    public Book getBookById(Integer id) {
+    public Book getBookById(Integer id) throws BookNotFoundException {
         return allBooks.stream()
                 .filter(book -> book.getBookId().equals(id))
-                .findFirst().orElseThrow(NoSuchElementException::new);
+                .findFirst().orElseThrow(BookNotFoundException::new);
     }
 
     @Override
-    public void deleteBook(Integer id) {
+    public void deleteBook(Integer id) throws BookNotFoundException {
         Book bookToDelete = getBookById(id);
         allBooks.remove(bookToDelete);
     }
 
     @Override
-    public void updateBook(Integer id, Book book) {
+    public void updateBook(Integer id, Book book) throws BookNotFoundException {
         Book bookToUpdate = getBookById(id);
         bookToUpdate.setTitle(book.getTitle());
         bookToUpdate.setAuthors(book.getAuthors());
@@ -79,6 +79,6 @@ public class LibraryInMemDao implements LibraryDao {
 
         book.setBookId(id);
         allBooks.add(book);
-        return book;
+        return new Book(book);
     }
 }
