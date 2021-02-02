@@ -85,22 +85,29 @@ public class LibraryController {
         return entity;
     }
 
-    @PutMapping("/books/{id}")
-    public void updateBook(@PathVariable int id, @RequestBody Book book) {
+    @PutMapping("/books/update/{id}")
+    public ResponseEntity updateBook(@PathVariable Integer id, @RequestBody Book book) {
+        ResponseEntity response;
         try {
             libraryService.updateBook(id, book);
+            response = ResponseEntity.accepted().build();
         } catch(NoSuchElementException | NullFieldException | InvalidPublicationYearException | MissingAuthorException | EmptyFieldException e) {
             System.out.println(e.getMessage());
+            response = ResponseEntity.badRequest().build();
         }
+        return response;
     }
 
-    @DeleteMapping("/books/{id}")
-    public void deleteBook(@PathVariable Integer id) {
+    @DeleteMapping("/books/delete/{id}")
+    public ResponseEntity deleteBook(@PathVariable Integer id) {
+        ResponseEntity response;
         try {
             libraryService.deleteBook(id);
+            response = ResponseEntity.accepted().build();
         } catch(NoSuchElementException e) {
             System.out.println(e.getMessage());
+            response = ResponseEntity.notFound().build();
         }
-
+        return response;
     }
 }
