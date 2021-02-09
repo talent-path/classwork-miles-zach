@@ -1,4 +1,7 @@
 package com.talentpath.JobLister.persistence;
 
-public interface ListingDao {
+import com.talentpath.JobLister.models.Listing;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ListingDao extends JpaRepository<Listing, Integer> {
 }

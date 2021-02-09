@@ -1,26 +1,26 @@
 package com.talentpath.JobLister.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.Instant;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "Applications")
+@Table(name = "application")
 public class Application implements Serializable {
 
     @Id
     @Setter(AccessLevel.PROTECTED)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "application_id")
+    @Column(name = "application_id", unique = true)
     private Integer applicationId;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -30,5 +30,15 @@ public class Application implements Serializable {
     @Column(name = "applicant_name", nullable = false)
     private String applicantName;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "date_applied", nullable = false, columnDefinition = "timestamptz")
+    private Instant dateApplied;
+
+    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Question> questions;
 }
