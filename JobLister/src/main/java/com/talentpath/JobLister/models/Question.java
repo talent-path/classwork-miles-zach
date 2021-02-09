@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "question")
+@Table
 public class Question implements Serializable {
 
     @Id
@@ -29,9 +30,9 @@ public class Question implements Serializable {
     private String question;
 
     @Column
-    private String answer;
-
-    @Column
     private Boolean required;
+
+    @OneToMany(mappedBy = "question")
+    Set<Answer> answers;
 
 }

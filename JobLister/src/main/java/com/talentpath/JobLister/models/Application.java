@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "application")
+@Table
 public class Application implements Serializable {
 
     @Id
@@ -27,18 +27,9 @@ public class Application implements Serializable {
     @JoinColumn(name = "listing_id")
     private Listing listing;
 
-    @Column(name = "applicant_name", nullable = false)
-    private String applicantName;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(name = "email", nullable = false)
-    private String email;
-
-    @Column(name = "date_applied", nullable = false, columnDefinition = "timestamptz")
-    private Instant dateApplied;
-
     @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Question> questions;
+
+    @ManyToMany(mappedBy = "applications")
+    private Set<Applicant> applicants;
 }
