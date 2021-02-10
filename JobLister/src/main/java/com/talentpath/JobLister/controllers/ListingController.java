@@ -1,7 +1,7 @@
 package com.talentpath.JobLister.controllers;
 
 import com.talentpath.JobLister.models.Listing;
-import com.talentpath.JobLister.services.ListingService;
+import com.talentpath.JobLister.services.JobListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 public class ListingController {
 
     @Autowired
-    private ListingService listingService;
+    private JobListingService jobListingService;
 
     @PostMapping
     public ResponseEntity saveListing(@RequestBody Listing listing) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.ok(listingService.saveListing(listing));
+            response = ResponseEntity.ok(jobListingService.saveListing(listing));
         } catch(Exception e) {
             // TODO: Create custom exception for handling bad inputs
             response = ResponseEntity.badRequest().body(e.getMessage());
@@ -29,7 +29,7 @@ public class ListingController {
     public ResponseEntity getAllListings() {
         ResponseEntity response;
         try {
-            response = ResponseEntity.ok(listingService.getAllListings());
+            response = ResponseEntity.ok(jobListingService.getAllListings());
         } catch (Exception e) {
             // TODO: Create custom exception
             response = ResponseEntity.notFound().build();
@@ -41,7 +41,7 @@ public class ListingController {
     public ResponseEntity getListingById(@PathVariable Integer listingId) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.of(listingService.getListingById(listingId));
+            response = ResponseEntity.of(jobListingService.getListingById(listingId));
         } catch(Exception e) {
             // TODO: Create custom exception for bad inputs and nonexistent listings
             response = ResponseEntity.badRequest().body(e.getMessage());
@@ -53,7 +53,7 @@ public class ListingController {
     public ResponseEntity getListingByJobName(@PathVariable("name") String jobName) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.of(listingService.getListingsByJobName(jobName));
+            response = ResponseEntity.of(jobListingService.getListingsByJobName(jobName));
         } catch(Exception e) {
             // TODO: Create custom exception for bad input, no input or nothing found
             response = ResponseEntity.badRequest().body(e.getMessage());
@@ -66,7 +66,7 @@ public class ListingController {
                                                    @PathVariable String state) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.of(listingService.getListingsByCityAndState(city, state));
+            response = ResponseEntity.of(jobListingService.getListingsByCityAndState(city, state));
         } catch(Exception e) {
             // TODO: Create custom exception for bad input
             response = ResponseEntity.badRequest().body(e.getMessage());
@@ -78,7 +78,7 @@ public class ListingController {
     public ResponseEntity getListingByEmploymentType(@PathVariable String type) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.of(listingService.getListingsByEmploymentType(type));
+            response = ResponseEntity.of(jobListingService.getListingsByEmploymentType(type));
         } catch(Exception e) {
             // TODO: Create custom exception for bad input
             response = ResponseEntity.badRequest().body(e.getMessage());
@@ -90,7 +90,7 @@ public class ListingController {
     public ResponseEntity getListingsByIndustry(@PathVariable String industry) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.of(listingService.getListingsByIndustry(industry));
+            response = ResponseEntity.of(jobListingService.getListingsByIndustry(industry));
         } catch (Exception e) {
             // TODO: Create custom exception for bad input
             response = ResponseEntity.badRequest().body(e.getMessage());
@@ -102,7 +102,7 @@ public class ListingController {
     public ResponseEntity getListingsByCompany(@PathVariable String company) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.of(listingService.getListingsByCompany(company));
+            response = ResponseEntity.of(jobListingService.getListingsByCompany(company));
         } catch (Exception e) {
             // TODO: Create custom exception for bad input
             response = ResponseEntity.badRequest().body(e.getMessage());
@@ -115,7 +115,31 @@ public class ListingController {
                                                    @PathVariable Integer high) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.of(listingService.getListingsBySalaryRange(low, high));
+            response = ResponseEntity.of(jobListingService.getListingsBySalaryRange(low, high));
+        } catch (Exception e) {
+            response = ResponseEntity.badRequest().body(e.getMessage());
+        }
+        return response;
+    }
+
+    @PutMapping("/{listingId}")
+    public ResponseEntity updateListing(@PathVariable Integer listingId,
+                                        @RequestBody Listing listing) {
+        ResponseEntity response;
+        try {
+            response = ResponseEntity.ok(jobListingService.updateListing(listingId, listing));
+        } catch (Exception e) {
+            response = ResponseEntity.badRequest().body(e.getMessage());
+        }
+        return response;
+    }
+
+    @DeleteMapping("/{listingId}")
+    public ResponseEntity deleteListing(@PathVariable Integer listingId) {
+        ResponseEntity response;
+        try {
+            jobListingService.deleteListing(listingId);
+            response = ResponseEntity.accepted().build();
         } catch (Exception e) {
             response = ResponseEntity.badRequest().body(e.getMessage());
         }

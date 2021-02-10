@@ -1,7 +1,7 @@
 package com.talentpath.JobLister.controllers;
 
 import com.talentpath.JobLister.models.Answer;
-import com.talentpath.JobLister.services.AnswerService;
+import com.talentpath.JobLister.services.JobListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,14 +15,14 @@ import java.util.List;
 public class AnswerController {
 
     @Autowired
-    private AnswerService answerService;
+    private JobListingService service;
 
     @PostMapping("/answers/{listingId}")
     public ResponseEntity saveAnswers(@PathVariable Integer listingId,
                                       @RequestBody List<Answer> answers) {
         ResponseEntity response;
         try {
-            response = ResponseEntity.ok(answerService.saveAnswers(listingId, answers));
+            response = ResponseEntity.ok(service.saveAnswers(listingId, answers));
         } catch (Exception e) {
             response = ResponseEntity.badRequest().body(e.getMessage());
         }
