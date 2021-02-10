@@ -3,19 +3,17 @@ package com.talentpath.JobLister.controllers;
 import com.talentpath.JobLister.models.Listing;
 import com.talentpath.JobLister.services.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
+@RequestMapping("/listings")
 public class ListingController {
 
     @Autowired
     private ListingService listingService;
 
-    @PostMapping("/listing")
+    @PostMapping
     public ResponseEntity saveListing(@RequestBody Listing listing) {
         ResponseEntity response;
         try {
@@ -27,7 +25,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("/listing")
+    @GetMapping
     public ResponseEntity getAllListings() {
         ResponseEntity response;
         try {
@@ -39,7 +37,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("/listing/{listingId}")
+    @GetMapping("/{listingId}")
     public ResponseEntity getListingById(@PathVariable Integer listingId) {
         ResponseEntity response;
         try {
@@ -51,7 +49,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("/listing/job/{name}")
+    @GetMapping("/job/{name}")
     public ResponseEntity getListingByJobName(@PathVariable("name") String jobName) {
         ResponseEntity response;
         try {
@@ -63,7 +61,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("listing/{city}/{state}")
+    @GetMapping("/{city}/{state}")
     public ResponseEntity getListingByCityAndState(@PathVariable String city,
                                                    @PathVariable String state) {
         ResponseEntity response;
@@ -76,7 +74,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("/listing/employment/{type}")
+    @GetMapping("/employment/{type}")
     public ResponseEntity getListingByEmploymentType(@PathVariable String type) {
         ResponseEntity response;
         try {
@@ -88,7 +86,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("/listing/industry/{industry}")
+    @GetMapping("/industry/{industry}")
     public ResponseEntity getListingsByIndustry(@PathVariable String industry) {
         ResponseEntity response;
         try {
@@ -100,7 +98,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("/listing/company/{company}")
+    @GetMapping("/company/{company}")
     public ResponseEntity getListingsByCompany(@PathVariable String company) {
         ResponseEntity response;
         try {
@@ -112,7 +110,7 @@ public class ListingController {
         return response;
     }
 
-    @GetMapping("/listing/salary/{low}/{high}")
+    @GetMapping("/salary/{low}/{high}")
     public ResponseEntity getListingsBySalaryRange(@PathVariable Integer low,
                                                    @PathVariable Integer high) {
         ResponseEntity response;

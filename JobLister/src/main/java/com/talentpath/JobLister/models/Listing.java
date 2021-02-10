@@ -48,5 +48,5 @@ public class Listing implements Serializable {
     private Instant datePosted;
 
     @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Application> applications;
+    private Set<Question> questions;
 }

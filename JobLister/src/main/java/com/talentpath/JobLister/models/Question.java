@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "listing"})
 @Table
 public class Question implements Serializable {
 
@@ -23,8 +23,8 @@ public class Question implements Serializable {
     private Integer questionId;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "application_id")
-    private Application application;
+    @JoinColumn(name = "listing_id")
+    private Listing listing;
 
     @Column(nullable = false)
     private String question;

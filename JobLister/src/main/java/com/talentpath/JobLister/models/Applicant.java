@@ -35,10 +35,10 @@ public class Applicant {
 
     @ManyToMany
     @JoinTable(
-            name = "applicant_application",
+            name = "applications",
             joinColumns = @JoinColumn(name = "applicant_id"),
-            inverseJoinColumns = @JoinColumn(name = "application_id"))
-    private Set<Application> applications;
+            inverseJoinColumns = @JoinColumn(name = "listing_id"))
+    private Set<Listing> listings;
 
     @OneToMany(mappedBy = "applicant")
     Set<Answer> answers;
