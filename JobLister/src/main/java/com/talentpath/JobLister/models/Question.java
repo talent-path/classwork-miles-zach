@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -12,7 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "listing"})
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "listing"}, allowSetters = true)
 @Table
 public class Question implements Serializable {
 
@@ -33,6 +34,6 @@ public class Question implements Serializable {
     private Boolean required;
 
     @OneToMany(mappedBy = "question")
-    Set<Answer> answers;
+    private Set<Answer> answers = new HashSet<>();
 
 }

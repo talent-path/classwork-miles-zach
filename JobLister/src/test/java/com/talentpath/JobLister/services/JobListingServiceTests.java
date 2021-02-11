@@ -73,7 +73,7 @@ public class JobListingServiceTests {
     @Test
     public void getListingById() {
         Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
-                45000, "Wildlife Preservation", "Full-Time", "Helen", "Georgia", Instant.now(), new HashSet<>());
+                45000, "Wildlife Preservation", "Full-Time", "Helen", "Georgia", Instant.now(), new HashSet<>(), new HashSet<>());
         when(listingDao.findById(1)).thenReturn(Optional.of(listing));
         Optional<Listing> listingWithId1 = service.getListingById(1);
         assertEquals(listing, listingWithId1.get());

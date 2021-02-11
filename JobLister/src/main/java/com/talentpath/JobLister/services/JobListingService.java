@@ -1,16 +1,19 @@
 package com.talentpath.JobLister.services;
 
-import com.talentpath.JobLister.models.Answer;
-import com.talentpath.JobLister.models.Listing;
-import com.talentpath.JobLister.models.Question;
+import com.talentpath.JobLister.models.*;
+import com.talentpath.JobLister.persistence.AnswerDao;
+import com.talentpath.JobLister.persistence.ApplicantDao;
 import com.talentpath.JobLister.persistence.ListingDao;
 import com.talentpath.JobLister.persistence.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class JobListingService {
@@ -20,6 +23,12 @@ public class JobListingService {
 
     @Autowired
     private QuestionDao questionDao;
+
+    @Autowired
+    ApplicantDao applicantDao;
+
+    @Autowired
+    AnswerDao answerDao;
 
     public Listing saveListing(Listing listing) {
         return listingDao.save(listing);
@@ -98,6 +107,27 @@ public class JobListingService {
     }
 
     public List<Answer> saveAnswers(Integer listingId, List<Answer> answers) {
-        throw new UnsupportedOperationException();
+        //TODO: Once an applicant has answered all required questions, then there must be an entry made to
+        // applications with applicantId and listingId
+        Listing listingToUpdate = getListingById(listingId).orElseThrow();
+        Applicant applicant = answers.get(0).getApplicant();
+        applicant.getListings().add(listingToUpdate);
+//        listingToUpdate.getApplicants().add(applicant);
+
+//        listingDao.save(listingToUpdate);
+        applicantDao.save(applicant);
+        return answerDao.saveAll(answers);
+    }
+
+    public Applicant saveApplicant(Applicant applicant) {
+        return applicantDao.save(applicant);
+    }
+
+    public List<Answer> getAllAnswers() {
+        return answerDao.findAll();
+    }
+
+    public List<Applicant> getApplicants() {
+        return applicantDao.findAll();
     }
 }

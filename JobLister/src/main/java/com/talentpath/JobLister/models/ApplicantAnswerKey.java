@@ -1,11 +1,20 @@
 package com.talentpath.JobLister.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ApplicantAnswerKey implements Serializable {
 
     @Column(name = "question_id")

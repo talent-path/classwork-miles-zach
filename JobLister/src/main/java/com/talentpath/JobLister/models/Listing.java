@@ -2,10 +2,12 @@ package com.talentpath.JobLister.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -48,5 +50,9 @@ public class Listing implements Serializable {
     private Instant datePosted;
 
     @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Question> questions;
+    private Set<Question> questions = new HashSet<>();
+
+    @ManyToMany(mappedBy = "listings", fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.PERSIST, org.hibernate.annotations.CascadeType.MERGE})
+    private Set<Applicant> applicants = new HashSet<>();
 }

@@ -7,28 +7,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "applicant", "question"}, allowSetters = true)
 @Table
-public class Answer {
+public class Answer implements Serializable {
 
     @EmbeddedId
-    ApplicantAnswerKey id;
+    private ApplicantAnswerKey id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("applicantId")
     @JoinColumn(name = "applicant_id")
-    Applicant applicant;
+    private Applicant applicant;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("questionId")
     @JoinColumn(name = "question_id")
-    Question question;
+    private Question question;
 
-    String answer;
+    private String answer;
 }

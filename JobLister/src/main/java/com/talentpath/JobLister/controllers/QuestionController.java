@@ -15,7 +15,7 @@ public class QuestionController {
     @Autowired
     private JobListingService service;
 
-    @PostMapping("/{listingId}")
+    @PostMapping("/listing/{listingId}")
     public ResponseEntity saveQuestions(@PathVariable Integer listingId,
                                         @RequestBody List<Question> questions) {
         ResponseEntity response;
