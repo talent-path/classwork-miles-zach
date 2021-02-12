@@ -1,6 +1,8 @@
 package com.talentpath.JobLister.services;
 
 import com.talentpath.JobLister.models.Listing;
+import com.talentpath.JobLister.persistence.AnswerDao;
+import com.talentpath.JobLister.persistence.ApplicantDao;
 import com.talentpath.JobLister.persistence.ListingDao;
 import com.talentpath.JobLister.persistence.QuestionDao;
 import org.junit.jupiter.api.Test;
@@ -31,8 +33,14 @@ public class JobListingServiceTests {
     @Mock
     QuestionDao questionDao;
 
+    @Mock
+    ApplicantDao applicantDao;
+
+    @Mock
+    AnswerDao answerDao;
+
     @Test
-    public void createListing() {
+    void createListing() {
         Listing listing = new Listing();
         listing.setListingName("Marine Biologist");
         listing.setIndustry("Environmental Science");
@@ -50,7 +58,7 @@ public class JobListingServiceTests {
     }
 
     @Test
-    public void creatingListingWithNullRequiredFieldsShouldThrowNullFieldException() {
+    void creatingListingWithNullRequiredFieldsShouldThrowDataIntegrityViolationException() {
         Listing listing = new Listing();
         listing.setListingName("Marine Biologist");
         listing.setIndustry("Environmental Science");
@@ -68,7 +76,7 @@ public class JobListingServiceTests {
     }
 
     @Test
-    public void getAllListings() {
+    void getAllListings() {
         List<Listing> listings = new ArrayList<>();
         Listing listing = new Listing();
         listing.setListingName("Marine Biologist");
@@ -92,14 +100,109 @@ public class JobListingServiceTests {
     }
 
     @Test
-    public void getListingById() {
+    void getListingById() {
         Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
-                45000, "USD", "Wildlife Preservation", "Full-Time", "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+                45000, "USD", "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
         when(listingDao.findById(1)).thenReturn(Optional.of(listing));
         Optional<Listing> listingWithId1 = service.getListingById(1);
         assertEquals(listing, listingWithId1.get());
         verify(listingDao, times(1)).findById(1);
     }
 
+    @Test
+    void getListingsByJobName() {
+        Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
+                45000, "USD", "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+
+        when(listingDao.findByListingNameContainingIgnoreCase("park")).thenReturn(
+                Optional.of(new ArrayList<>(){{ add(listing); }}));
+
+        List<Listing> listingsWithJobNameContainingPark = service.getListingsByJobName("park").get();
+        verify(listingDao, times(1)).findByListingNameContainingIgnoreCase("park");
+        assertEquals(1, listingsWithJobNameContainingPark.size());
+    }
+
+    @Test
+    void getListingsByCityAndState() {
+        Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
+                45000, "USD", "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+
+        when(listingDao.findByCityAndStateAllIgnoreCase("helen", "georgia")).thenReturn(
+                Optional.of(new ArrayList<>(){{ add(listing); }}));
+
+        List<Listing> helenGeorgiaListings = service.getListingsByCityAndState("helen", "georgia").get();
+        verify(listingDao, times(1)).findByCityAndStateAllIgnoreCase("helen", "georgia");
+        assertEquals(1, helenGeorgiaListings.size());
+    }
+
+    @Test
+    void getListingsByEmploymentType() {
+        Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
+                45000, "USD", "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+
+        when(listingDao.findByEmploymentTypeIgnoreCase("full-time")).thenReturn(
+                Optional.of(new ArrayList<>(){{ add(listing); }}));
+
+        List<Listing> fullTimeJobs = service.getListingsByEmploymentType("full-time").get();
+
+        verify(listingDao, times(1)).findByEmploymentTypeIgnoreCase("full-time");
+        assertEquals(1, fullTimeJobs.size());
+    }
+
+    @Test
+    void getListingsByIndustry() {
+    }
+
+    @Test
+    void getListingsByCompany() {
+    }
+
+    @Test
+    void getListingsBySalaryRange() {
+    }
+
+    @Test
+    void updateListing() {
+    }
+
+    @Test
+    void deleteListing() {
+    }
+
+    @Test
+    void saveQuestions() {
+    }
+
+    @Test
+    void findQuestionsByListing() {
+    }
+
+    @Test
+    void updateQuestion() {
+    }
+
+    @Test
+    void deleteQuestion() {
+    }
+
+    @Test
+    void saveAnswers() {
+    }
+
+    @Test
+    void saveApplicant() {
+    }
+
+    @Test
+    void getAllAnswers() {
+    }
+
+    @Test
+    void getApplicants() {
+    }
 
 }
