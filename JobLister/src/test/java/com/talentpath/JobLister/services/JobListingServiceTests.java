@@ -84,8 +84,10 @@ public class JobListingServiceTests {
         listing.setCompany("Diver's Anonymous");
         listing.setCity("Ft. Myers");
         listing.setState("Florida");
+        listing.setCountry("United States");
         listing.setEmploymentType("Contract");
         listing.setSalary(40000);
+        listing.setCurrency("USD");
 
         listings.add(listing);
         listings.add(listing);
