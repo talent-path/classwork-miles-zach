@@ -18,10 +18,10 @@ import java.util.Objects;
 public class ApplicantAnswerKey implements Serializable {
 
     @Column(name = "question_id")
-    Integer questionId;
+    private Integer questionId;
 
     @Column(name = "applicant_id")
-    Integer applicantId;
+    private Integer applicantId;
 
     @Override
     public boolean equals(Object o) {

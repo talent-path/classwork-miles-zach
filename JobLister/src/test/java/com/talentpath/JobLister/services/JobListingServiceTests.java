@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -38,12 +39,32 @@ public class JobListingServiceTests {
         listing.setCompany("Diver's Anonymous");
         listing.setCity("Ft. Myers");
         listing.setState("Florida");
+        listing.setCountry("United States");
         listing.setEmploymentType("Contract");
         listing.setSalary(40000);
+        listing.setCurrency("USD");
 
         service.saveListing(listing);
 
         verify(listingDao, times(1)).save(listing);
+    }
+
+    @Test
+    public void creatingListingWithNullRequiredFieldsShouldThrowNullFieldException() {
+        Listing listing = new Listing();
+        listing.setListingName("Marine Biologist");
+        listing.setIndustry("Environmental Science");
+        listing.setCompany("Diver's Anonymous");
+        listing.setCity("Ft. Myers");
+        listing.setState("Florida");
+        listing.setCountry("United States");
+        listing.setEmploymentType(null);
+        listing.setSalary(40000);
+        listing.setCurrency("USD");
+
+        when(listingDao.save(listing)).thenThrow(DataIntegrityViolationException.class);
+
+        assertThrows(DataIntegrityViolationException.class, () -> service.saveListing(listing));
     }
 
     @Test
@@ -73,10 +94,12 @@ public class JobListingServiceTests {
     @Test
     public void getListingById() {
         Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
-                45000, "Wildlife Preservation", "Full-Time", "Helen", "Georgia", Instant.now(), new HashSet<>(), new HashSet<>());
+                45000, "USD", "Wildlife Preservation", "Full-Time", "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
         when(listingDao.findById(1)).thenReturn(Optional.of(listing));
         Optional<Listing> listingWithId1 = service.getListingById(1);
         assertEquals(listing, listingWithId1.get());
         verify(listingDao, times(1)).findById(1);
     }
+
+
 }

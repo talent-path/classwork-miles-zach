@@ -1,10 +1,15 @@
 package com.talentpath.JobLister.controllers;
 
+import com.talentpath.JobLister.exceptions.ResourceNotFoundException;
 import com.talentpath.JobLister.models.Listing;
 import com.talentpath.JobLister.services.JobListingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/listings")
@@ -14,135 +19,100 @@ public class ListingController {
     private JobListingService jobListingService;
 
     @PostMapping
-    public ResponseEntity saveListing(@RequestBody Listing listing) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.ok(jobListingService.saveListing(listing));
-        } catch(Exception e) {
-            // TODO: Create custom exception for handling bad inputs
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<Listing> saveListing(@RequestBody Listing listing)
+            throws DataIntegrityViolationException {
+            return new ResponseEntity<>(jobListingService.saveListing(listing),
+                    HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity getAllListings() {
-        ResponseEntity response;
+    public ResponseEntity<List<Listing>> getAllListings() {
         try {
-            response = ResponseEntity.ok(jobListingService.getAllListings());
+            return new ResponseEntity<>(jobListingService.getAllListings(),
+                    HttpStatus.OK);
         } catch (Exception e) {
             // TODO: Create custom exception
-            response = ResponseEntity.notFound().build();
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-        return response;
     }
 
     @GetMapping("/{listingId}")
-    public ResponseEntity getListingById(@PathVariable Integer listingId) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.of(jobListingService.getListingById(listingId));
-        } catch(Exception e) {
-            // TODO: Create custom exception for bad inputs and nonexistent listings
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<Listing> getListingById(@PathVariable Integer listingId)
+            throws ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .getListingById(listingId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Listing not found for listingId = "
+                            + listingId)), HttpStatus.OK);
     }
 
     @GetMapping("/job/{name}")
-    public ResponseEntity getListingByJobName(@PathVariable("name") String jobName) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.of(jobListingService.getListingsByJobName(jobName));
-        } catch(Exception e) {
-            // TODO: Create custom exception for bad input, no input or nothing found
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<List<Listing>> getListingByJobName(@PathVariable("name") String jobName)
+            throws ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .getListingsByJobName(jobName)
+                    .orElseThrow(() -> new ResourceNotFoundException("No listing names found matching or containing \""
+                            + jobName + "\"")), HttpStatus.OK);
     }
 
     @GetMapping("/{city}/{state}")
-    public ResponseEntity getListingByCityAndState(@PathVariable String city,
-                                                   @PathVariable String state) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.of(jobListingService.getListingsByCityAndState(city, state));
-        } catch(Exception e) {
-            // TODO: Create custom exception for bad input
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<List<Listing>> getListingByCityAndState(@PathVariable String city,
+                                                                  @PathVariable String state)
+            throws ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .getListingsByCityAndState(city, state)
+                    .orElseThrow(() -> new ResourceNotFoundException("No listings found in city/state: "
+                            + city + ", " + state)), HttpStatus.OK);
     }
 
     @GetMapping("/employment/{type}")
-    public ResponseEntity getListingByEmploymentType(@PathVariable String type) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.of(jobListingService.getListingsByEmploymentType(type));
-        } catch(Exception e) {
-            // TODO: Create custom exception for bad input
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<List<Listing>> getListingByEmploymentType(@PathVariable String type)
+            throws ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .getListingsByEmploymentType(type)
+                    .orElseThrow(() -> new ResourceNotFoundException("No listings found for employment type = "
+                            + type)), HttpStatus.OK);
     }
 
     @GetMapping("/industry/{industry}")
-    public ResponseEntity getListingsByIndustry(@PathVariable String industry) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.of(jobListingService.getListingsByIndustry(industry));
-        } catch (Exception e) {
-            // TODO: Create custom exception for bad input
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<List<Listing>> getListingsByIndustry(@PathVariable String industry)
+            throws ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .getListingsByIndustry(industry)
+                    .orElseThrow(() -> new ResourceNotFoundException("No listings found for industry = " + industry)),
+                    HttpStatus.OK);
     }
 
     @GetMapping("/company/{company}")
-    public ResponseEntity getListingsByCompany(@PathVariable String company) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.of(jobListingService.getListingsByCompany(company));
-        } catch (Exception e) {
-            // TODO: Create custom exception for bad input
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<List<Listing>> getListingsByCompany(@PathVariable String company)
+            throws ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .getListingsByCompany(company)
+                    .orElseThrow(() -> new ResourceNotFoundException("No listings found for company = " + company)),
+                    HttpStatus.OK);
     }
 
     @GetMapping("/salary/{low}/{high}")
-    public ResponseEntity getListingsBySalaryRange(@PathVariable Integer low,
-                                                   @PathVariable Integer high) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.of(jobListingService.getListingsBySalaryRange(low, high));
-        } catch (Exception e) {
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<List<Listing>> getListingsBySalaryRange(@PathVariable Integer low,
+                                                                  @PathVariable Integer high)
+            throws ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .getListingsBySalaryRange(low, high)
+                    .orElseThrow(() -> new ResourceNotFoundException("No listings found in the salary range of " +
+                            low + "-" + high)), HttpStatus.OK);
     }
 
     @PutMapping("/{listingId}")
-    public ResponseEntity updateListing(@PathVariable Integer listingId,
-                                        @RequestBody Listing listing) {
-        ResponseEntity response;
-        try {
-            response = ResponseEntity.ok(jobListingService.updateListing(listingId, listing));
-        } catch (Exception e) {
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<Listing> updateListing(@PathVariable Integer listingId,
+                                                 @RequestBody Listing listing)
+            throws DataIntegrityViolationException, ResourceNotFoundException {
+            return new ResponseEntity<>(jobListingService
+                    .updateListing(listingId, listing), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{listingId}")
-    public ResponseEntity deleteListing(@PathVariable Integer listingId) {
-        ResponseEntity response;
-        try {
-            jobListingService.deleteListing(listingId);
-            response = ResponseEntity.accepted().build();
-        } catch (Exception e) {
-            response = ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return response;
+    public ResponseEntity<HttpStatus> deleteListing(@PathVariable Integer listingId)
+            throws ResourceNotFoundException {
+        jobListingService.deleteListing(listingId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

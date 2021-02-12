@@ -13,7 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "listing"}, allowSetters = true)
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "listing", "answers"}, allowSetters = true)
 @Table
 public class Question implements Serializable {
 

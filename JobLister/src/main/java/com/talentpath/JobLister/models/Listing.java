@@ -2,7 +2,6 @@ package com.talentpath.JobLister.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,11 +27,14 @@ public class Listing implements Serializable {
     @Column(name = "listing_name", nullable = false)
     private String listingName;
 
-    @Column(name = "company")
+    @Column(name = "company", nullable = false)
     private String company;
 
     @Column(columnDefinition = "numeric CONSTRAINT salary_range CHECK (salary >= 0)")
     private Integer salary;
+
+    @Column(name = "currency")
+    private String currency;
 
     @Column(name = "industry", nullable = false)
     private String industry;
@@ -46,6 +48,9 @@ public class Listing implements Serializable {
     @Column(name = "state", nullable = false)
     private String state;
 
+    @Column(name = "country", nullable = false)
+    private String country;
+
     @Column(name = "date_posted", nullable = false, columnDefinition = "timestamptz")
     private Instant datePosted;
 
@@ -53,6 +58,5 @@ public class Listing implements Serializable {
     private Set<Question> questions = new HashSet<>();
 
     @ManyToMany(mappedBy = "listings", fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.PERSIST, org.hibernate.annotations.CascadeType.MERGE})
     private Set<Applicant> applicants = new HashSet<>();
 }

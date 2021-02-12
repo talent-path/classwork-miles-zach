@@ -1,19 +1,21 @@
 package com.talentpath.JobLister.services;
 
-import com.talentpath.JobLister.models.*;
+import com.talentpath.JobLister.exceptions.ResourceNotFoundException;
+import com.talentpath.JobLister.models.Answer;
+import com.talentpath.JobLister.models.Applicant;
+import com.talentpath.JobLister.models.Listing;
+import com.talentpath.JobLister.models.Question;
 import com.talentpath.JobLister.persistence.AnswerDao;
 import com.talentpath.JobLister.persistence.ApplicantDao;
 import com.talentpath.JobLister.persistence.ListingDao;
 import com.talentpath.JobLister.persistence.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class JobListingService {
@@ -25,12 +27,12 @@ public class JobListingService {
     private QuestionDao questionDao;
 
     @Autowired
-    ApplicantDao applicantDao;
+    private ApplicantDao applicantDao;
 
     @Autowired
-    AnswerDao answerDao;
+    private AnswerDao answerDao;
 
-    public Listing saveListing(Listing listing) {
+    public Listing saveListing(Listing listing) throws DataIntegrityViolationException {
         return listingDao.save(listing);
     }
 
@@ -66,8 +68,11 @@ public class JobListingService {
         return listingDao.findBySalaryBetween(low, high);
     }
 
-    public Listing updateListing(Integer listingId, Listing listing) {
-        Listing currentListing = listingDao.findById(listingId).orElseThrow();
+    public Listing updateListing(Integer listingId, Listing listing)
+            throws ResourceNotFoundException, DataIntegrityViolationException {
+        Listing currentListing = listingDao
+                .findById(listingId)
+                .orElseThrow(() -> new ResourceNotFoundException("Listing not found with listingId = " + listingId));
         currentListing.setListingName(listing.getListingName());
         currentListing.setCity(listing.getCity());
         currentListing.setCompany(listing.getCompany());
@@ -79,8 +84,10 @@ public class JobListingService {
         return listingDao.save(currentListing);
     }
 
-    public void deleteListing(Integer listingId) {
-        Listing listing = listingDao.findById(listingId).orElseThrow();
+    public void deleteListing(Integer listingId) throws ResourceNotFoundException {
+        Listing listing = listingDao.findById(listingId).orElseThrow(() -> new ResourceNotFoundException(
+                "Listing not found with listingId = " + listingId
+        ));
         listingDao.delete(listing);
     }
 
@@ -112,9 +119,6 @@ public class JobListingService {
         Listing listingToUpdate = getListingById(listingId).orElseThrow();
         Applicant applicant = answers.get(0).getApplicant();
         applicant.getListings().add(listingToUpdate);
-//        listingToUpdate.getApplicants().add(applicant);
-
-//        listingDao.save(listingToUpdate);
         applicantDao.save(applicant);
         return answerDao.saveAll(answers);
     }
