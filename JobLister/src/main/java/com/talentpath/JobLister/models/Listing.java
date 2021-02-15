@@ -2,6 +2,7 @@ package com.talentpath.JobLister.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -46,7 +47,8 @@ public class Listing implements Serializable {
     @Column(name = "state", nullable = false)
     private String state;
 
-    @Column(name = "date_posted", nullable = false, columnDefinition = "timestamptz")
+    @Column(name = "date_posted")
+    @CreationTimestamp
     private Instant datePosted;
 
     @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -101,6 +101,15 @@ public class ListingController {
                             low + "-" + high)), HttpStatus.OK);
     }
 
+    @GetMapping("/datePosted/{daysAgo}")
+    public ResponseEntity<List<Listing>> getListingsPostedAfter(@PathVariable Integer daysAgo)
+            throws ResourceNotFoundException {
+        return new ResponseEntity<>(jobListingService
+                .getListingsByDatePostedAfter(daysAgo)
+                .orElseThrow(() -> new ResourceNotFoundException("No listings posted in the past "
+                        + daysAgo + " days")), HttpStatus.OK);
+    }
+
     @PutMapping("/{listingId}")
     public ResponseEntity<Listing> updateListing(@PathVariable Integer listingId,
                                                  @RequestBody Listing listing)

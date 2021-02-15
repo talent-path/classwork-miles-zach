@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +48,11 @@ public class ListingInMemDao implements ListingDao {
 
     @Override
     public Optional<List<Listing>> findBySalaryBetween(Integer low, Integer high) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<List<Listing>> findByDatePostedAfter(Instant instant) {
         return Optional.empty();
     }
 

@@ -14,6 +14,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -133,5 +134,9 @@ public class JobListingService {
 
     public List<Applicant> getApplicants() {
         return applicantDao.findAll();
+    }
+
+    public Optional<List<Listing>> getListingsByDatePostedAfter(Integer daysAgo) {
+        return listingDao.findByDatePostedAfter(Instant.now().minus(daysAgo, ChronoUnit.DAYS));
     }
 }

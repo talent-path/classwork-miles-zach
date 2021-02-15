@@ -30,7 +30,7 @@ public class Question implements Serializable {
     @Column(nullable = false)
     private String question;
 
-    @Column
+    @Column(columnDefinition = "boolean DEFAULT true")
     private Boolean required;
 
     @OneToMany(mappedBy = "question")
