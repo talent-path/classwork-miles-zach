@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.time.Instant;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,10 +33,8 @@ public class ListingDaoTests {
         listing.setCompany("Diver's Anonymous");
         listing.setCity("Ft. Myers");
         listing.setState("Florida");
-        listing.setCountry("United States");
         listing.setEmploymentType("Contract");
         listing.setSalary(40000);
-        listing.setCurrency("USD");
         listing.setDatePosted(Instant.now());
 
         Listing savedListing = listingDao.save(listing);
@@ -44,12 +43,105 @@ public class ListingDaoTests {
         assertEquals("Marine Biologist", savedListing.getListingName());
         assertEquals("Diver's Anonymous", savedListing.getCompany());
         assertEquals(40000, savedListing.getSalary());
-        assertEquals("USD", savedListing.getCurrency());
         assertEquals("Environmental Science", savedListing.getIndustry());
         assertEquals("Contract", savedListing.getEmploymentType());
         assertEquals("Ft. Myers", savedListing.getCity());
         assertEquals("Florida", savedListing.getState());
-        assertEquals("United States", savedListing.getCountry());
         assertEquals(listing.getDatePosted(), savedListing.getDatePosted());
     }
+
+    @Test
+    void getListingById() {
+        Listing listing = new Listing();
+        listing.setListingName("Marine Biologist");
+        listing.setIndustry("Environmental Science");
+        listing.setCompany("Diver's Anonymous");
+        listing.setCity("Ft. Myers");
+        listing.setState("Florida");
+        listing.setEmploymentType("Contract");
+        listing.setSalary(40000);
+        listing.setDatePosted(Instant.now());
+
+        Listing savedListing = listingDao.save(listing);
+        Listing fromDb = listingDao.findById(savedListing.getListingId()).get();
+
+        assertEquals(savedListing, fromDb);
+    }
+
+    @Test
+    void getListingsByCompany() {
+        Listing listing = new Listing();
+        listing.setListingName("Marine Biologist");
+        listing.setIndustry("Environmental Science");
+        listing.setCompany("Diver's Anonymous");
+        listing.setCity("Ft. Myers");
+        listing.setState("Florida");
+        listing.setEmploymentType("Contract");
+        listing.setSalary(40000);
+        listing.setDatePosted(Instant.now());
+
+        Listing savedListing = listingDao.save(listing);
+
+        List<Listing> jobList = listingDao.findByCompanyContainingIgnoreCase("diver's anonymous").get();
+
+        assertEquals(savedListing, jobList.get(0));
+    }
+
+    @Test
+    void getListingsBySalaryRange() {
+        Listing listing = new Listing();
+        listing.setListingName("Marine Biologist");
+        listing.setIndustry("Environmental Science");
+        listing.setCompany("Diver's Anonymous");
+        listing.setCity("Ft. Myers");
+        listing.setState("Florida");
+        listing.setEmploymentType("Contract");
+        listing.setSalary(40000);
+        listing.setDatePosted(Instant.now());
+
+        Listing savedListing = listingDao.save(listing);
+
+        List<Listing> jobList = listingDao.findBySalaryBetween(30000, 50000).get();
+
+        assertEquals(savedListing, jobList.get(0));
+    }
+
+    @Test
+    void getListingsByCityAndState() {
+        Listing listing = new Listing();
+        listing.setListingName("Marine Biologist");
+        listing.setIndustry("Environmental Science");
+        listing.setCompany("Diver's Anonymous");
+        listing.setCity("Ft. Myers");
+        listing.setState("Florida");
+        listing.setEmploymentType("Contract");
+        listing.setSalary(40000);
+        listing.setDatePosted(Instant.now());
+
+        Listing savedListing = listingDao.save(listing);
+
+        List<Listing> jobList = listingDao.findByCityAndStateAllIgnoreCase("ft. myers", "florida").get();
+
+        assertEquals(savedListing, jobList.get(0));
+    }
+
+    @Test
+    void getListingsByIndustry() {
+        Listing listing = new Listing();
+        listing.setListingName("Marine Biologist");
+        listing.setIndustry("Environmental Science");
+        listing.setCompany("Diver's Anonymous");
+        listing.setCity("Ft. Myers");
+        listing.setState("Florida");
+        listing.setEmploymentType("Contract");
+        listing.setSalary(40000);
+        listing.setDatePosted(Instant.now());
+
+        Listing savedListing = listingDao.save(listing);
+
+        List<Listing> jobList = listingDao.findByIndustryIgnoreCase("environmental science").get();
+
+        assertEquals(savedListing, jobList.get(0));
+    }
+
 }

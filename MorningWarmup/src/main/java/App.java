@@ -25,7 +25,10 @@ public class App {
 //        System.out.println(perfectNum(6));
 //        System.out.println(perfectNum(496));
 
-        System.out.println(permute(new int[]{1,2,3}));
+//        System.out.println(permute(new int[]{1,2,3}));
+
+        System.out.println(canPlaceFlowers(new int[]{1,0,0,0,1,0,0}, 2));
+
 
         //m
     }
@@ -114,6 +117,27 @@ public class App {
                 tempList.remove(tempList.size() - 1);
             }
         }
+    }
+
+    public static boolean canPlaceFlowers(int[] flowerbed, int n) {
+        if(flowerbed[0] == 0 && flowerbed[1] == 0) {
+            flowerbed[0] = 1;
+            n--;
+        }
+
+        for(int i = 1; i < flowerbed.length - 1 && n > 0; i++) {
+            if(flowerbed[i-1] == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0) {
+                flowerbed[i] = 1;
+                n--;
+            }
+        }
+
+        if(flowerbed[flowerbed.length - 2] == 0 && flowerbed[flowerbed.length - 1] == 0) {
+            flowerbed[flowerbed.length - 1] = 1;
+            n--;
+        }
+
+        return n == 0;
     }
 
 

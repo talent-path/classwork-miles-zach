@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@EqualsAndHashCode
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table
 public class Listing implements Serializable {
@@ -33,9 +34,6 @@ public class Listing implements Serializable {
     @Column(columnDefinition = "numeric CONSTRAINT salary_range CHECK (salary >= 0)")
     private Integer salary;
 
-    @Column(name = "currency")
-    private String currency;
-
     @Column(name = "industry", nullable = false)
     private String industry;
 
@@ -47,9 +45,6 @@ public class Listing implements Serializable {
 
     @Column(name = "state", nullable = false)
     private String state;
-
-    @Column(name = "country", nullable = false)
-    private String country;
 
     @Column(name = "date_posted", nullable = false, columnDefinition = "timestamptz")
     private Instant datePosted;

@@ -47,10 +47,8 @@ public class JobListingServiceTests {
         listing.setCompany("Diver's Anonymous");
         listing.setCity("Ft. Myers");
         listing.setState("Florida");
-        listing.setCountry("United States");
         listing.setEmploymentType("Contract");
         listing.setSalary(40000);
-        listing.setCurrency("USD");
 
         service.saveListing(listing);
 
@@ -65,10 +63,8 @@ public class JobListingServiceTests {
         listing.setCompany("Diver's Anonymous");
         listing.setCity("Ft. Myers");
         listing.setState("Florida");
-        listing.setCountry("United States");
         listing.setEmploymentType(null);
         listing.setSalary(40000);
-        listing.setCurrency("USD");
 
         when(listingDao.save(listing)).thenThrow(DataIntegrityViolationException.class);
 
@@ -84,10 +80,8 @@ public class JobListingServiceTests {
         listing.setCompany("Diver's Anonymous");
         listing.setCity("Ft. Myers");
         listing.setState("Florida");
-        listing.setCountry("United States");
         listing.setEmploymentType("Contract");
         listing.setSalary(40000);
-        listing.setCurrency("USD");
 
         listings.add(listing);
         listings.add(listing);
@@ -104,8 +98,8 @@ public class JobListingServiceTests {
     @Test
     void getListingById() {
         Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
-                45000, "USD", "Wildlife Preservation", "Full-Time",
-                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+                45000, "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", Instant.now(), new HashSet<>(), new HashSet<>());
         when(listingDao.findById(1)).thenReturn(Optional.of(listing));
         Optional<Listing> listingWithId1 = service.getListingById(1);
         assertEquals(listing, listingWithId1.get());
@@ -115,8 +109,8 @@ public class JobListingServiceTests {
     @Test
     void getListingsByJobName() {
         Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
-                45000, "USD", "Wildlife Preservation", "Full-Time",
-                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+                45000, "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", Instant.now(), new HashSet<>(), new HashSet<>());
 
         when(listingDao.findByListingNameContainingIgnoreCase("park")).thenReturn(
                 Optional.of(new ArrayList<>(){{ add(listing); }}));
@@ -129,8 +123,8 @@ public class JobListingServiceTests {
     @Test
     void getListingsByCityAndState() {
         Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
-                45000, "USD", "Wildlife Preservation", "Full-Time",
-                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+                45000, "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", Instant.now(), new HashSet<>(), new HashSet<>());
 
         when(listingDao.findByCityAndStateAllIgnoreCase("helen", "georgia")).thenReturn(
                 Optional.of(new ArrayList<>(){{ add(listing); }}));
@@ -143,8 +137,8 @@ public class JobListingServiceTests {
     @Test
     void getListingsByEmploymentType() {
         Listing listing = new Listing(1, "Park Ranger", "Blue Ridge Park Patrol",
-                45000, "USD", "Wildlife Preservation", "Full-Time",
-                "Helen", "Georgia", "US", Instant.now(), new HashSet<>(), new HashSet<>());
+                45000, "Wildlife Preservation", "Full-Time",
+                "Helen", "Georgia", Instant.now(), new HashSet<>(), new HashSet<>());
 
         when(listingDao.findByEmploymentTypeIgnoreCase("full-time")).thenReturn(
                 Optional.of(new ArrayList<>(){{ add(listing); }}));
