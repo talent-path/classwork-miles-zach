@@ -27,10 +27,76 @@ public class App {
 
 //        System.out.println(permute(new int[]{1,2,3}));
 
-        System.out.println(canPlaceFlowers(new int[]{1,0,0,0,1,0,0}, 2));
+//        System.out.println(canPlaceFlowers(new int[]{1,0,0,0,1,0,0}, 2));
 
+//        System.out.println(advCalculate("(3   +   (3 + 3))"));
+//        System.out.println(advCalculate("((3+ 3) / 2)"));
+//        System.out.println(advCalculate("((3 + 3) * (2 + 1))"));
+        System.out.println(letterCasePermutation("a1b2"));
+    }
 
-        //m
+    public static List<String> letterCasePermutation(String S) {
+        List<String> result = new ArrayList<>();
+        compute(result, S.toCharArray(), 0);
+        return result;
+    }
+
+    public static void compute(List<String> result, char[] chars, int i)  {
+        if(i == chars.length) {
+            result.add(new String(chars));
+        } else {
+            if(Character.isLetter(chars[i])) {
+                chars[i] = Character.toLowerCase(chars[i]);
+                compute(result, chars, i + 1);
+                chars[i] = Character.toUpperCase(chars[i]);
+            }
+            compute(result, chars, i + 1);
+        }
+    }
+
+    public static int advCalculate(String expression) {
+        String trimmedExpression = expression.replace(" ", "");
+        trimmedExpression = trimmedExpression.substring(1, trimmedExpression.length() - 1);
+        int firstIndexOfClosingParenthesis = Integer.MAX_VALUE;
+        while(firstIndexOfClosingParenthesis > 0) {
+            firstIndexOfClosingParenthesis = trimmedExpression.indexOf(")");
+            if(firstIndexOfClosingParenthesis == -1) {
+                return calculate(trimmedExpression);
+            }
+            int indexOfOpeningParenthesis = Integer.MIN_VALUE;
+            for (int i = firstIndexOfClosingParenthesis; i >= 0; i--) {
+                if (trimmedExpression.charAt(i) == '(') {
+                    indexOfOpeningParenthesis = i;
+                    break;
+                }
+            }
+            int calc = calculate(trimmedExpression.substring(indexOfOpeningParenthesis + 1, firstIndexOfClosingParenthesis));
+            trimmedExpression = trimmedExpression.substring(0, indexOfOpeningParenthesis) + calc + trimmedExpression.substring(firstIndexOfClosingParenthesis + 1);
+        }
+        return Integer.MIN_VALUE;
+    }
+
+    public static int calculate(String expression) {
+        String[] numbers = expression.split("[+\\-\\*\\/]");
+        String operand = expression.substring(numbers[0].length(), numbers[0].length() + 1);
+        Integer num1 = Integer.valueOf(numbers[0]);
+        Integer num2 = Integer.valueOf(numbers[1]);
+        int answer = Integer.MIN_VALUE;
+        switch(operand) {
+            case "+":
+                answer = num1 + num2;
+                break;
+            case "*":
+                answer = num1 * num2;
+                break;
+            case "-":
+                answer = num1 - num2;
+                break;
+            case "/":
+                answer = num1 / num2;
+                break;
+        }
+        return answer;
     }
 
     public static int flipInt(int num) {
