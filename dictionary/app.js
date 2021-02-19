@@ -1,6 +1,7 @@
 const findDefinition = function() {
     $('#definitions').empty();
     $('#synonymList').empty();
+    $('h3').remove();
     const word = $('#wordInput').val();
     $.get(
         `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=4c55cdcb-15dd-4fd3-a1ab-705f453bb6a6`,
@@ -57,14 +58,17 @@ const getAudio = function(audio) {
 const getSynonyms = function() {
     $('#definitions').empty();
     $('#synonymList').empty();
+    $('h3').remove();
     const word = $('#wordInput').val();
     $.get(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=57767602-af3e-4339-83c2-3f146afc71af`,
     function(data) {
-        $('#definitions').append('<p id="synonyms>Synonyms: </p>')
+        $('#synonyms').prepend('<h3>Synonyms</h3>')
         for(let obj of data) {
             if(obj.hwi.hw === word) {
                 for(let syns of obj.meta.syns) {
-                    syns.forEach(syn => $('#synonymList').append(`<li>${syn}</li>`));
+                    syns.forEach(syn => {
+                        $('#synonymList').append(`<li>${syn}${syns.indexOf(syn) === syns.length-1 ? '' : ', '}</li>`)
+                    });
                 }
             }
         }
