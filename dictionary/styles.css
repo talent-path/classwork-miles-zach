@@ -1,5 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
 body {
-    text-align: center;
+    font-family: 'Archivo', sans-serif;
+    background: linear-gradient(#56ab2f, #a8e063);
+    height: 100vh;
+}
+
+button {
+    box-sizing: border-box;
+    border:0.16em solid #FFFFFF;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 15px;
 }
 
 ul li {
@@ -12,3 +34,6 @@ ul li {
     text-align: left;
 }
 
+#audio {
+    float: right;
+}

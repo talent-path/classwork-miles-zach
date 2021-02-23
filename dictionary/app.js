@@ -4,7 +4,9 @@ const findDefinition = function() {
     $.get(
         `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=4c55cdcb-15dd-4fd3-a1ab-705f453bb6a6`,
         function(data) {
-            $('#definitions').append('<h3>Definitions</h3>');
+            data === "Word is required" ? 
+                $('#definitions').append('<h3>Definitions</h3>')
+                : null;
             for(let d of data) {
                 if(d.shortdef !== undefined) {
                     for(let def of d.shortdef) {
@@ -13,13 +15,12 @@ const findDefinition = function() {
                 }
             }
 
-            $('#definitions').append('<h3>Pronunciation</h3>');
-
             data[0] ? 
-                $('#definitions').append(`
-                <audio controls>
-                    <source src=${getAudio(data[0].hwi.prs[0].sound.audio)} type="audio/mpeg">
-                </audio>`)
+                $('#audio').append(`
+                <h3>Pronunciation</h3>
+                    <audio controls>
+                        <source src=${getAudio(data[0].hwi.prs[0].sound.audio)} type="audio/mpeg">
+                    </audio>`)
                 : null;
         }
     )
@@ -82,4 +83,5 @@ const clearPage = function() {
     $('#synonymList').empty();
     $('#antList').empty();
     $('h3').remove();
+    $('#audio').empty();
 }
