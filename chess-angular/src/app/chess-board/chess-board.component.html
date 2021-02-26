@@ -1,0 +1,11 @@
+<div class="board">
+    <div *ngFor="let row of board.allSquares; index as r" class="row">
+        <app-chess-square 
+            *ngFor="let col of row; index as c" 
+            [piece]="col" 
+            [col]="c" 
+            [row]="r"
+            (squareClickedEvent)="onSquareClicked($event)">
+        </app-chess-square>
+    </div>
+</div>

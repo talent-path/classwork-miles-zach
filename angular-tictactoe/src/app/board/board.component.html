@@ -1,0 +1,8 @@
+<div id="board">
+    <app-square
+            (squareClicked)="squareClick($event)"
+            *ngFor="let square of board; let i = index"
+            [position]="i"
+            [player]="square"
+    ></app-square>
+</div>

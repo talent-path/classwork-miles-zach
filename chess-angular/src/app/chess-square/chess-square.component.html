@@ -1,0 +1,7 @@
+<div class="square">
+    <img 
+        [src]="imgSrc" 
+        [class.lightSquare]="isLightSquare" 
+        [class.darkSquare]="!isLightSquare"
+        (click)="squareClicked()">
+</div>
