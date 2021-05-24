@@ -1,0 +1,11 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/bin/Debug/netcoreapp3.1/SudokuSolver.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/bin/Debug/netcoreapp3.1/SudokuSolver.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/bin/Debug/netcoreapp3.1/SudokuSolver.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/bin/Debug/netcoreapp3.1/SudokuSolver.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/bin/Debug/netcoreapp3.1/SudokuSolver.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/obj/Debug/netcoreapp3.1/SudokuSolver.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/obj/Debug/netcoreapp3.1/SudokuSolver.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/obj/Debug/netcoreapp3.1/SudokuSolver.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/obj/Debug/netcoreapp3.1/SudokuSolver.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/obj/Debug/netcoreapp3.1/SudokuSolver.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/obj/Debug/netcoreapp3.1/SudokuSolver.genruntimeconfig.cache
