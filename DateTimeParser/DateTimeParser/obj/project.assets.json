@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/SudokuSolver.csproj",
-      "projectName": "SudokuSolver",
-      "projectPath": "/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/SudokuSolver.csproj",
+      "projectUniqueName": "/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/DateTimeParser.csproj",
+      "projectName": "DateTimeParser",
+      "projectPath": "/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/DateTimeParser.csproj",
       "packagesPath": "/Users/zachmiles/.nuget/packages/",
-      "outputPath": "/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/obj/",
+      "outputPath": "/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/zachmiles/.config/NuGet/NuGet.Config"

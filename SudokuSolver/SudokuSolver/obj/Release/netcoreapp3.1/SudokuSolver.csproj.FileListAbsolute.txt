@@ -1,0 +1,11 @@
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/bin/Release/netcoreapp3.1/SudokuSolver.deps.json
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/bin/Release/netcoreapp3.1/SudokuSolver.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/bin/Release/netcoreapp3.1/SudokuSolver.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/bin/Release/netcoreapp3.1/SudokuSolver.dll
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/bin/Release/netcoreapp3.1/SudokuSolver.pdb
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/obj/Release/netcoreapp3.1/SudokuSolver.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/obj/Release/netcoreapp3.1/SudokuSolver.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/obj/Release/netcoreapp3.1/SudokuSolver.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/obj/Release/netcoreapp3.1/SudokuSolver.dll
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/obj/Release/netcoreapp3.1/SudokuSolver.pdb
+/Users/zachmiles/classwork-miles-zach/SudokuSolver/SudokuSolver/obj/Release/netcoreapp3.1/SudokuSolver.genruntimeconfig.cache

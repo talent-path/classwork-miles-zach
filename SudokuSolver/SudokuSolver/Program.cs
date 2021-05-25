@@ -21,49 +21,71 @@ namespace SudokuSolver
 
             SudokuBoard board = new SudokuBoard(vals);
 
-            //bool changedVal = false;
-            bool isSolved = false; 
-            while (!isSolved)
+            Solve(board);
+
+
+        }
+
+        static bool Solve(SudokuBoard board)
+        {
+            int minCol = -1;
+            int minRow = -1;
+            int minPossibilities = 9;
+
+            for (int row = 0; row < 9; row++)
             {
-                //changedVal = false; 
-                for (int row = 0;   row < 9; row++)
+                for (int col = 0; col < 9; col++)
                 {
-                    for (int col = 0;  col < 9; col++)
+                    if (board.AllowableVals[row, col] != null && board.AllowableVals[row, col].Count < minPossibilities)
                     {
-                        if (board.AllowableVals[row, col] != null && board.AllowableVals[row, col].Count == 1)
-                        {
-                            int val = board.AllowableVals[row, col][0]; 
-                           isSolved =  board.SetValue(row, col, board.AllowableVals[row, col][0]);
-                            //changedVal = true;
-                            //Console.WriteLine("row" + row +  " col" + col + " value" + val );
-
-                        }
-                        else if(board.AllowableVals[row, col] != null && board.AllowableVals[row, col].Count > 1 )
-                        {
-                            for(int i = 0; i < board.AllowableVals[row, col].Count; i++)
-                            {
-                                SudokuBoard copy = new SudokuBoard(board);
-
-                                isSolved = copy.SetValue(row, col, copy.AllowableVals[row, col][i]); 
-
-                            }
-                        }
-
-                        //check if the game is solvable
-                        //if it is, break out of the loop, then change the main board
-
-                       
-                      
+                        minCol = col;
+                        minRow = row;
+                        minPossibilities = board.AllowableVals[row, col].Count;
                     }
+
                 }
-                
+
             }
 
-            Console.WriteLine(board); 
-            Console.WriteLine("Hello World!");
+            bool success = false;
+            if (minPossibilities > 0)
+            {
+                foreach (var allowableVal in board.AllowableVals[minRow, minCol])
+                {
+                    
+                    board.SetValue(minRow, minCol, allowableVal);
 
-            //I lied (mac version?)
-            //Console.WriteLine("this shouldn't work except VS is great");
+                    success = board.IsComplete;
+
+                    if(success)
+                    {
+                        PrintBoard(board);
+                    }
+                    else
+                    {
+                        success = Solve(board);
+                    }
+
+                    if (!success)
+                    {
+                        board.SetValue(minRow, minCol, 0);
+                    }
+                    else break;
+                }
+            }
+            return success;
+        }
+
+        static void PrintBoard(SudokuBoard board)
+        {
+            for(int i = 0; i < 9; i++)
+            {
+                for(int j = 0; j < 9; j++)
+                {
+                    Console.Write(board.Vals[i, j]);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

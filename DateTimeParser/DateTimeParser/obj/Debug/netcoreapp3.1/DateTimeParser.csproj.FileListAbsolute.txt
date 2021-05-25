@@ -1,0 +1,12 @@
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/bin/Debug/netcoreapp3.1/DateTimeParser.deps.json
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/bin/Debug/netcoreapp3.1/DateTimeParser.runtimeconfig.json
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/bin/Debug/netcoreapp3.1/DateTimeParser.runtimeconfig.dev.json
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/bin/Debug/netcoreapp3.1/DateTimeParser.dll
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/bin/Debug/netcoreapp3.1/DateTimeParser.pdb
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/Debug/netcoreapp3.1/DateTimeParser.csprojAssemblyReference.cache
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/Debug/netcoreapp3.1/DateTimeParser.AssemblyInfoInputs.cache
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/Debug/netcoreapp3.1/DateTimeParser.AssemblyInfo.cs
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/Debug/netcoreapp3.1/DateTimeParser.csproj.CoreCompileInputs.cache
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/Debug/netcoreapp3.1/DateTimeParser.dll
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/Debug/netcoreapp3.1/DateTimeParser.pdb
+/Users/zachmiles/Projects/DateTimeParser/DateTimeParser/obj/Debug/netcoreapp3.1/DateTimeParser.genruntimeconfig.cache

@@ -8,8 +8,10 @@ namespace SudokuSolver
     {
         //int[][] _vals = new int[9][];
 
-        private int[,] _vals = new int[9, 9];
+        public int[,] Vals { get; } = new int[9, 9];
         public List<int>[,] AllowableVals { get; } = new List<int>[9, 9];
+        public bool IsComplete => EmptySquares == 0;
+        public int EmptySquares { get; private set; } = 81;
 
         /// <summary>
         /// 
@@ -38,45 +40,47 @@ namespace SudokuSolver
             //}
 
             //faster
-            Array.Copy(vals, _vals, 81);
+            Array.Copy(vals, Vals, 81);
 
             PopulateAllowableVals();
         }
 
         public SudokuBoard(SudokuBoard board)
         {
-            Array.Copy(board._vals, _vals, 81 );
+            Array.Copy(board.Vals, Vals, 81 );
             PopulateAllowableVals();
-
         }
 
         private void PopulateAllowableVals()
         {
+            EmptySquares = 81;
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    if (_vals[i, j] == 0)
+                    if (Vals[i, j] == 0)
                     {
+                    
                         AllowableVals[i, j] = ComputeAllowedVals(i, j);
                     }
                     else
                     {
+                        EmptySquares--;
                         AllowableVals[i, j] = null;
                     }
                 }
             }
         }
 
-        internal bool SetValue(int row, int col, int v)
+        internal void SetValue(int row, int col, int v)
         {
             //update _vals
-            _vals[row, col] = v;
+            Vals[row, col] = v;
 
             //call PopulateAllowableVals()
-            PopulateAllowableVals();
-            return IsBoardSolved(); 
+            PopulateAllowableVals(); 
         }
+
 
         /// <summary>
         /// Compute the allowed values at a given position.
@@ -90,14 +94,14 @@ namespace SudokuSolver
             //check the row
             for( int x = 0; x < 9; x++)
             {
-                if( _vals[row, x] != 0)
+                if( Vals[row, x] != 0)
                 {
                     //we found a value in the current row
                     //that means we can't use it again
                     //so now we need to make sure it isn't in the list
                     //of candidates
 
-                    int allowedIndex = allAllowed.FindIndex(v => v == _vals[row, x]);
+                    int allowedIndex = allAllowed.FindIndex(v => v == Vals[row, x]);
 
                     if( allowedIndex != -1)
                     {
@@ -112,9 +116,9 @@ namespace SudokuSolver
             //check the column
             for( int y = 0; y < 9; y++)
             {
-                if( _vals[y, col] != 0)
+                if( Vals[y, col] != 0)
                 {
-                    int allowedIndex = allAllowed.FindIndex(v => v == _vals[y, col]);
+                    int allowedIndex = allAllowed.FindIndex(v => v == Vals[y, col]);
                     if( allowedIndex != -1)
                     {
                         allAllowed.RemoveAt(allowedIndex);
@@ -151,9 +155,9 @@ namespace SudokuSolver
             {
                 for (int x = upperLeftCol; x < upperLeftCol + 3; x++)
                 {
-                    if( _vals[y,x] != 0)
+                    if( Vals[y,x] != 0)
                     {
-                        int allowedIndex = allAllowed.FindIndex(v => v == _vals[y, x]);
+                        int allowedIndex = allAllowed.FindIndex(v => v == Vals[y, x]);
                         if( allowedIndex != -1)
                         {
                             allAllowed.RemoveAt(allowedIndex);
@@ -163,21 +167,6 @@ namespace SudokuSolver
             }
 
             return allAllowed;
-        }
-
-        private bool IsBoardSolved()
-        {
-            for(int i = 0; i < 9; i++)
-            {
-                for(int j = 0; j < 9; j++)
-                {
-                    if(_vals[i,j] != 0)
-                    {
-                        return false; 
-                    }
-                }
-            }
-            return true; 
         }
     }
 
