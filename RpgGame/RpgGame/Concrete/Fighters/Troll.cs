@@ -20,7 +20,7 @@ namespace RpgGame.Concrete
             throw new NotImplementedException();
         }
 
-        public override void Defend(IFighter attacker)
+        public override void Defend(IFighter attacker, int incomingDamage)
         {
             throw new NotImplementedException();
         }

@@ -7,12 +7,12 @@ namespace RpgGame.Concrete
 {
     public class Brute : Fighter
     {
-        public Brute(int Health, string Name, IArmor armor, IWeapon weapon)
+        public Brute(int health, string name, IArmor armor, IWeapon weapon)
         {
-            this.Health = Health;
-            this.Name = Name;
-            this.Armor = Armor;
-            this.Weapon = Weapon;
+            Health = health;
+            Name = name;
+            Armor = armor;
+            Weapon = weapon;
         }
 
         public Brute()

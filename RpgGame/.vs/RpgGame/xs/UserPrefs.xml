@@ -1,25 +1,25 @@
 ﻿<Properties StartupConfiguration="{E3B4AE4F-C6CE-414D-94AE-69A428862CE2}|Default">
   <MonoDevelop.Ide.ItemProperties.RpgGame FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RpgGame/Concrete/Armors/Shield.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RpgGame/Concrete/Fighters/Ninja.cs">
     <Files>
       <File FileName="RpgGame/Program.cs" Line="20" Column="49" />
-      <File FileName="RpgGame/IHealthy.cs" Line="6" Column="9" />
-      <File FileName="RpgGame/INamed.cs" Line="8" Column="2" />
-      <File FileName="RpgGame/IFighter.cs" Line="7" Column="14" />
-      <File FileName="RpgGame/IWeapon.cs" Line="7" Column="37" />
-      <File FileName="RpgGame/Interfaces/IArmor.cs" Line="9" Column="2" />
-      <File FileName="RpgGame/Abstractions/Fighter.cs" Line="4" Column="60" />
-      <File FileName="RpgGame/Concrete/Troll.cs" Line="6" Column="20" />
-      <File FileName="RpgGame/Concrete/Brute.cs" Line="3" Column="1" />
-      <File FileName="RpgGame/Concrete/Ninja.cs" Line="14" Column="49" />
-      <File FileName="RpgGame/Abstractions/Weapon.cs" Line="11" Column="9" />
-      <File FileName="RpgGame/Abstractions/Armor.cs" Line="6" Column="49" />
-      <File FileName="RpgGame/Concrete/Fists.cs" Line="7" Column="6" />
-      <File FileName="RpgGame/Concrete/Weapons/Sword.cs" Line="3" Column="1" />
-      <File FileName="RpgGame/Concrete/Weapons/Crossbow.cs" Line="6" Column="20" />
-      <File FileName="RpgGame/Concrete/Armor/Shirt.cs" Line="6" Column="31" />
-      <File FileName="RpgGame/Concrete/Armors/Helmet.cs" Line="6" Column="22" />
-      <File FileName="RpgGame/Concrete/Armors/Shield.cs" Line="2" Column="10" />
+      <File FileName="RpgGame/IHealthy.cs" Line="6" Column="14" />
+      <File FileName="RpgGame/INamed.cs" Line="6" Column="17" />
+      <File FileName="RpgGame/IFighter.cs" Line="9" Column="58" />
+      <File FileName="RpgGame/IWeapon.cs" Line="4" Column="29" />
+      <File FileName="RpgGame/Interfaces/IArmor.cs" Line="6" Column="21" />
+      <File FileName="RpgGame/Abstractions/Fighter.cs" Line="18" Column="74" />
+      <File FileName="RpgGame/Concrete/Troll.cs" Line="24" Column="10" />
+      <File FileName="RpgGame/Concrete/Brute.cs" Line="16" Column="10" />
+      <File FileName="RpgGame/Concrete/Ninja.cs" Line="9" Column="80" />
+      <File FileName="RpgGame/Abstractions/Weapon.cs" Line="10" Column="1" />
+      <File FileName="RpgGame/Abstractions/Armor.cs" Line="15" Column="35" />
+      <File FileName="RpgGame/Concrete/Fists.cs" Line="14" Column="30" />
+      <File FileName="RpgGame/Concrete/Weapons/Sword.cs" Line="14" Column="30" />
+      <File FileName="RpgGame/Concrete/Weapons/Crossbow.cs" Line="14" Column="30" />
+      <File FileName="RpgGame/Concrete/Armor/Shirt.cs" Line="13" Column="33" />
+      <File FileName="RpgGame/Concrete/Armors/Helmet.cs" Line="13" Column="33" />
+      <File FileName="RpgGame/Concrete/Armors/Shield.cs" Line="13" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,9 +28,11 @@
             <Node name="RpgGame" expanded="True">
               <Node name="Abstractions" expanded="True" />
               <Node name="Concrete" expanded="True">
-                <Node name="Armors" expanded="True">
-                  <Node name="Shield.cs" selected="True" />
+                <Node name="Armors" expanded="True" />
+                <Node name="Fighters" expanded="True">
+                  <Node name="Ninja.cs" selected="True" />
                 </Node>
+                <Node name="Weapons" expanded="True" />
               </Node>
               <Node name="Interfaces" expanded="True" />
             </Node>
