@@ -25,7 +25,7 @@ namespace Nasdaq
                 + ",\n\tclose: " + Close
                 + ",\n\thigh: " + High
                 + ",\n\tlow: " + Low
-                + "\t\n}";
+                + "\n}";
         }
     }
 }
