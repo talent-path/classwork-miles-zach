@@ -1,0 +1,12 @@
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/bin/Debug/netcoreapp3.1/Problem8.deps.json
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/bin/Debug/netcoreapp3.1/Problem8.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/bin/Debug/netcoreapp3.1/Problem8.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/bin/Debug/netcoreapp3.1/Problem8.dll
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/bin/Debug/netcoreapp3.1/Problem8.pdb
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/obj/Debug/netcoreapp3.1/Problem8.csprojAssemblyReference.cache
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/obj/Debug/netcoreapp3.1/Problem8.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/obj/Debug/netcoreapp3.1/Problem8.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/obj/Debug/netcoreapp3.1/Problem8.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/obj/Debug/netcoreapp3.1/Problem8.dll
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/obj/Debug/netcoreapp3.1/Problem8.pdb
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem8/obj/Debug/netcoreapp3.1/Problem8.genruntimeconfig.cache

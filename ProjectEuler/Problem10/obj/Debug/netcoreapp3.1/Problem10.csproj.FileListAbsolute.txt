@@ -1,0 +1,15 @@
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/bin/Debug/netcoreapp3.1/Problem10.deps.json
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/bin/Debug/netcoreapp3.1/Problem10.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/bin/Debug/netcoreapp3.1/Problem10.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/bin/Debug/netcoreapp3.1/Problem10.dll
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/bin/Debug/netcoreapp3.1/Problem10.pdb
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/bin/Debug/netcoreapp3.1/Utils.dll
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/bin/Debug/netcoreapp3.1/Utils.pdb
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.csprojAssemblyReference.cache
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.csproj.CopyComplete
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.dll
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.pdb
+/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem10/obj/Debug/netcoreapp3.1/Problem10.genruntimeconfig.cache
