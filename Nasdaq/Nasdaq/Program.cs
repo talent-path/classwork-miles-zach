@@ -21,7 +21,7 @@ namespace Nasdaq
              * 
             */
             Dictionary<int, List<DailyQuote>> yearlyQuotes = new Dictionary<int, List<DailyQuote>>();
-            using (StreamReader reader = new StreamReader("../../../../GOOG.csv"))
+            using (StreamReader reader = new StreamReader("GOOG.csv"))
             {
                 string line = reader.ReadLine();
                 while ((line = reader.ReadLine()) != null)
