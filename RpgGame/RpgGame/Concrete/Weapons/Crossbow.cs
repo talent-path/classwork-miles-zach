@@ -9,8 +9,8 @@ namespace RpgGame.Concrete.Weapons
         {
         }
 
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override int Damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override int Durability { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override string Name { get; set; } = "Crossbow";
+        public override int Damage { get; set; } = 20;
+        public override int Durability { get; set; } = 10;
     }
 }

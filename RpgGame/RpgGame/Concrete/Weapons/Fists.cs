@@ -9,8 +9,8 @@ namespace RpgGame.Concrete
         {
         }
 
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override int Damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override int Durability { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override string Name { get; set; } = "Fists";
+        public override int Damage { get; set; } = 1;
+        public override int Durability { get; set; } = 10;
     }
 }

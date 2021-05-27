@@ -9,12 +9,12 @@ namespace RpgGame.Concrete.Armors
         {
         }
 
-        public override int Durability { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override int Durability { get; set; } = 10;
+        public override string Name { get; set; } = "Helmet";
 
-        public override void ReduceDamage(int incomingDamage)
+        public override int ReduceDamage(int incomingDamage)
         {
-            throw new NotImplementedException();
+            return incomingDamage - 1;
         }
     }
 }

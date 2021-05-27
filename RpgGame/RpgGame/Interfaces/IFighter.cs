@@ -5,7 +5,7 @@ namespace RpgGame
 {
     public interface IFighter : IHealthy, INamed
     {
-        void Attack(IFighter defender);
-        void Defend(IFighter attacker, int incomingDamage);
+        int Attack(IFighter defender);
+        void Defend(int incomingDamage);
     }
 }

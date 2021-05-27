@@ -9,12 +9,25 @@ namespace RpgGame.Concrete.Armors
         {
         }
 
-        public override int Durability { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override int Durability { get; set; } = 10;
+        public override string Name { get; set; } = "Shield";
 
-        public override void ReduceDamage(int incomingDamage)
+        public override int ReduceDamage(int incomingDamage)
         {
-            throw new NotImplementedException();
+
+            if (Durability == 0)
+                return incomingDamage;
+
+            Random random = new Random();
+            int x = random.Next(0, 2);
+            if (x == 0)
+                incomingDamage = 0;
+
+            int y = random.Next(1, 21);
+            if (y == 15)
+                Durability -= 1;
+
+            return incomingDamage;
         }
     }
 }

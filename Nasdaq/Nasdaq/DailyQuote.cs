@@ -17,7 +17,8 @@ namespace Nasdaq
             ulong Volume,
             decimal Open,
             decimal High,
-            decimal Low)
+            decimal Low
+            )
         {
             this.Date = Date;
             this.Close = Close;
@@ -30,9 +31,9 @@ namespace Nasdaq
         public DailyQuote(string line)
         {
             string[] values = line.Split(',');
-            for(int i = 0; i < values.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                switch(i)
+                switch (i)
                 {
                     case 0:
                         Date = DateTime.Parse(values[i]);

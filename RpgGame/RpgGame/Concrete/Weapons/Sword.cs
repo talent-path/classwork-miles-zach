@@ -7,10 +7,12 @@ namespace RpgGame.Concrete.Weapons
     {
         public Sword()
         {
+            Random random = new Random();
+            Damage = random.Next(5, 11);
         }
 
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override int Damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override int Durability { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override string Name { get; set; } = "Sword";
+        public override int Damage { get; set; }
+        public override int Durability { get; set; } = 10;
     }
 }

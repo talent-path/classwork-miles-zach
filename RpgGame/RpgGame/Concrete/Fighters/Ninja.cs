@@ -1,28 +1,53 @@
 ﻿using System;
 using RpgGame.Abstractions;
+using RpgGame.Concrete.Armors;
+using RpgGame.Concrete.Weapons;
 using RpgGame.Interfaces;
 
 namespace RpgGame.Concrete
 {
     public class Ninja : Fighter
     {
-        public override int Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override IArmor Armor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override IWeapon Weapon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Random random = new Random();
+
+        public override int Health { get; set; } = 100;
+        public override string Name { get; set; } = "Ninja";
+        public override IArmor Armor { get; set; } = new Shirt();
+        public override IWeapon Weapon { get; set; } = new Crossbow();
+
+        public Ninja(int health, string name, IArmor armor, IWeapon weapon)
+        {
+            Health = health;
+            Name = name;
+            Armor = armor;
+            Weapon = weapon;
+        }
 
         public Ninja()
         {
+
         }
 
-        public override void Defend(IFighter attacker, int incomingDamage)
+        public override void Defend(int incomingDamage)
         {
-            throw new NotImplementedException();
+            int x = random.Next(3);
+
+            if (x == 2)
+            {
+                incomingDamage = 0;
+            }
+            else
+            {
+                int dmg = Armor.ReduceDamage(incomingDamage);
+                Health -= dmg;
+            }
         }
 
-        public override void Attack(IFighter toAttack)
+        public override int Attack(IFighter toAttack)
         {
-            throw new NotImplementedException();
+            int dmg = Weapon.Damage;
+
+            return dmg;
         }
     }
 }

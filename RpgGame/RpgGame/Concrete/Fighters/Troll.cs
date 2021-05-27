@@ -1,28 +1,43 @@
 ﻿using System;
 using RpgGame.Abstractions;
+using RpgGame.Concrete.Armors;
+using RpgGame.Concrete.Weapons;
 using RpgGame.Interfaces;
 
 namespace RpgGame.Concrete
 {
     public class Troll : Fighter
     {
+
+        public Troll(int health, string name, IArmor armor, IWeapon weapon)
+        {
+            Health = health;
+            Name = name;
+            Armor = armor;
+            Weapon = weapon;
+        }
+
         public Troll()
         {
         }
 
-        public override int Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override IArmor Armor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override IWeapon Weapon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override int Health { get; set; } = 100;
+        public override string Name { get; set; } = "Troll";
+        public override IArmor Armor { get; set; } = new Shield();
+        public override IWeapon Weapon { get; set; } = new Sword();
 
-        public override void Attack(IFighter toAttack)
+        public override int Attack(IFighter toAttack)
         {
-            throw new NotImplementedException();
+            int dmg = Weapon.Damage;
+
+            return dmg;
         }
 
-        public override void Defend(IFighter attacker, int incomingDamage)
+        public override void Defend(int incomingDamage)
         {
-            throw new NotImplementedException();
+            Health += 1;
+            int dmg = Armor.ReduceDamage(incomingDamage);
+            Health -= dmg;
         }
     }
 }

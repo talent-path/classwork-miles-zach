@@ -14,7 +14,7 @@ namespace RpgGame.Abstractions
         public abstract IArmor Armor { get; set; }
         public abstract IWeapon Weapon { get; set; }
 
-        public abstract void Attack(IFighter defender);
-        public abstract void Defend(IFighter attacker, int incomingDamage);
+        public abstract int Attack(IFighter defender);
+        public abstract void Defend(int incomingDamage);
     }
 }
