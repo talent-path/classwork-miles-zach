@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Utils
@@ -7,10 +8,37 @@ namespace Utils
     {
         public static bool IsPrime(BigInteger num)
         {
-            if (num % 2 == 0) return false;
-            for (var i = 3; i <= Sqrt(num); i+=2)
+            if (num % 2 == 0 && num != 2) return false;
+            for (int i = 3; i <= Sqrt(num); i+=2)
             {
                 if (num % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool IsPrime(int num)
+        {
+            if (num % 2 == 0 && num != 2) return false;
+            for (int i = 3; i <= Sqrt(num); i += 2)
+            {
+                if (num % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool IsPrime(List<int> primes, int num)
+        {
+            foreach(int prime in primes)
+            {
+                if(Sqrt(num) < prime)
+                        break;
+                if(num % prime == 0)
                 {
                     return false;
                 }
@@ -24,6 +52,20 @@ namespace Utils
             for(int i = 1; i < num; i++)
             {
                 if(i * i > num)
+                {
+                    sqrt = i - 1;
+                    break;
+                }
+            }
+            return sqrt;
+        }
+
+        public static int Sqrt(int num)
+        {
+            int sqrt = int.MaxValue;
+            for (int i = 1; i < num; i++)
+            {
+                if (i * i > num)
                 {
                     sqrt = i - 1;
                     break;
