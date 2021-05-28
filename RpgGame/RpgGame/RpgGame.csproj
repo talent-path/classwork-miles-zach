@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Abstractions\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Concrete\Weapons\" />
+    <Folder Include="Concrete\Fighters\" />
+    <Folder Include="Concrete\Armors\" />
+  </ItemGroup>
+</Project>

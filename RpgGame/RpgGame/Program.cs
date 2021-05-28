@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RpgGame.Concrete;
 using RpgGame.Concrete.Armors;
 using RpgGame.Concrete.Weapons;
@@ -10,7 +11,7 @@ namespace RpgGame
     {
         static void Main(string[] args)
         {
-            int winCount = 0;
+            int round = 1;
 
             bool playerNotDead = true;
 
@@ -32,39 +33,59 @@ namespace RpgGame
 
             IFighter player = ChooseFighter(fighter, playerWeapon, playerArmor, 100, name);
 
+            List<List<IFighter>> board;
+
             while (playerNotDead)
             {
-                IFighter attacker, defender;
-                attacker = player;
-                IFighter enemyFighter = GenerateRandomEnemy();
-                defender = enemyFighter;
+                board = GenerateBoard(player, round);
+                
 
-                while (enemyFighter.Health > 0 && playerNotDead)
-                {
-                    IFighter temp;
-
-                    Console.WriteLine();
-                    Console.WriteLine("---------------------");
-                    Console.WriteLine(attacker.Name + " health: " + attacker.Health);
-                    Console.WriteLine(defender.Name + " health: " + defender.Health);
-                    Console.WriteLine(attacker.Name + " is attacking " + defender.Name);
-                    Console.WriteLine("---------------------");
-
-                    defender.Defend(attacker.Attack(defender));
-
-                    if (player.Health <= 0)
-                        playerNotDead = false;
-
-                    temp = attacker;
-                    attacker = defender;
-                    defender = temp;
-
-                }
-                if (playerNotDead)
-                    winCount++;
+                
             }
 
-            Console.WriteLine("Win Count: " + winCount);
+            
+        }
+
+        static List<List<IFighter>> GenerateBoard(IFighter player, int round)
+        {
+            List<List<IFighter>> board = new List<List<IFighter>>();
+            int maxEnemies = round;
+            for(int i = 0; i < 15; i++)
+            {
+                List<IFighter> row = new List<IFighter>();
+                for(int j = 0; j < 15; j++)
+                {
+                    if(i == 0 && j == 0)
+                    {
+                        row.Add(player);
+                    }
+                    else
+                    {
+                        IFighter enemy = Rng(maxEnemies);
+                        row.Add(enemy);
+                        if(enemy != null)
+                        {
+                            maxEnemies--;
+                        }
+                    }
+                }
+                board.Add(row);
+            }
+            return board;
+        }
+
+        static IFighter Rng(int maxEnemies)
+        {
+            if(maxEnemies > 0)
+            {
+                Random random = new Random();
+                int roll = random.Next(2);
+                if(roll == 1)
+                {
+                    return GenerateRandomEnemy();
+                }
+            }
+            return null;
         }
 
         static IFighter ChooseFighter(string fighter, IWeapon weapon, IArmor armor, int health, string name)
