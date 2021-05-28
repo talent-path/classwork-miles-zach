@@ -31,7 +31,7 @@ namespace RpgGame
 
             IArmor playerArmor = ChooseArmor(armor);
 
-            IFighter player = ChooseFighter(fighter, playerWeapon, playerArmor, 100, name);
+            IFighter player = ChooseFighter(fighter, playerWeapon, playerArmor, 100, name, true);
 
             List<List<IFighter>> board;
 
@@ -39,7 +39,7 @@ namespace RpgGame
             {
                 board = GenerateBoard(player, round);
                 bool roundFinished = false;
-                while (!roundFinished)
+                while (!roundFinished && player.Health > 0)
                 {
                     DisplayBoard(board);
                     Console.WriteLine("Press the directional key where you would like to move next.");
@@ -64,7 +64,7 @@ namespace RpgGame
                     }
                 }
             }
-            Console.WriteLine("You survived " + round + " rounds!");
+            Console.WriteLine("You survived " + (round - 1) + " rounds!");
         }
 
         static List<List<IFighter>> PlayerMove(List<List<IFighter>> board, ConsoleKey key)
@@ -161,11 +161,11 @@ namespace RpgGame
             {
                 return true;
             }
-            bool battling = player.Health > 0 && enemy.Health > 0;
+           
             IFighter attacker = player,
                 defender = enemy,
                 temp;
-            while (battling)
+            while (player.Health > 0 && enemy.Health > 0)
             {
                 Console.WriteLine();
                 Console.WriteLine("---------------------");
@@ -180,7 +180,12 @@ namespace RpgGame
                 attacker = defender;
                 defender = temp;
 
-                battling = player.Health > 0 && enemy.Health > 0;
+                if(player.Health <= 0 && player.HasPotion)
+                {
+                    player.Health = 100;
+                    player.HasPotion = false;
+                    Console.WriteLine("Your one and only potion has been used!");
+                }
 
             }
 
@@ -191,21 +196,24 @@ namespace RpgGame
         {
             foreach (List<IFighter> row in board)
             {
+                //Console.WriteLine("-----------------");
+                //Console.Write('|');
                 foreach (IFighter space in row)
                 {
                     if (space == null)
                     {
-                        Console.Write("-");
+                        Console.Write('-');
                     }
                     else if (space.Name == "enemy")
                     {
-                        Console.Write("X");
+                        Console.Write('X');
                     }
                     else
                     {
-                        Console.Write("O");
+                        Console.Write('O');
                     }
                 }
+                //Console.Write('|');
                 Console.WriteLine();
             }
         }
@@ -216,11 +224,11 @@ namespace RpgGame
             int maxEnemies = round, col, row;
             board[0][0] = player;
             board[14][14] = null;
-            while(maxEnemies > 0)
+            while (maxEnemies > 0)
             {
                 col = random.Next(0, 15);
                 row = random.Next(0, 15);
-                if((col != 0 && row != 0) && (col != 14 && row != 14))
+                if ((col != 0 && row != 0) && (col != 14 && row != 14))
                 {
                     board[row][col] = GenerateRandomEnemy();
                     maxEnemies--;
@@ -228,48 +236,7 @@ namespace RpgGame
             }
 
             return board;
-
-            //for (int i = 0; i < 15; i++)
-            //{
-            //    List<IFighter> row = new List<IFighter>();
-            //    for (int j = 0; j < 15; j++)
-            //    {
-            //        if (i == 0 && j == 0)
-            //        {
-            //            row.Add(player);
-            //        }
-            //        else if(i == 14 && j == 14)
-            //        {
-            //            row.Add(null);
-            //        }
-            //        else
-            //        {
-            //            IFighter enemy = Rng(maxEnemies);
-            //            row.Add(enemy);
-            //            if (enemy != null)
-            //            {
-            //                maxEnemies--;
-            //            }
-            //        }
-            //    }
-            //    board.Add(row);
-            //}
-            //return board;
         }
-
-        //static IFighter Rng(int maxEnemies)
-        //{
-        //    if (maxEnemies > 0)
-        //    {
-        //        Random random = new Random();
-        //        int roll = random.Next(2);
-        //        if (roll == 1)
-        //        {
-        //            return GenerateRandomEnemy();
-        //        }
-        //    }
-        //    return null;
-        //}
 
         static List<List<IFighter>> InitializeBoard()
         {
@@ -286,14 +253,14 @@ namespace RpgGame
             return board;
         }
 
-        static IFighter ChooseFighter(string fighter, IWeapon weapon, IArmor armor, int health, string name)
+        static IFighter ChooseFighter(string fighter, IWeapon weapon, IArmor armor, int health, string name, bool hasPotion)
         {
             if (fighter == "brute")
-                return new Brute(health, name, armor, weapon);
+                return new Brute(health, name, armor, weapon, hasPotion);
             else if (fighter == "ninja")
-                return new Ninja(health, name, armor, weapon);
+                return new Ninja(health, name, armor, weapon, hasPotion);
             else
-                return new Troll(health, name, armor, weapon);
+                return new Troll(health, name, armor, weapon, hasPotion);
         }
 
         static IWeapon ChooseWeapon(string weapon)
@@ -322,14 +289,12 @@ namespace RpgGame
             string[] weapons = { "crossbow", "fists", "sword" };
             string[] armor = { "helmet", "shield", "shirt" };
 
-            Random random = new Random();
-
             IWeapon enemyWeapon = ChooseWeapon(weapons[random.Next(0, 3)]);
 
             IArmor enemyArmor = ChooseArmor(armor[random.Next(0, 3)]);
 
             IFighter enemyFighter = ChooseFighter(fighters[random.Next(0, 3)], enemyWeapon,
-                enemyArmor, 25, "enemy");
+                enemyArmor, 25, "enemy", false);
 
             return enemyFighter;
         }

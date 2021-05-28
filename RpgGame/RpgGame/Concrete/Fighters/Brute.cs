@@ -7,12 +7,13 @@ namespace RpgGame.Concrete
 {
     public class Brute : Fighter
     {
-        public Brute(int Health, string Name, IArmor armor, IWeapon weapon)
+        public Brute(int health, string name, IArmor armor, IWeapon weapon, bool hasPotion)
         {
-            this.Health = Health;
-            this.Name = Name;
-            this.Armor = armor;
-            this.Weapon = weapon;
+            Health = health;
+            Name = name;
+            Armor = armor;
+            Weapon = weapon;
+            HasPotion = hasPotion;
         }
 
         public Brute()
@@ -20,10 +21,11 @@ namespace RpgGame.Concrete
 
         }
 
-        public override int Health { get; set; } = 100;
-        public override string Name { get; set; } = "Brute";
-        public override IArmor Armor { get; set; } = new Helmet();
-        public override IWeapon Weapon { get; set; } = new Fists();
+        public override int Health { get; set; }
+        public override string Name { get; set; }
+        public override IArmor Armor { get; set; }
+        public override IWeapon Weapon { get; set; }
+        public override bool HasPotion { get; set; }
 
         public override int Attack(IFighter defender)
         {

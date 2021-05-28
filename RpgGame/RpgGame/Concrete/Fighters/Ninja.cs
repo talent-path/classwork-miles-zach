@@ -10,17 +10,19 @@ namespace RpgGame.Concrete
     {
         public Random random = new Random();
 
-        public override int Health { get; set; } = 100;
-        public override string Name { get; set; } = "Ninja";
-        public override IArmor Armor { get; set; } = new Shirt();
-        public override IWeapon Weapon { get; set; } = new Crossbow();
+        public override int Health { get; set; }
+        public override string Name { get; set; }
+        public override IArmor Armor { get; set; }
+        public override IWeapon Weapon { get; set; }
+        public override bool HasPotion { get; set; }
 
-        public Ninja(int health, string name, IArmor armor, IWeapon weapon)
+        public Ninja(int health, string name, IArmor armor, IWeapon weapon, bool hasPotion)
         {
             Health = health;
             Name = name;
             Armor = armor;
             Weapon = weapon;
+            HasPotion = hasPotion;
         }
 
         public Ninja()
@@ -36,11 +38,9 @@ namespace RpgGame.Concrete
             {
                 incomingDamage = 0;
             }
-            else
-            {
-                int dmg = Armor.ReduceDamage(incomingDamage);
-                Health -= dmg;
-            }
+            int dmg = Armor.ReduceDamage(incomingDamage);
+            Health -= dmg;
+            
         }
 
         public override int Attack(IFighter toAttack)

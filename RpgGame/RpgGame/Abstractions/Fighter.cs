@@ -11,6 +11,7 @@ namespace RpgGame.Abstractions
 
         public abstract int Health { get; set; }
         public abstract string Name { get; set; }
+        public abstract bool HasPotion { get; set; }
         public abstract IArmor Armor { get; set; }
         public abstract IWeapon Weapon { get; set; }
 

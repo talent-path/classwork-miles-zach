@@ -9,22 +9,24 @@ namespace RpgGame.Concrete
     public class Troll : Fighter
     {
 
-        public Troll(int health, string name, IArmor armor, IWeapon weapon)
+        public Troll(int health, string name, IArmor armor, IWeapon weapon, bool hasPotion)
         {
             Health = health;
             Name = name;
             Armor = armor;
             Weapon = weapon;
+            HasPotion = hasPotion;
         }
 
         public Troll()
         {
         }
 
-        public override int Health { get; set; } = 100;
-        public override string Name { get; set; } = "Troll";
-        public override IArmor Armor { get; set; } = new Shield();
-        public override IWeapon Weapon { get; set; } = new Sword();
+        public override int Health { get; set; }
+        public override string Name { get; set; }
+        public override IArmor Armor { get; set; }
+        public override IWeapon Weapon { get; set; }
+        public override bool HasPotion { get; set; }
 
         public override int Attack(IFighter toAttack)
         {
