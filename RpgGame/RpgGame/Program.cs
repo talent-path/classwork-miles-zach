@@ -105,12 +105,11 @@ namespace RpgGame
                         }
                         IFighter enemy = board[i][j];
                         bool enemyWon = Battle(enemy, target);
-                        if(enemyWon)
+                        if(target == null || target.Health < 1)
                         {
-                            //Enemy moves to designated space and then previous space becomes null
                             board[row][col] = enemy;
                             board[i][j] = null;
-                        } else
+                        } else if(enemy.Health < 1)
                         {
                             board[i][j] = null;
                         }
@@ -205,7 +204,7 @@ namespace RpgGame
                     break;
             }
 
-            if(playerWon)
+            if(enemy == null || enemy.Health < 1)
             {
                 board[enemyRow][enemyCol] = player;
                 board[playerRow][playerCol] = null;
@@ -224,7 +223,7 @@ namespace RpgGame
             IFighter attacker = player,
                 defender = enemy,
                 temp;
-            while (player.Health > 0 && enemy.Health > 0)
+            //while (player.Health > 0 && enemy.Health > 0)
             {
                 Console.WriteLine();
                 Console.WriteLine("---------------------");
