@@ -9,11 +9,11 @@ namespace RpgGame
 {
     class Program
     {
+        static Random random = new Random();
+
         static void Main(string[] args)
         {
             int round = 1;
-
-            bool playerNotDead = true;
 
             Console.WriteLine("Enter your player name: ");
             string name = Console.ReadLine();
@@ -35,57 +35,255 @@ namespace RpgGame
 
             List<List<IFighter>> board;
 
-            while (playerNotDead)
+            while (player.Health > 0 && round < 223)
             {
                 board = GenerateBoard(player, round);
-                
+                bool roundFinished = false;
+                while (!roundFinished)
+                {
+                    DisplayBoard(board);
+                    Console.WriteLine("Press the directional key where you would like to move next.");
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    switch (keyInfo.Key)
+                    {
+                        case ConsoleKey.RightArrow:
+                        case ConsoleKey.UpArrow:
+                        case ConsoleKey.LeftArrow:
+                        case ConsoleKey.DownArrow:
+                            board = PlayerMove(board, keyInfo.Key);
+                            break;
+                        default:
+                            Console.WriteLine("Not A Valid Key");
+                            break;
+                    }
 
-                
+                    if (board[14].IndexOf(player) == 14 && player.Health > 0)
+                    {
+                        roundFinished = true;
+                        round++;
+                    }
+                }
+            }
+            Console.WriteLine("You survived " + round + " rounds!");
+        }
+
+        static List<List<IFighter>> PlayerMove(List<List<IFighter>> board, ConsoleKey key)
+        {
+            int playerRow = int.MinValue;
+            int playerCol = int.MinValue;
+
+            for(int i = 0; i < board.Count; i++)
+            {
+                for(int j = 0; j < board[i].Count; j++)
+                {
+                    if(board[i][j] != null && board[i][j].Name != "enemy")
+                    {
+                        playerRow = i;
+                        playerCol = j;
+                    }
+                }
             }
 
-            
+            bool playerWon = false;
+            IFighter player = board[playerRow][playerCol], enemy = null;
+            int enemyRow = int.MaxValue, enemyCol = int.MaxValue;
+            switch(key)
+            {
+                case ConsoleKey.UpArrow:
+                    if(playerRow > 0)
+                    {
+                        enemyRow = playerRow - 1;
+                        enemyCol = playerCol;
+                        enemy = board[enemyRow][enemyCol];
+                        playerWon = Battle(player, enemy);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You cannot move up from this position!");
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if(playerRow < 14)
+                    {
+                        enemyRow = playerRow + 1;
+                        enemyCol = playerCol;
+                        enemy = board[enemyRow][enemyCol];
+                        playerWon = Battle(player, enemy);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You cannot move down from this position!");
+                    }
+                    break;
+                case ConsoleKey.RightArrow:
+                    if(playerCol < 14)
+                    {
+                        enemyCol = playerCol + 1;
+                        enemyRow = playerRow;
+                        enemy = board[enemyRow][enemyCol];
+                        playerWon = Battle(player, enemy);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You cannot move right from this position!");
+                    }
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if(playerCol > 0)
+                    {
+                        enemyCol = playerCol - 1;
+                        enemyRow = playerRow;
+                        enemy = board[enemyRow][enemyCol];
+                        playerWon = Battle(player, enemy);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You cannot move left from this position!");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Something went very wrong!");
+                    break;
+            }
+
+            if(playerWon)
+            {
+                board[enemyRow][enemyCol] = player;
+                board[playerRow][playerCol] = null;
+            }
+
+            return board;
+        }
+
+        static bool Battle(IFighter player, IFighter enemy)
+        {
+            if(enemy == null)
+            {
+                return true;
+            }
+            bool battling = player.Health > 0 && enemy.Health > 0;
+            IFighter attacker = player,
+                defender = enemy,
+                temp;
+            while (battling)
+            {
+                Console.WriteLine();
+                Console.WriteLine("---------------------");
+                Console.WriteLine(attacker.Name + " health: " + attacker.Health);
+                Console.WriteLine(defender.Name + " health: " + defender.Health);
+                Console.WriteLine(attacker.Name + " is attacking " + defender.Name);
+                Console.WriteLine("---------------------");
+
+                defender.Defend(attacker.Attack(defender));
+
+                temp = attacker;
+                attacker = defender;
+                defender = temp;
+
+                battling = player.Health > 0 && enemy.Health > 0;
+
+            }
+
+            return player.Health > 0;
+        }
+
+        static void DisplayBoard(List<List<IFighter>> board)
+        {
+            foreach (List<IFighter> row in board)
+            {
+                foreach (IFighter space in row)
+                {
+                    if (space == null)
+                    {
+                        Console.Write("-");
+                    }
+                    else if (space.Name == "enemy")
+                    {
+                        Console.Write("X");
+                    }
+                    else
+                    {
+                        Console.Write("O");
+                    }
+                }
+                Console.WriteLine();
+            }
         }
 
         static List<List<IFighter>> GenerateBoard(IFighter player, int round)
         {
+            List<List<IFighter>> board = InitializeBoard();
+            int maxEnemies = round, col, row;
+            board[0][0] = player;
+            board[14][14] = null;
+            while(maxEnemies > 0)
+            {
+                col = random.Next(0, 15);
+                row = random.Next(0, 15);
+                if((col != 0 && row != 0) && (col != 14 && row != 14))
+                {
+                    board[row][col] = GenerateRandomEnemy();
+                    maxEnemies--;
+                }
+            }
+
+            return board;
+
+            //for (int i = 0; i < 15; i++)
+            //{
+            //    List<IFighter> row = new List<IFighter>();
+            //    for (int j = 0; j < 15; j++)
+            //    {
+            //        if (i == 0 && j == 0)
+            //        {
+            //            row.Add(player);
+            //        }
+            //        else if(i == 14 && j == 14)
+            //        {
+            //            row.Add(null);
+            //        }
+            //        else
+            //        {
+            //            IFighter enemy = Rng(maxEnemies);
+            //            row.Add(enemy);
+            //            if (enemy != null)
+            //            {
+            //                maxEnemies--;
+            //            }
+            //        }
+            //    }
+            //    board.Add(row);
+            //}
+            //return board;
+        }
+
+        //static IFighter Rng(int maxEnemies)
+        //{
+        //    if (maxEnemies > 0)
+        //    {
+        //        Random random = new Random();
+        //        int roll = random.Next(2);
+        //        if (roll == 1)
+        //        {
+        //            return GenerateRandomEnemy();
+        //        }
+        //    }
+        //    return null;
+        //}
+
+        static List<List<IFighter>> InitializeBoard()
+        {
             List<List<IFighter>> board = new List<List<IFighter>>();
-            int maxEnemies = round;
             for(int i = 0; i < 15; i++)
             {
                 List<IFighter> row = new List<IFighter>();
                 for(int j = 0; j < 15; j++)
                 {
-                    if(i == 0 && j == 0)
-                    {
-                        row.Add(player);
-                    }
-                    else
-                    {
-                        IFighter enemy = Rng(maxEnemies);
-                        row.Add(enemy);
-                        if(enemy != null)
-                        {
-                            maxEnemies--;
-                        }
-                    }
+                    row.Add(null);
                 }
                 board.Add(row);
             }
             return board;
-        }
-
-        static IFighter Rng(int maxEnemies)
-        {
-            if(maxEnemies > 0)
-            {
-                Random random = new Random();
-                int roll = random.Next(2);
-                if(roll == 1)
-                {
-                    return GenerateRandomEnemy();
-                }
-            }
-            return null;
         }
 
         static IFighter ChooseFighter(string fighter, IWeapon weapon, IArmor armor, int health, string name)
@@ -120,8 +318,6 @@ namespace RpgGame
 
         static IFighter GenerateRandomEnemy()
         {
-            string[] enemies = {"David Smelser", "Little Finger", "The Hound", "Walter White",
-                "Wicked Witch of the West", "Roberto", "Mr. X", "Teemo", "Beebo" };
             string[] fighters = { "brute", "ninja", "troll" };
             string[] weapons = { "crossbow", "fists", "sword" };
             string[] armor = { "helmet", "shield", "shirt" };
@@ -133,7 +329,7 @@ namespace RpgGame
             IArmor enemyArmor = ChooseArmor(armor[random.Next(0, 3)]);
 
             IFighter enemyFighter = ChooseFighter(fighters[random.Next(0, 3)], enemyWeapon,
-                enemyArmor, 25, enemies[random.Next(0, 9)]);
+                enemyArmor, 25, "enemy");
 
             return enemyFighter;
         }

@@ -22,3 +22,15 @@
 /Users/brendandeyo/Desktop/classwork-deyo-brendan/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.dll
 /Users/brendandeyo/Desktop/classwork-deyo-brendan/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.pdb
 /Users/brendandeyo/Desktop/classwork-deyo-brendan/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.genruntimeconfig.cache
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/bin/Debug/netcoreapp3.1/RpgGame.deps.json
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/bin/Debug/netcoreapp3.1/RpgGame.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/bin/Debug/netcoreapp3.1/RpgGame.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/bin/Debug/netcoreapp3.1/RpgGame.dll
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/bin/Debug/netcoreapp3.1/RpgGame.pdb
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.csprojAssemblyReference.cache
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.dll
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.pdb
+/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/obj/Debug/netcoreapp3.1/RpgGame.genruntimeconfig.cache
