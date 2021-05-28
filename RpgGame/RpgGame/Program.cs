@@ -62,28 +62,87 @@ namespace RpgGame
                         roundFinished = true;
                         round++;
                     }
+
+                    board = GenerateEnemyMoves(board);
                 }
             }
             Console.WriteLine("You survived " + (round - 1) + " rounds!");
         }
 
-        static List<List<IFighter>> PlayerMove(List<List<IFighter>> board, ConsoleKey key)
+        static List<List<IFighter>> GenerateEnemyMoves(List<List<IFighter>> board)
         {
-            int playerRow = int.MinValue;
-            int playerCol = int.MinValue;
+            int[] playerCoord = FindPlayer(board);
 
             for(int i = 0; i < board.Count; i++)
             {
                 for(int j = 0; j < board[i].Count; j++)
                 {
-                    if(board[i][j] != null && board[i][j].Name != "enemy")
+                    if(board[i][j] != null && board[i][j].Name == "enemy")
                     {
-                        playerRow = i;
-                        playerCol = j;
+                        int x = playerCoord[0] - i;
+                        int y = playerCoord[1] - j;
+                        int row = i, col = j;
+                        IFighter target;
+                        if(Math.Abs(x) > Math.Abs(y))
+                        {
+                            if(x > 0)
+                            {
+                                target = board[++row][j];
+                            } else
+                            {
+                                target = board[--row][j];
+                            }
+                        }
+                        else
+                        {
+                            if (y > 0)
+                            {
+                                target = board[i][++col];
+                            } else
+                            {
+                                target = board[i][--col];
+                            }
+                        }
+                        IFighter enemy = board[i][j];
+                        bool enemyWon = Battle(enemy, target);
+                        if(enemyWon)
+                        {
+                            //Enemy moves to designated space and then previous space becomes null
+                            board[row][col] = enemy;
+                            board[i][j] = null;
+                        } else
+                        {
+                            board[i][j] = null;
+                        }
                     }
                 }
             }
+            return board;
+        }
 
+        static int[] FindPlayer(List<List<IFighter>> board)
+        {
+            int[] output = new int[2];
+
+            for (int i = 0; i < board.Count; i++)
+            {
+                for (int j = 0; j < board[i].Count; j++)
+                {
+                    if (board[i][j] != null && board[i][j].Name != "enemy")
+                    {
+                        output[0] = i;
+                        output[1] = j;
+                    }
+                }
+            }
+            return output;
+        }
+
+        static List<List<IFighter>> PlayerMove(List<List<IFighter>> board, ConsoleKey key)
+        {
+            int[] playerPosition = FindPlayer(board);
+            int playerRow = playerPosition[0];
+            int playerCol = playerPosition[1];
             bool playerWon = false;
             IFighter player = board[playerRow][playerCol], enemy = null;
             int enemyRow = int.MaxValue, enemyCol = int.MaxValue;
@@ -196,8 +255,6 @@ namespace RpgGame
         {
             foreach (List<IFighter> row in board)
             {
-                //Console.WriteLine("-----------------");
-                //Console.Write('|');
                 foreach (IFighter space in row)
                 {
                     if (space == null)
@@ -213,7 +270,6 @@ namespace RpgGame
                         Console.Write('O');
                     }
                 }
-                //Console.Write('|');
                 Console.WriteLine();
             }
         }
@@ -228,7 +284,7 @@ namespace RpgGame
             {
                 col = random.Next(0, 15);
                 row = random.Next(0, 15);
-                if ((col != 0 && row != 0) && (col != 14 && row != 14))
+                if (board[row][col] == null && (col != 14 && row != 14))
                 {
                     board[row][col] = GenerateRandomEnemy();
                     maxEnemies--;
