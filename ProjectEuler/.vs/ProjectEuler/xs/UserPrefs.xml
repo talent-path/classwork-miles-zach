@@ -1,33 +1,18 @@
-﻿<Properties StartupConfiguration="{15CC3147-4A08-49E2-907F-D8D60F98DE1A}|Default">
+﻿<Properties StartupConfiguration="{7187336B-DF4A-471F-95E6-A524D30A031E}|Default">
   <MonoDevelop.Ide.ItemProperties.Problem10 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Problem18 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem6 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem5 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Utils/Util.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem18/Program.cs">
     <Files>
-      <File FileName="Problem3/Program.cs" Line="27" Column="54" />
-      <File FileName="Problem4/Program.cs" />
-      <File FileName="Utils/Util.cs" Line="41" Column="32" />
-      <File FileName="Problem5/Program.cs" />
-      <File FileName="Problem6/Program.cs" />
-      <File FileName="Problem7/Program.cs" />
-      <File FileName="Problem8/Program.cs" />
-      <File FileName="Problem9/Program.cs" />
-      <File FileName="Problem10/Program.cs" Line="16" Column="57" />
+      <File FileName="Problem18/Program.cs" Line="46" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjectEuler" expanded="True">
-            <Node name="Problem10" expanded="True" />
-            <Node name="Utils" expanded="True">
-              <Node name="Util.cs" selected="True" />
-            </Node>
+            <Node name="Problem18" expanded="True" selected="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>sum</Value>
         </State>
       </Pad>
     </Pads>
@@ -40,7 +25,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Problem4 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem18/Program.cs" relfile="Problem18/Program.cs" line="46" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

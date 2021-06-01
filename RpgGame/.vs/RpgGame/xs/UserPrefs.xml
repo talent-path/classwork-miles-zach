@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{E3B4AE4F-C6CE-414D-94AE-69A428862CE2}|Default">
   <MonoDevelop.Ide.ItemProperties.RpgGame PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RpgGame/Concrete/Armors/Shirt.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RpgGame/Program.cs">
     <Files>
-      <File FileName="RpgGame/Program.cs" Line="89" Column="66" />
+      <File FileName="RpgGame/Program.cs" Line="112" Column="51" />
       <File FileName="RpgGame/Interfaces/IArmor.cs" />
       <File FileName="RpgGame/Abstractions/Fighter.cs" Line="14" Column="51" />
       <File FileName="RpgGame/Abstractions/Weapon.cs" />
@@ -25,12 +25,11 @@
             <Node name="RpgGame" expanded="True">
               <Node name="Abstractions" expanded="True" />
               <Node name="Concrete" expanded="True">
-                <Node name="Armors" expanded="True">
-                  <Node name="Shirt.cs" selected="True" />
-                </Node>
+                <Node name="Armors" expanded="True" />
                 <Node name="Fighters" expanded="True" />
               </Node>
               <Node name="Interfaces" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -40,9 +39,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/zachmiles/classwork-miles-zach/RpgGame/RpgGame/Program.cs" relfile="RpgGame/Program.cs" line="185" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
