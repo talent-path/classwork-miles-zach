@@ -1,0 +1,12 @@
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/bin/Debug/netcoreapp3.1/AutoTrader.deps.json
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/bin/Debug/netcoreapp3.1/AutoTrader.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/bin/Debug/netcoreapp3.1/AutoTrader.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/bin/Debug/netcoreapp3.1/AutoTrader.dll
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/bin/Debug/netcoreapp3.1/AutoTrader.pdb
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/obj/Debug/netcoreapp3.1/AutoTrader.csprojAssemblyReference.cache
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/obj/Debug/netcoreapp3.1/AutoTrader.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/obj/Debug/netcoreapp3.1/AutoTrader.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/obj/Debug/netcoreapp3.1/AutoTrader.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/obj/Debug/netcoreapp3.1/AutoTrader.dll
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/obj/Debug/netcoreapp3.1/AutoTrader.pdb
+/Users/zachmiles/classwork-miles-zach/AutoTrader/AutoTrader/obj/Debug/netcoreapp3.1/AutoTrader.genruntimeconfig.cache

@@ -1,0 +1,12 @@
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/bin/Debug/netcoreapp3.1/WidgetCrud.deps.json
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/bin/Debug/netcoreapp3.1/WidgetCrud.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/bin/Debug/netcoreapp3.1/WidgetCrud.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/bin/Debug/netcoreapp3.1/WidgetCrud.dll
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/bin/Debug/netcoreapp3.1/WidgetCrud.pdb
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/obj/Debug/netcoreapp3.1/WidgetCrud.csprojAssemblyReference.cache
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/obj/Debug/netcoreapp3.1/WidgetCrud.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/obj/Debug/netcoreapp3.1/WidgetCrud.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/obj/Debug/netcoreapp3.1/WidgetCrud.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/obj/Debug/netcoreapp3.1/WidgetCrud.dll
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/obj/Debug/netcoreapp3.1/WidgetCrud.pdb
+/Users/zachmiles/classwork-miles-zach/WidgetCrud/WidgetCrud/obj/Debug/netcoreapp3.1/WidgetCrud.genruntimeconfig.cache

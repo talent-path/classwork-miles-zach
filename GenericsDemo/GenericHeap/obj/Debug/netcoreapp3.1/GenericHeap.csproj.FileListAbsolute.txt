@@ -1,0 +1,9 @@
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/bin/Debug/netcoreapp3.1/GenericHeap.deps.json
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/bin/Debug/netcoreapp3.1/GenericHeap.dll
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/bin/Debug/netcoreapp3.1/GenericHeap.pdb
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.dll
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.pdb
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.csprojAssemblyReference.cache

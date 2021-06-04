@@ -1,0 +1,17 @@
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.deps.json
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.dll
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.pdb
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericHeap.dll
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/LinkedList.dll
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/LinkedList.pdb
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericHeap.pdb
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.csprojAssemblyReference.cache
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.csproj.CopyComplete
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.dll
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.pdb
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.genruntimeconfig.cache
