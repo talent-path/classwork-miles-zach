@@ -11,7 +11,7 @@ namespace AutoTrader
     {
         static readonly HttpClient _httpClient = new HttpClient();
         static readonly Mutex _lock = new Mutex();
-        static Dictionary<string, List<decimal>> _stockPrices = new Dictionary<string, List<decimal>>();
+        static readonly Dictionary<string, List<decimal>> _stockPrices = new Dictionary<string, List<decimal>>();
         static void Main(string[] args)
         {
             //As a user, I should be able to enter a list of stock symbols to watch(just pressing enter to indicate I'm done with a blank line).
@@ -62,23 +62,22 @@ namespace AutoTrader
         {
             while (true)
             {
-                string body = null;
                 try
                 {
                     HttpResponseMessage res = await _httpClient.GetAsync($"https://finnhub.io/api/v1/quote?symbol={ticker}&token=c2t4il2ad3i9opckhnr0");
                     res.EnsureSuccessStatusCode();
-                    body = await res.Content.ReadAsStringAsync();
+                    string body = await res.Content.ReadAsStringAsync();
                     Match match = Regex.Match(body, @"(?<={""c"":)[^,]+");
                     decimal price = decimal.Parse(match.ToString());
-                    Console.WriteLine($"{DateTime.UtcNow} {ticker}: ${price}");
+                    Console.WriteLine($"{DateTime.Now} ${ticker}: ${price}");
                     _lock.WaitOne();
                     if (_stockPrices.ContainsKey(ticker))
                     {
                         if (_stockPrices.GetValueOrDefault(ticker).Count > 2)
                         {
                             decimal median = MedianStockPrice(_stockPrices.GetValueOrDefault(ticker));
-                            if (price > median) Console.WriteLine($"Sell signal for {ticker}");
-                            else if (price < median) Console.WriteLine($"Buy signal for {ticker}");
+                            if (price > median) Console.WriteLine($"Sell signal for {ticker} at ${price}");
+                            else if (price < median) Console.WriteLine($"Buy signal for {ticker} at ${price}");
                         }
                         _stockPrices.GetValueOrDefault(ticker).Add(price);
                     }

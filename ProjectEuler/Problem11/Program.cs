@@ -61,6 +61,7 @@ namespace Problem11
                     max = Math.Max(max, Math.Max(Math.Max(rDiag, lDiag), Math.Max(hProd, vProd)));
                 }
             }
+            Console.WriteLine(max);
         }
     }
 }
