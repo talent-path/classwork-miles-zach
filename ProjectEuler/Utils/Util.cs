@@ -46,6 +46,38 @@ namespace Utils
             return true;
         }
 
+        public static int CountDivisors(int num)
+        {
+            List<int> divisors = new List<int>();
+            int limit = Sqrt(num);
+            for(int i = 1; i <= limit; i++)
+            {
+                if (num % i == 0)
+                {
+                    divisors.Add(i);
+                    if (i != num / i) {
+                        divisors.Add(num / i);
+                    }
+                }
+            }
+            return divisors.Count;
+        }
+
+        public static bool IsTriangleNumber(int num)
+        {
+            int a = Sqrt(2 * num);
+            return 0.5 * a * (a + 1) == num;
+        }
+
+        public static int LastTerm(int n)
+        {
+            if (IsTriangleNumber(n))
+            {
+                return Sqrt(2 * n);
+            }
+            else return 0;
+        }
+
         public static BigInteger Sqrt(BigInteger num)
         {
             BigInteger sqrt = BigInteger.MinusOne;

@@ -1,0 +1,8 @@
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/bin/Debug/netcoreapp3.1/DeskBooker.Core.deps.json
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/bin/Debug/netcoreapp3.1/DeskBooker.Core.dll
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/bin/Debug/netcoreapp3.1/DeskBooker.Core.pdb
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/obj/Debug/netcoreapp3.1/DeskBooker.Core.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/obj/Debug/netcoreapp3.1/DeskBooker.Core.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/obj/Debug/netcoreapp3.1/DeskBooker.Core.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/obj/Debug/netcoreapp3.1/DeskBooker.Core.dll
+/Users/zachmiles/classwork-miles-zach/DeskBooker/DeskBooker.Core/obj/Debug/netcoreapp3.1/DeskBooker.Core.pdb

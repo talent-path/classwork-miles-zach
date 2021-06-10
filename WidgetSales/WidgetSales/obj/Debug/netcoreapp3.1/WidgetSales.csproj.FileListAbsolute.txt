@@ -1,0 +1,12 @@
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.deps.json
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.runtimeconfig.json
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.runtimeconfig.dev.json
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.dll
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.pdb
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.csprojAssemblyReference.cache
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.AssemblyInfoInputs.cache
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.AssemblyInfo.cs
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.csproj.CoreCompileInputs.cache
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.dll
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.pdb
+/Users/brendandeyo/Desktop/classwork-deyo-brendan/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.genruntimeconfig.cache

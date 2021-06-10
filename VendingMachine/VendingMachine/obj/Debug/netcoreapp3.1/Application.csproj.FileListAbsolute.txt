@@ -1,0 +1,15 @@
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/Application.deps.json
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/Application.runtimeconfig.json
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/Application.runtimeconfig.dev.json
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/Application.dll
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/Application.pdb
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/VendingMachineData.dll
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/VendingMachineData.pdb
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.csprojAssemblyReference.cache
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.AssemblyInfoInputs.cache
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.AssemblyInfo.cs
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.csproj.CoreCompileInputs.cache
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.csproj.CopyComplete
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.dll
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.pdb
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/Application.genruntimeconfig.cache

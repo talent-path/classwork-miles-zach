@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{331876DD-926E-4418-B878-9A95DFABADB6}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetSales/IInventoryDao.cs">
+    <Files>
+      <File FileName="WidgetSalesTests/InMemInventoryDaoTests.cs" Line="139" Column="29" />
+      <File FileName="WidgetSales/InMemInventoryDao.cs" />
+      <File FileName="WidgetSales/IInventoryDao.cs" Line="20" Column="26" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WidgetSales" expanded="True">
+            <Node name="WidgetSales" expanded="True">
+              <Node name="IInventoryDao.cs" selected="True" />
+            </Node>
+            <Node name="WidgetSalesTests" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="WidgetSales" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.WidgetSales PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.809.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetSales", "WidgetSales\WidgetSales.csproj", "{331876DD-926E-4418-B878-9A95DFABADB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetSalesTests", "WidgetSalesTests\WidgetSalesTests.csproj", "{CB68507B-BFA8-41E1-8C57-5DFA8C70FB38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{331876DD-926E-4418-B878-9A95DFABADB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{331876DD-926E-4418-B878-9A95DFABADB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{331876DD-926E-4418-B878-9A95DFABADB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{331876DD-926E-4418-B878-9A95DFABADB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB68507B-BFA8-41E1-8C57-5DFA8C70FB38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB68507B-BFA8-41E1-8C57-5DFA8C70FB38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB68507B-BFA8-41E1-8C57-5DFA8C70FB38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB68507B-BFA8-41E1-8C57-5DFA8C70FB38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBFE0DB8-1995-422F-ACE5-2CF02473699D}
+	EndGlobalSection
+EndGlobal

@@ -6,3 +6,4 @@
 /Users/zachmiles/classwork-miles-zach/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.csproj.CoreCompileInputs.cache
 /Users/zachmiles/classwork-miles-zach/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.dll
 /Users/zachmiles/classwork-miles-zach/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.pdb
+/Users/zachmiles/classwork-miles-zach/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.csprojAssemblyReference.cache
