@@ -10,5 +10,6 @@
     <Folder Include="Data\" />
     <Folder Include="Enums\" />
     <Folder Include="Controller\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 </Project>

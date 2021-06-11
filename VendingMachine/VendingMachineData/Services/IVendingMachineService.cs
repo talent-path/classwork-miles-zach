@@ -9,7 +9,5 @@ namespace VendingMachineData.Services
     {
         public List<Candy> GetCandies();
         public Change PurchaseCandy(Candy candy, decimal funds);
-        public decimal GetFunds();
-        public void DisplayCandies();
     }
 }

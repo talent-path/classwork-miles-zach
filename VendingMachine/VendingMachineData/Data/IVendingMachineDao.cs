@@ -12,7 +12,7 @@ namespace VendingMachineData.Data
 
         public void OverwriteFile();
 
-        public void RemoveCandy(Candy candy);
+        public void RemoveCandy(string candyName);
 
         public VendingMachine GetVendingMachine();
     }

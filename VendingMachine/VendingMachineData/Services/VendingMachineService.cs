@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using VendingMachineData.Data;
+using VendingMachineData.Exceptions;
 using VendingMachineData.Models;
 
 namespace VendingMachineData.Services
@@ -23,39 +24,15 @@ namespace VendingMachineData.Services
 
         public Change PurchaseCandy(Candy candy, decimal funds)
         {
-            if(funds > candy.Price && candy.Qty > 0)
+            if(funds >= candy.Price && candy.Qty > 0)
             {
-                _vendingMachineDao.RemoveCandy(candy);
+                _vendingMachineDao.RemoveCandy(candy.Name);
                 return new Change(funds - candy.Price);
             }
             else 
             {
-                return new Change(funds);
+                throw new InsufficientFundsException($"Unable to purchase {candy.Name} with ${funds}");
             }
-        }
-
-        public void DisplayCandies()
-        {
-            Console.WriteLine("-----Vending Machine Items-----");
-            foreach (Candy candy in GetCandies())
-            {
-                Console.WriteLine($"Enter {GetCandies().IndexOf(candy)} for {candy.Name} ${candy.Price}" +
-                    $" with {candy.Qty} in stock");
-            }
-            Console.WriteLine("-------------------------------");
-        }
-
-
-        public decimal GetFunds()
-        {
-            decimal funds = decimal.MinValue;
-            bool success = false;
-            while (funds <= 0 && !success)
-            {
-                Console.Write("Enter the amount of money you want to spend: ");
-                success = decimal.TryParse(Console.ReadLine(), out funds);
-            }
-            return funds;
         }
     }
 }

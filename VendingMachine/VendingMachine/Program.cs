@@ -19,7 +19,7 @@ namespace Application
 
             VendingMachineController controller = new VendingMachineController(
                 new VendingMachineService(
-                    new VendingMachineDao()
+                    new VendingMachineDao("../../../../VendingMachine/Candy.txt")
                 )
             );
 

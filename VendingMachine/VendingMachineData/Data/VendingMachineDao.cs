@@ -44,10 +44,10 @@ namespace VendingMachineData.Data
             File.WriteAllText("../../../../VendingMachine/Candy.txt", text);
         }
 
-        public void RemoveCandy(Candy candy)
+        public void RemoveCandy(string candyName)
         {
             VendingMachine.Candies = VendingMachine.Candies
-                .Select(c => c == candy ? new Candy(c.Name, c.Price, c.Qty - 1) : c)
+                .Select(c => c.Name == candyName ? new Candy(c.Name, c.Price, c.Qty - 1) : c)
                 .ToList();
             OverwriteFile();
         }

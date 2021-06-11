@@ -1,38 +1,41 @@
 ﻿<Properties StartupConfiguration="{3C2906A3-03C9-4993-9443-D4677F85E759}|Default">
   <MonoDevelop.Ide.ItemProperties.Application PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine/Program.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="VendingMachine/Program.cs" Line="53" Column="46" />
+      <File FileName="VendingMachine/Program.cs" Line="22" Column="80" />
       <File FileName="VendingMachineData/Models/ICandy.cs" />
-      <File FileName="VendingMachineData/Models/Candy.cs" />
+      <File FileName="VendingMachineData/Models/Candy.cs" Line="1" Column="1" />
       <File FileName="VendingMachineData/Models/IChange.cs" />
-      <File FileName="VendingMachineData/Models/Change.cs" Line="32" Column="1" />
-      <File FileName="VendingMachineData/Services/IVendingMachineService.cs" />
-      <File FileName="VendingMachineData/Services/VendingMachineService.cs" Line="29" Column="1" />
-      <File FileName="VendingMachineData/Data/IVendingMachineDao.cs" />
-      <File FileName="VendingMachineData/Data/VendingMachineDao.cs" Line="53" Column="1" />
-      <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="1" Column="1" />
-      <File FileName="VendingMachine/Seed.txt" />
-      <File FileName="VendingMachine/Candy.txt" />
-      <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" Line="46" Column="1" />
+      <File FileName="VendingMachineData/Models/Change.cs" Line="65" Column="58" />
+      <File FileName="VendingMachineData/Services/IVendingMachineService.cs" Line="11" Column="65" />
+      <File FileName="VendingMachineData/Services/VendingMachineService.cs" Line="34" Column="1" />
+      <File FileName="VendingMachineData/Data/IVendingMachineDao.cs" Line="16" Column="1" />
+      <File FileName="VendingMachineData/Data/VendingMachineDao.cs" Line="51" Column="27" />
+      <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="37" Column="10" />
+      <File FileName="VendingMachine/Seed.txt" Line="1" Column="1" />
+      <File FileName="VendingMachine/Candy.txt" Line="1" Column="1" />
+      <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" Line="28" Column="20" />
       <File FileName="VendingMachineData/Models/VendingMachine.cs" Line="1" Column="1" />
-      <File FileName="VendingMachineData/Controller/VendingMachineController.cs" Line="1" Column="1" />
+      <File FileName="VendingMachineData/Controller/VendingMachineController.cs" Line="23" Column="50" />
+      <File FileName="VendingMachineData/Exceptions/InsufficientFundsException.cs" />
+      <File FileName="VendingMachineData/Enums/Money.cs" Line="6" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="VendingMachine" expanded="True">
-            <Node name="Application" expanded="True">
-              <Node name="Program.cs" selected="True" />
-            </Node>
+            <Node name="Application" expanded="True" />
             <Node name="VendingMachineData" expanded="True">
               <Node name="Controller" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Enums" expanded="True" />
+              <Node name="Exceptions" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>
-            <Node name="VendingMachineTests" expanded="True" />
+            <Node name="VendingMachineTests" expanded="True">
+              <Node name="VendingMachineServiceTests.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -47,7 +50,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachineData/Models/Change.cs" relfile="VendingMachineData/Models/Change.cs" line="19" column="1" />
+      <Breakpoint file="/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachineTests/VendingMachineServiceTests.cs" relfile="VendingMachineTests/VendingMachineServiceTests.cs" line="30" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
