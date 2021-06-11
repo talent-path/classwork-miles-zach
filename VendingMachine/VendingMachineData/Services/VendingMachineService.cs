@@ -18,21 +18,23 @@ namespace VendingMachineData.Services
 
         public List<Candy> GetCandies()
         {
-            return _vendingMachineDao.GetVendingMachine().Candies;
-            
+            return _vendingMachineDao.GetCandies();
         }
 
         public Change PurchaseCandy(Candy candy, decimal funds)
         {
-            if(funds >= candy.Price && candy.Qty > 0)
-            {
-                _vendingMachineDao.RemoveCandy(candy.Name);
-                return new Change(funds - candy.Price);
-            }
-            else 
+            if(funds < candy.Price)
             {
                 throw new InsufficientFundsException($"Unable to purchase {candy.Name} with ${funds}");
             }
+
+            if(candy.Qty <= 0)
+            {
+                throw new OutOfStockException($"{candy.Name} is out of stock.");
+            }
+
+            _vendingMachineDao.RemoveCandy(candy.Name);
+            return new Change(funds - candy.Price);
         }
     }
 }

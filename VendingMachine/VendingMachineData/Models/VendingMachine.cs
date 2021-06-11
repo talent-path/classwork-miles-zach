@@ -13,7 +13,7 @@ namespace VendingMachineData
             Candies = candies;
         }
 
-        public VendingMachine(VendingMachine that)
+        public VendingMachine(IVendingMachine that)
         {
             Candies = new List<Candy>();
             foreach(Candy c in that.Candies)

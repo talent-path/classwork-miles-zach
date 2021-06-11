@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using VendingMachineData.Exceptions;
 using VendingMachineData.Models;
 using VendingMachineData.Services;
+using VendingMachineData.Views;
 
 namespace VendingMachineData.Controller
 {
@@ -10,18 +10,20 @@ namespace VendingMachineData.Controller
     {
 
         private IVendingMachineService _service;
+        private VendingMachineView _view;
 
-        public VendingMachineController(IVendingMachineService service)
+        public VendingMachineController(IVendingMachineService service, VendingMachineView view)
         {
             _service = service;
+            _view = view;
         }
 
         public void Run()
         {
-            decimal funds = GetFunds();
+            decimal funds = _view.GetFunds();
             while (funds > 0.00M)
             {
-                int choice = DisplayCandies() - 1;
+                int choice = _view.DisplayCandies(_service.GetCandies()) - 1;
                 Change change = new Change(funds);
                 try
                 {
@@ -32,6 +34,9 @@ namespace VendingMachineData.Controller
                 } catch (InsufficientFundsException ife)
                 {
                     Console.WriteLine(ife.Message);
+                } catch(OutOfStockException oose)
+                {
+                    Console.WriteLine(oose.Message);
                 }
                 finally
                 {
@@ -41,35 +46,6 @@ namespace VendingMachineData.Controller
             }
         }
 
-        public decimal GetFunds()
-        {
-            decimal funds = decimal.MinValue;
-            bool success = false;
-            while (funds <= 0 && !success)
-            {
-                Console.Write("Enter the amount of money you want to spend: ");
-                success = decimal.TryParse(Console.ReadLine(), out funds);
-            }
-            return funds;
-        }
-
-        public int DisplayCandies()
-        {
-            List<Candy> candies = _service.GetCandies();
-            Console.WriteLine("-----Vending Machine Items-----");
-            foreach (Candy candy in candies)
-            {
-                Console.WriteLine($"Enter {candies.IndexOf(candy) + 1} for {candy.Name} ${candy.Price}" +
-                    $" with {candy.Qty} in stock");
-            }
-            Console.WriteLine("-------------------------------");
-
-            int choice = int.MinValue;
-            bool success = false;
-            while(!success && (choice < 1 || choice > candies.Count)) {
-                success = int.TryParse(Console.ReadLine(), out choice);
-            }
-            return choice;
-        }
+        
     }
 }

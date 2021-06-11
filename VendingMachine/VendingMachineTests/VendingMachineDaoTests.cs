@@ -1,7 +1,9 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using VendingMachineData.Data;
+using System.IO;
+using System.Collections.Generic;
 using VendingMachineData.Models;
+using System.Linq;
 
 namespace VendingMachineTests
 {
@@ -10,10 +12,21 @@ namespace VendingMachineTests
 
         private IVendingMachineDao _dao;
 
+        private static string testPath = "../../../../VendingMachine/Test.txt";
+
+        private static string seedPath = "../../../../VendingMachine/Seed.txt";
+
         [OneTimeSetUp]
         public void SetupOnce()
         {
-            _dao = new VendingMachineDao();
+            _dao = new FileVendingMachineDao(testPath);
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            File.Delete(testPath);
+            File.Copy(seedPath, testPath);
         }
 
         [TestCase("Jolly Rancher", 0, 12)]
@@ -22,18 +35,26 @@ namespace VendingMachineTests
         [TestCase("Three Musketeers", 3, 8)]
         [TestCase("Starburst", 4, 9)]
         [TestCase("Reese's Cup", 5, 3)]
-        [TestCase("Jolly Rancher", 0, 11)]
-        [TestCase("Almond Joy", 1, 19)]
-        [TestCase("Snickers", 2, 4)]
-        [TestCase("Three Musketeers", 3, 7)]
-        [TestCase("Starburst", 4, 8)]
-        [TestCase("Reese's Cup", 5, 2)]
-        [TestCase("Reese's Cup", 5, 1)]
-        [TestCase("Reese's Cup", 5, 0)]
         public void RemoveCandyUpdatesVendingMachine(string candyName, int index, int expectedQty)
         {
             _dao.RemoveCandy(candyName);
-            Assert.AreEqual(expectedQty, _dao.GetVendingMachine().Candies[index].Qty);
+            Assert.AreEqual(expectedQty, _dao.GetCandies()[index].Qty);
         }
+
+        [TestCase("Aliens")]
+        [TestCase("Biden")]
+        [TestCase("Trump")]
+        [TestCase("Pizza")]
+        [TestCase("Fake News Media")]
+        [TestCase("Make America Great Again")]
+        public void RemoveCandyWithNonExistentNameShouldNotAlterList(string name)
+        {
+            List<Candy> before = _dao.GetCandies();
+            _dao.RemoveCandy(name);
+            List<Candy> after = _dao.GetCandies();
+            Assert.AreEqual(before.Count, after.Count);
+            Assert.That(before, Is.EquivalentTo(after));
+        }
+        
     }
 }

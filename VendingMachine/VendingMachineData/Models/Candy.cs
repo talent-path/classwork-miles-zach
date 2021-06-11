@@ -10,6 +10,13 @@ namespace VendingMachineData.Models
             Qty = qty;
         }
 
+        public Candy(ICandy that)
+        {
+            Name = that.Name;
+            Price = that.Price;
+            Qty = that.Qty;
+        }
+
         public string Name { get; }
         public decimal Price { get; }
         public int Qty { get; set; }
@@ -17,6 +24,13 @@ namespace VendingMachineData.Models
         public override string ToString()
         {
             return $"{Name},{Price},{Qty}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Name == (obj as Candy).Name
+                && Price == (obj as Candy).Price
+                && Qty == (obj as Candy).Qty;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace VendingMachineTests
     public class VendingMachineServiceTests
     {
 
-        private static IVendingMachineService _service = new VendingMachineService(new VendingMachineDao());
+        private static IVendingMachineService _service = new VendingMachineService(new InMemVendingMachineDao());
 
         [TestCaseSource("TestCaseCorrectChange")]
         public void PurchaseCandyReturnsCorrectChange(Candy candy,
@@ -32,6 +32,12 @@ namespace VendingMachineTests
             Assert.Throws<InsufficientFundsException>(() => _service.PurchaseCandy(candy, funds));
         }
 
+        [TestCaseSource("OutOfStockTestCases")]
+        public void QuantityEquals0ThenOutOfStockExceptionIsThrown(Candy candy, decimal funds)
+        {
+            Assert.Throws<OutOfStockException>(() => _service.PurchaseCandy(candy, funds));
+        }
+
         private static IEnumerable<TestCaseData> TestCaseInsufficientFunds()
         {
             yield return new TestCaseData(_service.GetCandies()[0], 0.99M);
@@ -40,7 +46,6 @@ namespace VendingMachineTests
             yield return new TestCaseData(_service.GetCandies()[3], 2.99M);
             yield return new TestCaseData(_service.GetCandies()[4], 0.49M);
             yield return new TestCaseData(_service.GetCandies()[5], 1.24M);
-            yield return new TestCaseData(new Candy("Lollipop", 0.49M, 0), 0.50M);
         }
 
         private static IEnumerable<TestCaseData> TestCaseCorrectChange()
@@ -51,6 +56,12 @@ namespace VendingMachineTests
             yield return new TestCaseData(_service.GetCandies()[3], 3.99M, 0.99M, 0, 3, 2, 0, 4);
             yield return new TestCaseData(_service.GetCandies()[4], 0.50M, 0.0M, 0, 0, 0, 0, 0);
             yield return new TestCaseData(_service.GetCandies()[5], 1.74M, 0.49M, 0, 1, 2, 0, 4);
+        }
+
+        private static IEnumerable<TestCaseData> OutOfStockTestCases()
+        {
+            yield return new TestCaseData(_service.GetCandies()[6], 2.00M);
+            yield return new TestCaseData(_service.GetCandies()[7], 0.50M);
         }
 
     }

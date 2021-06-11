@@ -1,30 +1,35 @@
 ﻿<Properties StartupConfiguration="{3C2906A3-03C9-4993-9443-D4677F85E759}|Default">
   <MonoDevelop.Ide.ItemProperties.Application PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine/Seed.txt">
     <Files>
-      <File FileName="VendingMachine/Program.cs" Line="22" Column="80" />
+      <File FileName="VendingMachine/Program.cs" Line="27" Column="1" />
       <File FileName="VendingMachineData/Models/ICandy.cs" />
-      <File FileName="VendingMachineData/Models/Candy.cs" Line="1" Column="1" />
+      <File FileName="VendingMachineData/Models/Candy.cs" Line="33" Column="46" />
       <File FileName="VendingMachineData/Models/IChange.cs" />
-      <File FileName="VendingMachineData/Models/Change.cs" Line="65" Column="58" />
+      <File FileName="VendingMachineData/Models/Change.cs" Line="48" Column="10" />
       <File FileName="VendingMachineData/Services/IVendingMachineService.cs" Line="11" Column="65" />
-      <File FileName="VendingMachineData/Services/VendingMachineService.cs" Line="34" Column="1" />
-      <File FileName="VendingMachineData/Data/IVendingMachineDao.cs" Line="16" Column="1" />
-      <File FileName="VendingMachineData/Data/VendingMachineDao.cs" Line="51" Column="27" />
-      <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="37" Column="10" />
-      <File FileName="VendingMachine/Seed.txt" Line="1" Column="1" />
-      <File FileName="VendingMachine/Candy.txt" Line="1" Column="1" />
-      <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" Line="28" Column="20" />
-      <File FileName="VendingMachineData/Models/VendingMachine.cs" Line="1" Column="1" />
-      <File FileName="VendingMachineData/Controller/VendingMachineController.cs" Line="23" Column="50" />
+      <File FileName="VendingMachineData/Services/VendingMachineService.cs" Line="21" Column="52" />
+      <File FileName="VendingMachineData/Data/IVendingMachineDao.cs" Line="11" Column="38" />
+      <File FileName="VendingMachineData/Data/VendingMachineDao.cs" Line="19" Column="13" />
+      <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="49" Column="47" />
+      <File FileName="VendingMachine/Seed.txt" Line="3" Column="10" />
+      <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" Line="62" Column="10" />
+      <File FileName="VendingMachineData/Models/VendingMachine.cs" Line="19" Column="43" />
+      <File FileName="VendingMachineData/Controller/VendingMachineController.cs" Line="1" Column="14" />
       <File FileName="VendingMachineData/Exceptions/InsufficientFundsException.cs" />
       <File FileName="VendingMachineData/Enums/Money.cs" Line="6" Column="17" />
+      <File FileName="VendingMachineData/Data/InMemVendingMachineDao.cs" Line="1" Column="1" />
+      <File FileName="VendingMachineData/Exceptions/OutOfStockException.cs" Line="8" Column="10" />
+      <File FileName="VendingMachineData/Views/VendingMachineView.cs" Line="26" Column="10" />
+      <File FileName="VendingMachine/Prod.txt" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="VendingMachine" expanded="True">
-            <Node name="Application" expanded="True" />
+            <Node name="Application" expanded="True">
+              <Node name="Seed.txt" selected="True" />
+            </Node>
             <Node name="VendingMachineData" expanded="True">
               <Node name="Controller" expanded="True" />
               <Node name="Data" expanded="True" />
@@ -32,10 +37,9 @@
               <Node name="Exceptions" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
+              <Node name="Views" expanded="True" />
             </Node>
-            <Node name="VendingMachineTests" expanded="True">
-              <Node name="VendingMachineServiceTests.cs" selected="True" />
-            </Node>
+            <Node name="VendingMachineTests" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -49,9 +53,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachineTests/VendingMachineServiceTests.cs" relfile="VendingMachineTests/VendingMachineServiceTests.cs" line="30" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

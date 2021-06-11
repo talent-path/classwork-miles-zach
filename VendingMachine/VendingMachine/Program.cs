@@ -1,6 +1,7 @@
 ﻿using VendingMachineData.Controller;
 using VendingMachineData.Data;
 using VendingMachineData.Services;
+using VendingMachineData.Views;
 
 namespace Application
 {
@@ -17,10 +18,11 @@ namespace Application
             //change(display the money to the user) showing dollars, quarters, dimes, nickles, and pennies
             //Users should not be able to buy items that are out of stock.
 
-            VendingMachineController controller = new VendingMachineController(
-                new VendingMachineService(
-                    new VendingMachineDao("../../../../VendingMachine/Candy.txt")
-                )
+            VendingMachineController controller =
+                new VendingMachineController(
+                    new VendingMachineService(
+                        new FileVendingMachineDao()),
+                    new VendingMachineView()
             );
 
             controller.Run();
