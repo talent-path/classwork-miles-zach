@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VendingMachineData.Exceptions;
 using VendingMachineData.Models;
 using VendingMachineData.Services;
 
@@ -21,10 +22,22 @@ namespace VendingMachineData.Controller
             while (funds > 0.00M)
             {
                 int choice = DisplayCandies() - 1;
-                Console.WriteLine(_service.GetCandies()[choice].Name + " dispensed.");
-                Change change = _service.PurchaseCandy(_service.GetCandies()[choice], funds);
-                Console.WriteLine(change.ToString()); 
-                funds = change.ToDecimal();
+                Change change = new Change(funds);
+                try
+                {
+                    change = _service.PurchaseCandy(_service.GetCandies()[choice], funds);
+                    Console.WriteLine(_service.GetCandies()[choice].Name + " dispensed.");
+                    
+                    funds = change.ToDecimal();
+                } catch (InsufficientFundsException ife)
+                {
+                    Console.WriteLine(ife.Message);
+                }
+                finally
+                {
+                    Console.WriteLine(change.ToString());
+                }
+                
             }
         }
 

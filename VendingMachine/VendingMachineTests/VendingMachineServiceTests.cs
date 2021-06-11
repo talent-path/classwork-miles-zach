@@ -40,6 +40,7 @@ namespace VendingMachineTests
             yield return new TestCaseData(_service.GetCandies()[3], 2.99M);
             yield return new TestCaseData(_service.GetCandies()[4], 0.49M);
             yield return new TestCaseData(_service.GetCandies()[5], 1.24M);
+            yield return new TestCaseData(new Candy("Lollipop", 0.49M, 0), 0.50M);
         }
 
         private static IEnumerable<TestCaseData> TestCaseCorrectChange()
