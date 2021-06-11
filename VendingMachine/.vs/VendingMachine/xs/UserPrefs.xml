@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{3C2906A3-03C9-4993-9443-D4677F85E759}|Default">
   <MonoDevelop.Ide.ItemProperties.Application PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine/Seed.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachineData/Controller/VendingMachineController.cs">
     <Files>
       <File FileName="VendingMachine/Program.cs" Line="27" Column="1" />
       <File FileName="VendingMachineData/Models/ICandy.cs" />
@@ -12,24 +12,21 @@
       <File FileName="VendingMachineData/Data/IVendingMachineDao.cs" Line="11" Column="38" />
       <File FileName="VendingMachineData/Data/VendingMachineDao.cs" Line="19" Column="13" />
       <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="49" Column="47" />
-      <File FileName="VendingMachine/Seed.txt" Line="3" Column="10" />
+      <File FileName="VendingMachine/Seed.txt" Line="1" Column="1" />
       <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" Line="62" Column="10" />
-      <File FileName="VendingMachineData/Models/VendingMachine.cs" Line="19" Column="43" />
-      <File FileName="VendingMachineData/Controller/VendingMachineController.cs" Line="1" Column="14" />
+      <File FileName="VendingMachineData/Controller/VendingMachineController.cs" Line="24" Column="34" />
       <File FileName="VendingMachineData/Exceptions/InsufficientFundsException.cs" />
       <File FileName="VendingMachineData/Enums/Money.cs" Line="6" Column="17" />
       <File FileName="VendingMachineData/Data/InMemVendingMachineDao.cs" Line="1" Column="1" />
       <File FileName="VendingMachineData/Exceptions/OutOfStockException.cs" Line="8" Column="10" />
       <File FileName="VendingMachineData/Views/VendingMachineView.cs" Line="26" Column="10" />
-      <File FileName="VendingMachine/Prod.txt" Line="1" Column="1" />
+      <File FileName="VendingMachine/Prod.txt" Line="7" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="VendingMachine" expanded="True">
-            <Node name="Application" expanded="True">
-              <Node name="Seed.txt" selected="True" />
-            </Node>
+            <Node name="Application" expanded="True" />
             <Node name="VendingMachineData" expanded="True">
               <Node name="Controller" expanded="True" />
               <Node name="Data" expanded="True" />
