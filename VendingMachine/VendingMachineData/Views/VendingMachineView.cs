@@ -14,7 +14,7 @@ namespace VendingMachineData.Views
         {
             decimal funds = decimal.MinValue;
             bool success = false;
-            while (funds <= 0 && !success)
+            while (funds <= 0  || !success)
             {
                 Console.Write("Enter the amount of money you want to spend: ");
                 success = decimal.TryParse(Console.ReadLine(), out funds);

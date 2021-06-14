@@ -13,6 +13,21 @@ namespace VendingMachineTests
 
         private static readonly IVendingMachineService _service = new VendingMachineService(new InMemVendingMachineDao());
 
+        [Test]
+        public void GetAllCandies()
+        {
+            List<Candy> actual = _service.GetCandies();
+            Assert.AreEqual(new Candy("Jolly Rancher", 1.00M, 13), actual[0]);
+            Assert.AreEqual(new Candy("Almond Joy", 1.50M, 21), actual[1]);
+            Assert.AreEqual(new Candy("Snickers", 2.50M, 6), actual[2]);
+            Assert.AreEqual(new Candy("Three Musketeers", 3.00M, 9), actual[3]);
+            Assert.AreEqual(new Candy("Starburst", 0.50M, 10), actual[4]);
+            Assert.AreEqual(new Candy("Reese's Cup", 1.25M, 4), actual[5]);
+            Assert.AreEqual(new Candy("Babe Ruth", 1.33M, 0), actual[6]);
+            Assert.AreEqual(new Candy("Tootsie Roll", 0.27M, -1), actual[7]);
+            Assert.AreEqual(8, _service.GetCandies().Count);
+        }
+
         [TestCaseSource("TestCaseCorrectChange")]
         public void PurchaseCandyReturnsCorrectChange(Candy candy, decimal funds, Change expectedChange)
         {

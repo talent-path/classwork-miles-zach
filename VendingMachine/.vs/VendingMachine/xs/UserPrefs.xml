@@ -2,24 +2,26 @@
   <MonoDevelop.Ide.ItemProperties.Application PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachineTests/VendingMachineDaoTests.cs">
     <Files>
-      <File FileName="VendingMachine/Program.cs" Line="27" Column="1" />
+      <File FileName="VendingMachine/Program.cs" Line="16" Column="86" />
       <File FileName="VendingMachineData/Models/ICandy.cs" />
-      <File FileName="VendingMachineData/Models/Candy.cs" Line="17" Column="1" />
+      <File FileName="VendingMachineData/Models/Candy.cs" Line="29" Column="1" />
       <File FileName="VendingMachineData/Models/IChange.cs" />
-      <File FileName="VendingMachineData/Models/Change.cs" />
+      <File FileName="VendingMachineData/Models/Change.cs" Line="56" Column="42" />
       <File FileName="VendingMachineData/Services/IVendingMachineService.cs" />
       <File FileName="VendingMachineData/Services/VendingMachineService.cs" />
       <File FileName="VendingMachineData/Data/IVendingMachineDao.cs" />
-      <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="49" Column="47" />
-      <File FileName="VendingMachine/Seed.txt" />
-      <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" />
+      <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="5" Column="33" />
+      <File FileName="VendingMachine/Seed.txt" Line="1" Column="1" />
+      <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" Line="59" Column="1" />
       <File FileName="VendingMachineData/Controller/VendingMachineController.cs" />
       <File FileName="VendingMachineData/Exceptions/InsufficientFundsException.cs" />
       <File FileName="VendingMachineData/Enums/Money.cs" />
       <File FileName="VendingMachineData/Data/InMemVendingMachineDao.cs" />
       <File FileName="VendingMachineData/Exceptions/OutOfStockException.cs" />
       <File FileName="VendingMachineData/Views/VendingMachineView.cs" />
-      <File FileName="VendingMachine/Prod.txt" />
+      <File FileName="VendingMachine/Prod.txt" Line="7" Column="1" />
+      <File FileName="VendingMachine/Test.txt" Line="1" Column="1" />
+      <File FileName="VendingMachineData/Data/FileVendingMachineDao.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -39,6 +41,11 @@
               <Node name="VendingMachineDaoTests.cs" selected="True" />
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="VendingMachine" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

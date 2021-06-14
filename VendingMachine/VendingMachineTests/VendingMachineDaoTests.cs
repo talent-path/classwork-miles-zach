@@ -28,6 +28,19 @@ namespace VendingMachineTests
             File.Copy(seedPath, testPath);
         }
 
+        [Test]
+        public void GetAllCandies()
+        {
+            List<Candy> actual = _dao.GetCandies();
+            Assert.AreEqual(new Candy("Jolly Rancher", 1.00M, 13), actual[0]);
+            Assert.AreEqual(new Candy("Almond Joy", 1.50M, 21), actual[1]);
+            Assert.AreEqual(new Candy("Snickers", 2.50M, 6), actual[2]);
+            Assert.AreEqual(new Candy("Three Musketeers", 3.00M, 9), actual[3]);
+            Assert.AreEqual(new Candy("Starburst", 0.50M, 10), actual[4]);
+            Assert.AreEqual(new Candy("Reese's Cup", 1.25M, 4), actual[5]);
+            Assert.AreEqual(6, _dao.GetCandies().Count);
+        }
+
         [TestCase("Jolly Rancher", 0, 12)]
         [TestCase("Almond Joy", 1, 20)]
         [TestCase("Snickers", 2, 5)]

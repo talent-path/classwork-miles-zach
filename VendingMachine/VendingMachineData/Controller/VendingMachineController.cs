@@ -29,8 +29,8 @@ namespace VendingMachineData.Controller
                 {
                     change = _service.PurchaseCandy(_service.GetCandies()[choice], funds);
                     Console.WriteLine(_service.GetCandies()[choice].Name + " dispensed.");
-                    
-                    funds = change.ToDecimal();
+                    funds = 0;
+                    Console.WriteLine(change.ToString());
                 } catch (InsufficientFundsException ife)
                 {
                     Console.WriteLine(ife.Message);
@@ -40,7 +40,7 @@ namespace VendingMachineData.Controller
                 }
                 finally
                 {
-                    Console.WriteLine(change.ToString());
+                    
                 }
                 
             }
