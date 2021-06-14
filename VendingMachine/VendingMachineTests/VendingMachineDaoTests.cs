@@ -3,7 +3,6 @@ using VendingMachineData.Data;
 using System.IO;
 using System.Collections.Generic;
 using VendingMachineData.Models;
-using System.Linq;
 
 namespace VendingMachineTests
 {
@@ -12,9 +11,9 @@ namespace VendingMachineTests
 
         private IVendingMachineDao _dao;
 
-        private static string testPath = "../../../../VendingMachine/Test.txt";
+        private static readonly string testPath = "../../../../VendingMachine/Test.txt";
 
-        private static string seedPath = "../../../../VendingMachine/Seed.txt";
+        private static readonly string seedPath = "../../../../VendingMachine/Seed.txt";
 
         [OneTimeSetUp]
         public void SetupOnce()
@@ -42,11 +41,9 @@ namespace VendingMachineTests
         }
 
         [TestCase("Aliens")]
-        [TestCase("Biden")]
-        [TestCase("Trump")]
-        [TestCase("Pizza")]
-        [TestCase("Fake News Media")]
-        [TestCase("Make America Great Again")]
+        [TestCase(",.*@")]
+        [TestCase("")]
+        [TestCase(null)]
         public void RemoveCandyWithNonExistentNameShouldNotAlterList(string name)
         {
             List<Candy> before = _dao.GetCandies();

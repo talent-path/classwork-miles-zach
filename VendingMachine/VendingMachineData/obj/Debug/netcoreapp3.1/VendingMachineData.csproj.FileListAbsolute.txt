@@ -6,3 +6,4 @@
 /Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachineData/obj/Debug/netcoreapp3.1/VendingMachineData.csproj.CoreCompileInputs.cache
 /Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachineData/obj/Debug/netcoreapp3.1/VendingMachineData.dll
 /Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachineData/obj/Debug/netcoreapp3.1/VendingMachineData.pdb
+/Users/zachmiles/classwork-miles-zach/VendingMachine/VendingMachineData/obj/Debug/netcoreapp3.1/VendingMachineData.csprojAssemblyReference.cache

@@ -47,6 +47,15 @@ namespace VendingMachineData.Models
             }
         }
 
+        public Change(int dollars, int quarters, int dimes, int nickels, int pennies)
+        {
+            Coins[Money.Dollar] = dollars;
+            Coins[Money.Quarter] = quarters;
+            Coins[Money.Dime] = dimes;
+            Coins[Money.Nickel] = nickels;
+            Coins[Money.Penny] = pennies;
+        }
+
         public decimal ToDecimal()
         {
             decimal val = 0.00M;
