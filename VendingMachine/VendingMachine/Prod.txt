@@ -2,6 +2,6 @@ Jolly Rancher,1.00,12
 Almond Joy,1.50,21
 Snickers,2.50,5
 Three Musketeers,3.00,9
-Starburst,0.50,10
+Starburst,0.50,9
 Reese's Cup,1.25,0
 Return Change,0,999999

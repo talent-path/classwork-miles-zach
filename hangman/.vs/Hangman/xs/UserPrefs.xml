@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{235A02FC-A7A6-44F8-9D0B-3626EF1EBB5B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hangman/Controllers/HangmanController.cs">
+    <Files>
+      <File FileName="Hangman/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="Hangman/Properties/launchSettings.json" Line="23" Column="30" />
+      <File FileName="Hangman/Program.cs" Line="1" Column="1" />
+      <File FileName="Hangman/Controllers/HangmanController.cs" Line="24" Column="1" />
+      <File FileName="Hangman/Services/HangmanService.cs" Line="26" Column="44" />
+      <File FileName="Hangman/Dao/HangmanDao.cs" Line="13" Column="10" />
+      <File FileName="Hangman/Models/HangmanGame.cs" Line="12" Column="1" />
+      <File FileName="Hangman/Models/GuessRequest.cs" Line="8" Column="30" />
+      <File FileName="Hangman/Exceptions/GuessAmountExceededException.cs" Line="10" Column="95" />
+      <File FileName="Hangman/Exceptions/GameCompletedException.cs" Line="11" Column="6" />
+      <File FileName="Hangman/Startup.cs" Line="28" Column="39" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Hangman" expanded="True">
+            <Node name="Hangman" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Dao" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Hangman PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

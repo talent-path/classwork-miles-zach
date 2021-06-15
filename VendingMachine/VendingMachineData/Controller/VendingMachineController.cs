@@ -31,16 +31,14 @@ namespace VendingMachineData.Controller
                     Console.WriteLine(_service.GetCandies()[choice].Name + " dispensed.");
                     funds = 0;
                     Console.WriteLine(change.ToString());
-                } catch (InsufficientFundsException ife)
+                }
+                catch (InsufficientFundsException ife)
                 {
                     Console.WriteLine(ife.Message);
-                } catch(OutOfStockException oose)
+                }
+                catch (OutOfStockException oose)
                 {
                     Console.WriteLine(oose.Message);
-                }
-                finally
-                {
-                    
                 }
                 
             }

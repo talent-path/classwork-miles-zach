@@ -4,19 +4,23 @@
   <MonoDevelop.Ide.ItemProperties.Problem6 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem12 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem5 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Problem16/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem17/Program.cs">
     <Files>
       <File FileName="Problem12/Program.cs" Line="16" Column="53" />
       <File FileName="Utils/Util.cs" />
       <File FileName="Problem19/Program.cs" />
       <File FileName="Problem16/Program.cs" Line="21" Column="27" />
-      <File FileName="Problem20/Program.cs" Line="22" Column="27" />
+      <File FileName="Problem20/Program.cs" />
+      <File FileName="Problem17/Program.cs" Line="8" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjectEuler" expanded="True">
-            <Node name="Problem16" expanded="True" selected="True" />
+            <Node name="Problem16" expanded="True" />
+            <Node name="Problem17" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
             <Node name="Problem20" expanded="True" />
           </Node>
         </State>
@@ -26,6 +30,7 @@
   <MonoDevelop.Ide.ItemProperties.Problem3 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem20 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem9 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Problem17 FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.Problem7 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem13 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem19 PreferredExecutionTarget="MonoDevelop.Default" />
