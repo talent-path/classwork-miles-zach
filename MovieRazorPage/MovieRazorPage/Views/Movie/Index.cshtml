@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Movie>
+@{
+}
+
+@foreach(var m in Model)
+            {
+                <p>
+                    <a href="~/Movie/OneMovie/@m.Id">
+                        @m.Title
+                    </a>
+                    @m.Director
+                    @m.Year
+                </p>
+            }
+<a href="~/Movie/AddMovie">
+    Add a movie
+</a> 

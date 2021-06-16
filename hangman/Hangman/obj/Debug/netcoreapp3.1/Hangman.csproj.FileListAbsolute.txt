@@ -17,3 +17,4 @@
 /Users/zachmiles/classwork-miles-zach/hangman/Hangman/obj/Debug/netcoreapp3.1/Hangman.dll
 /Users/zachmiles/classwork-miles-zach/hangman/Hangman/obj/Debug/netcoreapp3.1/Hangman.pdb
 /Users/zachmiles/classwork-miles-zach/hangman/Hangman/obj/Debug/netcoreapp3.1/Hangman.genruntimeconfig.cache
+/Users/zachmiles/classwork-miles-zach/hangman/Hangman/bin/Debug/netcoreapp3.1/web.config

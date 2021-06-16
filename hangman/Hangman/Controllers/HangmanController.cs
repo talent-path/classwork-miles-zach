@@ -43,10 +43,10 @@ namespace Hangman.Controllers
             try
             {
                 _service.Guess(guess);
-            } catch(Exception ex) when (ex is GameCompletedException || ex is GuessAmountExceededException)
-            {
-                return this.BadRequest(ex.Message);
-            }
+        } catch(Exception ex) when(ex is GameCompletedException || ex is GuessAmountExceededException)
+        {
+            return this.BadRequest(ex.Message);
+        }
             return this.LocalRedirect($"/api/game/{guess.Id}");
         }
     }

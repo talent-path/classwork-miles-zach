@@ -120,5 +120,15 @@ namespace Utils
 
             return firstHalf == otherHalf;
         }
+
+        public static BigInteger Factorial(int n)
+        {
+            BigInteger v = 1;
+            for(int i = n; i > 1; i--)
+            {
+                v *= i;
+            }
+            return v;
+        }
     }
 }
