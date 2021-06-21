@@ -1,18 +1,18 @@
 ﻿<Properties StartupConfiguration="{0DD6D161-91FF-4C53-97C5-6C80E9EEA2E0}|Default">
   <MonoDevelop.Ide.ItemProperties.MovieRazorPage PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MovieRazorPage/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MovieRazorPage/Views/Movie/AddMovie.cshtml">
     <Files>
       <File FileName="MovieRazorPage/Controllers/HomeController.cs" Line="1" Column="1" />
       <File FileName="MovieRazorPage/Startup.cs" Line="53" Column="48" />
       <File FileName="MovieRazorPage/Views/Shared/_Layout.cshtml" />
       <File FileName="MovieRazorPage/Views/Home/Index.cshtml" />
       <File FileName="MovieRazorPage/Views/Home/Privacy.cshtml" />
-      <File FileName="MovieRazorPage/Views/Movies/Index.cshtml" Line="17" Column="6" />
+      <File FileName="MovieRazorPage/Views/Movies/Index.cshtml" Line="16" Column="16" />
       <File FileName="MovieRazorPage/Models/Movie.cs" Line="13" Column="6" />
       <File FileName="MovieRazorPage/Services/MovieService.cs" Line="38" Column="35" />
       <File FileName="MovieRazorPage/Controllers/MovieController.cs" Line="46" Column="25" />
       <File FileName="MovieRazorPage/Views/Movies/OneMovie.cshtml" Line="19" Column="2" />
-      <File FileName="MovieRazorPage/Views/Movie/AddMovie.cshtml" Line="11" Column="23" />
+      <File FileName="MovieRazorPage/Views/Movie/AddMovie.cshtml" Line="5" Column="48" />
       <File FileName="MovieRazorPage/Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -24,9 +24,10 @@
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Movie" expanded="True" />
+                <Node name="Movie" expanded="True">
+                  <Node name="AddMovie.cshtml" selected="True" />
+                </Node>
               </Node>
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>

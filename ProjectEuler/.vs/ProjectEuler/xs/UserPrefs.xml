@@ -1,26 +1,26 @@
-﻿<Properties StartupConfiguration="{F99921A3-B46A-425D-BBF3-C471248D87D3}|Default">
+﻿<Properties StartupConfiguration="{9CEAC775-17D3-4D97-9E37-E97B03383AED}|Default">
   <MonoDevelop.Ide.ItemProperties.Problem10 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem18 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Problem30 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem6 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem12 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem5 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Problem15/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem30/Program.cs">
     <Files>
       <File FileName="Problem12/Program.cs" Line="16" Column="53" />
-      <File FileName="Utils/Util.cs" Line="131" Column="22" />
+      <File FileName="Utils/Util.cs" />
       <File FileName="Problem19/Program.cs" />
       <File FileName="Problem16/Program.cs" />
       <File FileName="Problem20/Program.cs" />
-      <File FileName="Problem17/Program.cs" Line="8" Column="32" />
+      <File FileName="Problem17/Program.cs" />
       <File FileName="Problem15/Program.cs" Line="13" Column="10" />
+      <File FileName="Problem30/Program.cs" Line="11" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjectEuler" expanded="True">
-            <Node name="Problem15" expanded="True">
-              <Node name="Program.cs" selected="True" />
-            </Node>
+            <Node name="Problem30" expanded="True" selected="True" />
             <Node name="Utils" expanded="True" />
           </Node>
         </State>
@@ -43,6 +43,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem11/Program.cs" relfile="Problem11/Program.cs" line="64" column="1" />
+      <Breakpoint file="/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem30/Program.cs" relfile="Problem30/Program.cs" line="23" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

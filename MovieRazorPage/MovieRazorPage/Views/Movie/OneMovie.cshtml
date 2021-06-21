@@ -7,13 +7,13 @@
 <h3>@Model.Director</h3>
 
 @using (Html.BeginForm(FormMethod.Post, "Movie"))
-            {
-                @Html.HiddenFor(m => m.Id);
-                @Html.LabelFor(m => m.Title);
-                @Html.TextBoxFor(m => m.Title);
-                @Html.LabelFor(m => m.Director);
-                @Html.TextBoxFor(m => m.Director);
-                @Html.LabelFor(m => m.Year);
-                @Html.TextBoxFor(m => m.Year);
-                <button>Update movie</button>
-            }
+{
+    @Html.HiddenFor(m => m.Id);
+    @Html.LabelFor(m => m.Title);
+    @Html.TextBoxFor(m => m.Title);
+    @Html.LabelFor(m => m.Director);
+    @Html.TextBoxFor(m => m.Director);
+    @Html.LabelFor(m => m.Year);
+    @Html.TextBoxFor(m => m.Year);
+    <button>Update movie</button>
+}
