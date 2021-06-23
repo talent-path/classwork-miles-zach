@@ -27,32 +27,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/zachmiles/.nuget/packages/": {}
+    "C:\\Users\\ZMiles\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem15/Problem15.csproj",
+      "projectUniqueName": "C:\\Users\\ZMiles\\classwork-miles-zach\\ProjectEuler\\Problem15\\Problem15.csproj",
       "projectName": "Problem15",
-      "projectPath": "/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem15/Problem15.csproj",
-      "packagesPath": "/Users/zachmiles/.nuget/packages/",
-      "outputPath": "/Users/zachmiles/classwork-miles-zach/ProjectEuler/Problem15/obj/",
+      "projectPath": "C:\\Users\\ZMiles\\classwork-miles-zach\\ProjectEuler\\Problem15\\Problem15.csproj",
+      "packagesPath": "C:\\Users\\ZMiles\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ZMiles\\classwork-miles-zach\\ProjectEuler\\Problem15\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/zachmiles/.config/NuGet/NuGet.Config"
+        "C:\\Users\\ZMiles\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "/Users/zachmiles/classwork-miles-zach/ProjectEuler/Utils/Utils.csproj": {
-              "projectPath": "/Users/zachmiles/classwork-miles-zach/ProjectEuler/Utils/Utils.csproj"
+            "C:\\Users\\ZMiles\\classwork-miles-zach\\ProjectEuler\\Utils\\Utils.csproj": {
+              "projectPath": "C:\\Users\\ZMiles\\classwork-miles-zach\\ProjectEuler\\Utils\\Utils.csproj"
             }
           }
         }
@@ -81,7 +83,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
