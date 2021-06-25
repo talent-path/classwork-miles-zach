@@ -81,7 +81,6 @@ C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\bin\Debug\netco
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\CourseManager.csproj.AssemblyReference.cache
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\CourseManager.AssemblyInfoInputs.cache
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\CourseManager.AssemblyInfo.cs
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\CourseManager.csproj.CoreCompileInputs.cache
@@ -117,3 +116,4 @@ C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netco
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\CourseManager.dll
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\CourseManager.pdb
 C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\CourseManager.genruntimeconfig.cache
+C:\Users\ZMiles\classwork-miles-zach\CourseManager\CourseManager\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\Delete.cshtml.g.cs
