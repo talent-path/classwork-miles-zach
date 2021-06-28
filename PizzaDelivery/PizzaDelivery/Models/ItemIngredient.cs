@@ -9,9 +9,9 @@ namespace PizzaDelivery.Models
 {
     public class ItemIngredient
     {
-        //[Key, Column(Order = 0), ForeignKey("Item")]
+        [ForeignKey("Item")]
         public int ItemId { get; set; }
-        //[Key, Column(Order = 1), ForeignKey("Ingredient")]
+        [ForeignKey("Ingredient")]
         public int IngredientId { get; set; }
         public Item Item { get; set; }
         public Ingredient Ingredient { get; set; }

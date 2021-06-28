@@ -22,6 +22,7 @@ namespace PizzaDelivery.Repos
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<OrderItem>().HasKey(o => new { o.OrderId, o.ItemId });
             modelBuilder.Entity<ItemIngredient>().HasKey(i => new { i.ItemId, i.IngredientId });
+            modelBuilder.Entity<Item>().Property("Price").HasPrecision(4, 2);
         }
     }
 }
