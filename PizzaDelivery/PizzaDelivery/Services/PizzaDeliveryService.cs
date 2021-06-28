@@ -9,8 +9,6 @@ namespace PizzaDelivery.Services
 {
     public class PizzaDeliveryService
     {
-        AddressRepo _addressRepo;
-        ContactRepo _contactRepo;
         CustomerRepo _customerRepo;
         IngredientRepo _ingredientRepo;
         InventoryRepo _inventoryRepo;
@@ -20,8 +18,6 @@ namespace PizzaDelivery.Services
 
         public PizzaDeliveryService(PizzaDeliveryDbContext context)
         {
-            _addressRepo = new AddressRepo(context);
-            _contactRepo = new ContactRepo(context);
             _customerRepo = new CustomerRepo(context);
             _ingredientRepo = new IngredientRepo(context);
             _inventoryRepo = new InventoryRepo(context);
@@ -30,14 +26,134 @@ namespace PizzaDelivery.Services
             _storeRepo = new StoreRepo(context);
         }
 
+        internal Ingredient GetIngredientById(int id)
+        {
+            return _ingredientRepo.FindById(id);
+        }
+
+        internal List<Ingredient> GetAllIngredients()
+        {
+            return _ingredientRepo.FindAll();
+        }
+
+        internal Ingredient CreateIngredient(Ingredient ingredient)
+        {
+            return _ingredientRepo.Add(ingredient);
+        }
+
+        internal Ingredient UpdateIngredient(Ingredient ingredient)
+        {
+            return _ingredientRepo.Update(ingredient);
+        }
+
+        internal void DeleteIngredient(int id)
+        {
+            Ingredient ingredient = new Ingredient { Id = id };
+            _ingredientRepo.Remove(ingredient);
+        }
+
+        internal Item GetItemById(int id)
+        {
+            return _itemRepo.FindById(id);
+        }
+
+        internal Item CreateItem(Item item)
+        {
+            return _itemRepo.Add(item);
+        }
+
+        internal List<Item> GetAllItems()
+        {
+            return _itemRepo.FindAll();
+        }
+
+        internal Item UpdateItem(Item item)
+        {
+            return _itemRepo.Update(item);
+        }
+
+        internal void DeleteItem(int id)
+        {
+            Item item = new Item { Id = id };
+            _itemRepo.Remove(item);
+        }
+
+        internal Inventory GetInventoryById(int id)
+        {
+            return _inventoryRepo.FindById(id);
+        }
+
+        internal List<Inventory> GetAllInventory()
+        {
+            return _inventoryRepo.FindAll();
+        }
+
+        internal Inventory CreateInventory(Inventory inventory)
+        {
+            return _inventoryRepo.Add(inventory);
+        }
+
+        internal Inventory UpdateInventory(Inventory inventory)
+        {
+            return _inventoryRepo.Update(inventory);
+        }
+
+        internal Customer GetCustomerById(int id)
+        {
+            return _customerRepo.FindById(id);
+        }
+
+        internal void DeleteInventory(int id)
+        {
+            Inventory inventory = new Inventory { Id = id };
+            _inventoryRepo.Remove(inventory);
+        }
+
+        internal List<Customer> GetAllCustomers()
+        {
+            return _customerRepo.FindAll();
+        }
+
+        internal Customer CreateCustomer(Customer customer)
+        {
+            return _customerRepo.Add(customer);
+        }
+
+        internal Customer UpdateCustomer(Customer customer)
+        {
+            return _customerRepo.Update(customer);
+        }
+
+        internal void DeleteCustomer(int id)
+        {
+            Customer customer = new Customer { Id = id };
+            _customerRepo.Remove(customer);
+        }
+
+        internal Order CreateOrder(Order order)
+        {
+            return _orderRepo.Add(order);
+        }
+
+        internal Order UpdateOrder(Order order)
+        {
+            return _orderRepo.Update(order);
+        }
+
+        internal void DeleteOrder(int id)
+        {
+            Order order = new Order { Id = id };
+            _orderRepo.Remove(order);
+        }
+
         internal Order GetOrderById(int id)
         {
-            throw new NotImplementedException();
+            return _orderRepo.FindById(id);
         }
 
         internal List<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            return _orderRepo.FindAll();
         }
 
         internal Store AddStore(Store store)
@@ -52,11 +168,7 @@ namespace PizzaDelivery.Services
 
         internal void RemoveStore(int id)
         {
-            Store store = _storeRepo.FindById(id);
-            if(store == null)
-            {
-                throw new Exception($"No store found with an Id = {id}");
-            }
+            Store store = new Store { Id = id };
             _storeRepo.Remove(store);
         }
 

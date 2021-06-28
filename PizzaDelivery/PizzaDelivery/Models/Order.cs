@@ -12,7 +12,7 @@ namespace PizzaDelivery.Models
         public DateTime TimeOut { get; set; }
         public bool Delivered { get; set; }
         public Customer Customer { get; set; }
-        public List<Item> Items { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
 
         public Order() { }
         public Order(Order copy)
@@ -22,7 +22,7 @@ namespace PizzaDelivery.Models
             TimeOut = copy.TimeOut;
             Delivered = copy.Delivered;
             Customer = new Customer(copy.Customer);
-            Items = copy.Items.Select(item => new Item(item)).ToList();
+            //OrderItems = copy.OrderItems.Select(item => new OrderItem(item)).ToList();
         }
     }
 }

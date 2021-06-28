@@ -8,14 +8,14 @@ namespace PizzaDelivery.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Item> Items { get; set; }
+        public List<ItemIngredient> ItemIngredients { get; set; }
 
         public Ingredient() { }
         public Ingredient(Ingredient copy)
         {
             Id = copy.Id;
             Name = copy.Name;
-            Items = copy.Items.Select(item => new Item(item)).ToList();
+            //Items = copy.Items.Select(item => new Item(item)).ToList();
         }
     }
 }

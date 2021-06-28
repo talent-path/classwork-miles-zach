@@ -7,8 +7,9 @@ namespace PizzaDelivery.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
-        public List<Order> Orders { get; set; }
+        public decimal Price { get; set; }
+        public List<ItemIngredient> ItemIngredients { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
 
         public Item() { }
         public Item(Item copy)

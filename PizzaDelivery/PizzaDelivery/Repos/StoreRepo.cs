@@ -21,27 +21,6 @@ namespace PizzaDelivery.Repos
             context.Stores.Add(store);
             context.SaveChanges();
             return store;
-            //return new Store
-            //{
-            //    Id = store.Id,
-            //    Contact = new Contact(store.Contact),
-            //    Inventory = store.Inventory.Select(inventory => new Inventory
-            //    {
-            //        Id = inventory.Id,
-            //        Quantity = inventory.Quantity,
-            //        Ingredient = new Ingredient
-            //        {
-            //            Id = inventory.Ingredient.Id,
-            //            Name = inventory.Ingredient.Name,
-            //            Items = inventory.Ingredient.Items.Select(item => new Item
-            //            {
-            //                Id = item.Id,
-            //                Name = item.Name
-            //            }).ToList()
-            //        }
-            //    }).ToList(),
-            //    Orders = store.Orders.Select(order => new Order { }).ToList()
-            //};
         }
 
         internal Store Update(Store store)
@@ -60,12 +39,31 @@ namespace PizzaDelivery.Repos
 
         internal Store FindById(int id)
         {
-            return context.Stores.Find(id);
+            return context.Stores
+                .Where(s => s.Id == id)
+                .Include(s => s.Inventory)
+                .ThenInclude(inv => inv.Ingredient)
+                .ThenInclude(ing => ing.ItemIngredients)
+                .ThenInclude(ig => ig.Item)
+                .Include(s => s.Orders)
+                .ThenInclude(ord => ord.OrderItems)
+                .Include(s => s.Orders)
+                .ThenInclude(ord => ord.Customer)
+                .FirstOrDefault();
         }
 
         internal List<Store> FindAll()
         {
-            return context.Stores.ToList();
+            return context.Stores
+                .Include(s => s.Inventory)
+                .ThenInclude(inv => inv.Ingredient)
+                .ThenInclude(ing => ing.ItemIngredients)
+                .ThenInclude(ig => ig.Item)
+                .Include(s => s.Orders)
+                .ThenInclude(ord => ord.OrderItems)
+                .Include(s => s.Orders)
+                .ThenInclude(ord => ord.Customer)
+                .ToList();
         }
     }
 }

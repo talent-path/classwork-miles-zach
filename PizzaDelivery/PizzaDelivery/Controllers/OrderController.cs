@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PizzaDelivery.Models;
 using PizzaDelivery.Repos;
 using PizzaDelivery.Services;
 using System;
@@ -32,6 +33,23 @@ namespace PizzaDelivery.Controllers
             return Ok(_service.GetOrderById(id));
         }
 
+        [HttpPost]
+        public IActionResult CreateOrder(Order order)
+        {
+            return Created("/api/order", _service.CreateOrder(order));
+        }
 
+        [HttpPut]
+        public IActionResult UpdateOrder(Order order)
+        {
+            return Accepted(_service.UpdateOrder(order));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteOrder(int id)
+        {
+            _service.DeleteOrder(id);
+            return NoContent();
+        }
     }
 }
