@@ -1,4 +1,5 @@
-﻿using PizzaDelivery.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PizzaDelivery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,27 +18,36 @@ namespace PizzaDelivery.Repos
 
         internal void Remove(Ingredient ingredient)
         {
-            throw new NotImplementedException();
+            context.Ingredients.Remove(ingredient);
+            context.SaveChanges();
         }
 
         internal Ingredient Update(Ingredient ingredient)
         {
-            throw new NotImplementedException();
+            context.Attach(ingredient);
+            context.Entry(ingredient).State = EntityState.Modified;
+            context.SaveChanges();
+            return ingredient;
         }
 
         internal Ingredient Add(Ingredient ingredient)
         {
-            throw new NotImplementedException();
+            context.Ingredients.Add(ingredient);
+            context.SaveChanges();
+            return ingredient;
         }
 
         internal List<Ingredient> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Ingredients
+                .ToList();
         }
 
         internal Ingredient FindById(int id)
         {
-            throw new NotImplementedException();
+            return context.Ingredients
+                .Where(ingredient => ingredient.Id == id)
+                .FirstOrDefault();
         }
     }
 }

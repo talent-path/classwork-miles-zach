@@ -22,7 +22,10 @@ namespace PizzaDelivery.Repos
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<OrderItem>().HasKey(o => new { o.OrderId, o.ItemId });
             modelBuilder.Entity<ItemIngredient>().HasKey(i => new { i.ItemId, i.IngredientId });
-            modelBuilder.Entity<Item>().Property("Price").HasPrecision(4, 2);
+            modelBuilder.Entity<Item>().Property(i => i.Price).HasPrecision(4, 2).IsRequired();
+            modelBuilder.Entity<Item>().Property(i => i.Name).IsRequired();
+            modelBuilder.Entity<Ingredient>().HasIndex(i => i.Name).IsUnique();
+            modelBuilder.Entity<Item>().HasIndex(i => i.Name).IsUnique();
         }
     }
 }

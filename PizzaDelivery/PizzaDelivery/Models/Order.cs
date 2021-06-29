@@ -9,9 +9,10 @@ namespace PizzaDelivery.Models
     {
         public int Id { get; set; }
         public DateTime TimeIn { get; set; }
-        public DateTime TimeOut { get; set; }
+        public DateTime? TimeOut { get; set; }
         public bool Delivered { get; set; }
         public Customer Customer { get; set; }
+        public Store Store { get; set; }
         public List<OrderItem> OrderItems { get; set; }
 
         public Order() { }

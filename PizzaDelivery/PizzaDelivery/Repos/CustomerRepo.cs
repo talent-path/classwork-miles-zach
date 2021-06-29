@@ -1,4 +1,5 @@
-﻿using PizzaDelivery.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PizzaDelivery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,35 +15,43 @@ namespace PizzaDelivery.Repos
         {
             this.context = context;
         }
-
+       
         internal Customer FindById(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        internal void Delete(Customer customer)
-        {
-            throw new NotImplementedException();
+            return context.Customers
+                .Where(customer => customer.Id == id)
+                .Include(customer => customer.Orders)
+                .ThenInclude(order => order.OrderItems)
+                .FirstOrDefault();
         }
 
         internal Customer Update(Customer customer)
         {
-            throw new NotImplementedException();
+            context.Attach(customer);
+            context.Entry(customer).State = EntityState.Modified;
+            context.SaveChanges();
+            return customer;
         }
 
         internal Customer Add(Customer customer)
         {
-            throw new NotImplementedException();
+            context.Customers.Add(customer);
+            context.SaveChanges();
+            return customer;
         }
 
         internal List<Customer> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Customers
+                .Include(customer => customer.Orders)
+                .ThenInclude(order => order.OrderItems)
+                .ToList();
         }
 
         internal void Remove(Customer customer)
         {
-            throw new NotImplementedException();
+            context.Customers.Remove(customer);
+            context.SaveChanges();
         }
     }
 }

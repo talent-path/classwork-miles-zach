@@ -18,12 +18,23 @@ namespace PizzaDelivery.Repos
 
         internal List<Order> FindAll()
         {
-            return context.Orders.ToList();
+            return context.Orders
+                .Include(order => order.Customer)
+                .Include(order => order.Store)
+                .Include(order => order.OrderItems)
+                .ThenInclude(oi => oi.Item)
+                .ToList();
         }
 
         internal Order FindById(int id)
         {
-            return context.Orders.Find(id);
+            return context.Orders
+                .Where(order => order.Id == id)
+                .Include(order => order.Customer)
+                .Include(order => order.Store)
+                .Include(order => order.OrderItems)
+                .ThenInclude(oi => oi.Item)
+                .FirstOrDefault();
         }
 
         internal void Remove(Order order)
@@ -42,6 +53,10 @@ namespace PizzaDelivery.Repos
 
         internal Order Add(Order order)
         {
+            context.Customers.Attach(order.Customer);
+            context.Stores.Attach(order.Store);
+            foreach (var item in order.OrderItems)
+                context.OrderItems.Attach(item);
             context.Orders.Add(order);
             context.SaveChanges();
             return order;

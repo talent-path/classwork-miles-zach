@@ -1,4 +1,5 @@
-﻿using PizzaDelivery.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PizzaDelivery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,27 +18,41 @@ namespace PizzaDelivery.Repos
 
         internal Inventory Update(Inventory inventory)
         {
-            throw new NotImplementedException();
+            context.Attach(inventory);
+            context.Entry(inventory).State = EntityState.Modified;
+            context.SaveChanges();
+            return inventory;
         }
 
         internal Inventory Add(Inventory inventory)
         {
-            throw new NotImplementedException();
+            context.Stores.Attach(inventory.Store);
+            context.Inventories.Add(inventory);
+            context.SaveChanges();
+            return inventory;
         }
 
         internal Inventory FindById(int id)
         {
-            throw new NotImplementedException();
+            return context.Inventories
+                .Where(inventory => inventory.Id == id)
+                .Include(inventory => inventory.Ingredient)
+                .Include(inventory => inventory.Store)
+                .FirstOrDefault();
         }
 
         internal List<Inventory> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Inventories
+                .Include(inventory => inventory.Ingredient)
+                .Include(inventory => inventory.Store)
+                .ToList();
         }
 
         internal void Remove(Inventory inventory)
         {
-            throw new NotImplementedException();
+            context.Inventories.Remove(inventory);
+            context.SaveChanges();
         }
     }
 }

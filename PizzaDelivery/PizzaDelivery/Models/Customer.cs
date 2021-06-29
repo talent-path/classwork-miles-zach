@@ -1,4 +1,6 @@
-﻿namespace PizzaDelivery.Models
+﻿using System.Collections.Generic;
+
+namespace PizzaDelivery.Models
 {
     public class Customer
     {
@@ -9,6 +11,8 @@
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
+
+        public List<Order> Orders { get; set; }
 
         public Customer() { }
         public Customer(Customer copy)

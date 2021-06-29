@@ -57,9 +57,14 @@ namespace PizzaDelivery.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Ingredients");
                 });
@@ -74,11 +79,14 @@ namespace PizzaDelivery.Migrations
                     b.Property<int?>("IngredientId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Stock")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<int?>("StoreId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Units")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -97,13 +105,18 @@ namespace PizzaDelivery.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(4, 2)
                         .HasColumnType("decimal(4,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Items");
                 });
@@ -118,6 +131,9 @@ namespace PizzaDelivery.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
+
+                    b.Property<string>("Units")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ItemId", "IngredientId");
 
@@ -145,7 +161,7 @@ namespace PizzaDelivery.Migrations
                     b.Property<DateTime>("TimeIn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("TimeOut")
+                    b.Property<DateTime?>("TimeOut")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -208,11 +224,13 @@ namespace PizzaDelivery.Migrations
                         .WithMany()
                         .HasForeignKey("IngredientId");
 
-                    b.HasOne("PizzaDelivery.Models.Store", null)
+                    b.HasOne("PizzaDelivery.Models.Store", "Store")
                         .WithMany("Inventory")
                         .HasForeignKey("StoreId");
 
                     b.Navigation("Ingredient");
+
+                    b.Navigation("Store");
                 });
 
             modelBuilder.Entity("PizzaDelivery.Models.ItemIngredient", b =>
@@ -237,14 +255,16 @@ namespace PizzaDelivery.Migrations
             modelBuilder.Entity("PizzaDelivery.Models.Order", b =>
                 {
                     b.HasOne("PizzaDelivery.Models.Customer", "Customer")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("CustomerId");
 
-                    b.HasOne("PizzaDelivery.Models.Store", null)
+                    b.HasOne("PizzaDelivery.Models.Store", "Store")
                         .WithMany("Orders")
                         .HasForeignKey("StoreId");
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Store");
                 });
 
             modelBuilder.Entity("PizzaDelivery.Models.OrderItem", b =>
@@ -264,6 +284,11 @@ namespace PizzaDelivery.Migrations
                     b.Navigation("Item");
 
                     b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("PizzaDelivery.Models.Customer", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("PizzaDelivery.Models.Ingredient", b =>
