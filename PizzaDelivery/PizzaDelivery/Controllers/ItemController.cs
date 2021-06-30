@@ -31,6 +31,12 @@ namespace PizzaDelivery.Controllers
             return Ok(_service.GetItemById(id));
         }
 
+        [HttpGet("order/{id}")]
+        public IActionResult GetItemsForOrder(int orderId)
+        {
+            return Ok(_service.GetItemsForOrder(orderId));
+        }
+
         [HttpPost]
         public IActionResult CreateItem(Item item)
         {

@@ -31,9 +31,34 @@ namespace PizzaDelivery.Services
             return _ingredientRepo.FindById(id);
         }
 
+        internal List<Item> GetItemsForOrder(int orderId)
+        {
+            return _itemRepo.FindItemsForOrder(orderId);
+        }
+
+        internal List<Order> GetOrdersByCustomer(int customerId)
+        {
+            return _orderRepo.FindOrdersByCustomer(customerId);
+        }
+
+        internal List<Order> GetStoreOrders(int storeId)
+        {
+            return _orderRepo.FindStoreOrders(storeId);
+        }
+
+        internal List<Ingredient> GetIngredientsForItem(int itemId)
+        {
+            return _ingredientRepo.FindIngredientsForItem(itemId);
+        }
+
         internal List<Ingredient> GetAllIngredients()
         {
             return _ingredientRepo.FindAll();
+        }
+
+        internal object GetInventoryByStore(int storeId)
+        {
+            return _inventoryRepo.FindInventoryForStore(storeId);
         }
 
         internal Ingredient CreateIngredient(Ingredient ingredient)

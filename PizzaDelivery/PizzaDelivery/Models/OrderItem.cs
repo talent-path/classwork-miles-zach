@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,8 +14,8 @@ namespace PizzaDelivery.Models
         public int OrderId { get; set; }
         [ForeignKey("Item")]
         public int ItemId { get; set; }
+        public int Quantity { get; set; }
         public Order Order { get; set; }
         public Item Item { get; set; }
-        public int Quantity { get; set; }
     }
 }

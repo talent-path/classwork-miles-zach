@@ -49,5 +49,15 @@ namespace PizzaDelivery.Repos
                 .Where(ingredient => ingredient.Id == id)
                 .FirstOrDefault();
         }
+
+        internal List<Ingredient> FindIngredientsForItem(int itemId)
+        {
+            return context.ItemIngredients
+                .Where(ig => ig.ItemId == itemId)
+                .Include(ig => ig.Ingredient)
+                .Select(ig => new Ingredient(ig.Ingredient))
+                .ToList();
+                
+        }
     }
 }

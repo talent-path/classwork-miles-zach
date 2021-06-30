@@ -33,6 +33,12 @@ namespace PizzaDelivery.Controllers
             return Ok(_service.GetInventoryById(id));
         }
 
+        [HttpGet("store/{id}")]
+        public IActionResult GetInventoryByStore(int storeId)
+        {
+            return Ok(_service.GetInventoryByStore(storeId));
+        }
+
         [HttpPost]
         public IActionResult CreateInventory(Inventory inventory)
         {

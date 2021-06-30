@@ -42,9 +42,7 @@ namespace PizzaDelivery.Repos
 
         internal List<Customer> FindAll()
         {
-            return context.Customers
-                .Include(customer => customer.Orders)
-                .ThenInclude(order => order.OrderItems)
+            return context.Customers 
                 .ToList();
         }
 

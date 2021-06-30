@@ -18,7 +18,7 @@ namespace PizzaDelivery.Models
         {
             Id = copy.Id;
             Name = copy.Name;
-
+            Price = copy.Price;
         }
     }
 }

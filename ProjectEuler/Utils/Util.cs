@@ -8,7 +8,7 @@ namespace Utils
     {
         public static bool IsPrime(BigInteger num)
         {
-            if (num % 2 == 0 && num != 2) return false;
+            if (num == 2) return true;
             for (int i = 3; i <= Sqrt(num); i+=2)
             {
                 if (num % i == 0)
@@ -19,17 +19,37 @@ namespace Utils
             return true;
         }
 
-        public static bool IsPrime(int num)
+        //public static bool IsPrime(int num)
+        //{
+        //    if (num < 2) return false;
+        //    for (int i = 3; i <= Sqrt(num); i += 2)
+        //    {
+        //        if (num % i == 0)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        public static bool IsPrime(int number)
         {
-            if (num % 2 == 0 && num != 2) return false;
-            for (int i = 3; i <= Sqrt(num); i += 2)
+            if (number < 2) return false;
+            bool prime = true;
+            int squareRoot = Sqrt(number);
+            if (number % 2 == 0)
             {
-                if (num % i == 0)
+                return number == 2;
+            }
+            for (int i = 3; i <= squareRoot; i += 2)
+            {
+                if (number % i == 0)
                 {
-                    return false;
+                    prime = false;
+                    break;
                 }
             }
-            return true;
+            return prime;
         }
 
         public static bool IsPrime(List<int> primes, int num)

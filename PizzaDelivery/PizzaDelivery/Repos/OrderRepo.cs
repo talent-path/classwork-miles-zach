@@ -19,10 +19,10 @@ namespace PizzaDelivery.Repos
         internal List<Order> FindAll()
         {
             return context.Orders
-                .Include(order => order.Customer)
-                .Include(order => order.Store)
-                .Include(order => order.OrderItems)
-                .ThenInclude(oi => oi.Item)
+                //.Include(order => order.Customer)
+                //.Include(order => order.Store)
+                //.Include(order => order.OrderItems)
+                //.ThenInclude(oi => oi.Item)
                 .ToList();
         }
 
@@ -37,10 +37,22 @@ namespace PizzaDelivery.Repos
                 .FirstOrDefault();
         }
 
+        internal List<Order> FindOrdersByCustomer(int customerId)
+        {
+            return context.Orders
+                .Where(o => o.CustomerId == customerId)
+                .ToList();
+        }
+
         internal void Remove(Order order)
         {
             context.Orders.Remove(order);
             context.SaveChanges();
+        }
+
+        internal List<Order> FindStoreOrders(int storeId)
+        {
+            throw new NotImplementedException();
         }
 
         internal Order Update(Order order)
@@ -54,9 +66,6 @@ namespace PizzaDelivery.Repos
         internal Order Add(Order order)
         {
             context.Customers.Attach(order.Customer);
-            context.Stores.Attach(order.Store);
-            foreach (var item in order.OrderItems)
-                context.OrderItems.Attach(item);
             context.Orders.Add(order);
             context.SaveChanges();
             return order;

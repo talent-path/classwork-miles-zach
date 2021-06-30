@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,10 @@ namespace PizzaDelivery.Models
     public class Order
     {
         public int Id { get; set; }
+        [ForeignKey("Customer")]
+        public int CustomerId { get; set; }
+        [ForeignKey("Store")]
+        public int StoreId { get; set; }
         public DateTime TimeIn { get; set; }
         public DateTime? TimeOut { get; set; }
         public bool Delivered { get; set; }

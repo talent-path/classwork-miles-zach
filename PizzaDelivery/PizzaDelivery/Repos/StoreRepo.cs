@@ -42,13 +42,13 @@ namespace PizzaDelivery.Repos
             return context.Stores
                 .Where(s => s.Id == id)
                 .Include(s => s.Inventory)
-                .ThenInclude(inv => inv.Ingredient)
-                .ThenInclude(ing => ing.ItemIngredients)
-                .ThenInclude(ig => ig.Item)
+                //.ThenInclude(inv => inv.Ingredient)
+                //.ThenInclude(ing => ing.ItemIngredients)
+                //.ThenInclude(ig => ig.Item)
                 .Include(s => s.Orders)
-                .ThenInclude(ord => ord.OrderItems)
-                .Include(s => s.Orders)
-                .ThenInclude(ord => ord.Customer)
+                //.ThenInclude(ord => ord.OrderItems)
+                //.Include(s => s.Orders)
+                //.ThenInclude(ord => ord.Customer)
                 .FirstOrDefault();
         }
 
@@ -56,13 +56,13 @@ namespace PizzaDelivery.Repos
         {
             return context.Stores
                 .Include(s => s.Inventory)
-                .ThenInclude(inv => inv.Ingredient)
-                .ThenInclude(ing => ing.ItemIngredients)
-                .ThenInclude(ig => ig.Item)
-                .Include(s => s.Orders)
-                .ThenInclude(ord => ord.OrderItems)
-                .Include(s => s.Orders)
-                .ThenInclude(ord => ord.Customer)
+                //.ThenInclude(inv => inv.Ingredient)
+                //.ThenInclude(ing => ing.ItemIngredients)
+                //.ThenInclude(ig => ig.Item)
+                //.Include(s => s.Orders)
+                //.ThenInclude(ord => ord.OrderItems)
+                //.Include(s => s.Orders)
+                //.ThenInclude(ord => ord.Customer)
                 .ToList();
         }
     }

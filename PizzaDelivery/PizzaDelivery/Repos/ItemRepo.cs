@@ -27,7 +27,6 @@ namespace PizzaDelivery.Repos
             return context.Items
                 .Where(item => item.Id == id)
                 .Include(item => item.ItemIngredients)
-                .ThenInclude(ig => ig.Ingredient)
                 .FirstOrDefault();
         }
 
@@ -43,7 +42,15 @@ namespace PizzaDelivery.Repos
         {
             return context.Items
                 .Include(i => i.ItemIngredients)
-                .ThenInclude(ig => ig.Ingredient)
+                .ToList();
+        }
+
+        internal List<Item> FindItemsForOrder(int orderId)
+        {
+            return context.OrderItems
+                .Where(oi => oi.OrderId == orderId)
+                .Include(oi => oi.Item)
+                .Select(oi => new Item(oi.Item))
                 .ToList();
         }
 

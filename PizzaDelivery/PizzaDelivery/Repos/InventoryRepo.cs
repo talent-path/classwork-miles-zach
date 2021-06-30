@@ -26,7 +26,6 @@ namespace PizzaDelivery.Repos
 
         internal Inventory Add(Inventory inventory)
         {
-            context.Stores.Attach(inventory.Store);
             context.Inventories.Add(inventory);
             context.SaveChanges();
             return inventory;
@@ -53,6 +52,13 @@ namespace PizzaDelivery.Repos
         {
             context.Inventories.Remove(inventory);
             context.SaveChanges();
+        }
+
+        internal List<Inventory> FindInventoryForStore(int storeId)
+        {
+            return context.Inventories
+                .Where(inv => inv.StoreId == storeId)
+                .ToList();
         }
     }
 }

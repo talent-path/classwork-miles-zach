@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/zachmiles/.dotnet/store/|arch|/|tfm|",
-      "/Users/zachmiles/.nuget/packages"
+      "C:\\Users\\ZMiles\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ZMiles\\.nuget\\packages"
     ]
   }
 }

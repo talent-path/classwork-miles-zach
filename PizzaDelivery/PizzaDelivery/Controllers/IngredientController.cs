@@ -33,6 +33,12 @@ namespace PizzaDelivery.Controllers
             return Ok(_service.GetIngredientById(id));
         }
 
+        [HttpGet("item/{id}")]
+        public IActionResult GetIngredientsForItem(int itemId)
+        {
+            return Ok(_service.GetIngredientsForItem(itemId));
+        }
+
         [HttpPost]
         public IActionResult CreateIngredient(Ingredient ingredient)
         {
