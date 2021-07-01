@@ -1,4 +1,6 @@
-﻿using PizzaDelivery.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PizzaDelivery.Exceptions;
+using PizzaDelivery.Models;
 using PizzaDelivery.Repos;
 using PizzaDelivery.Requests;
 using System;
@@ -201,7 +203,14 @@ namespace PizzaDelivery.Services
         internal void RemoveStore(int id)
         {
             Store store = new Store { Id = id };
-            _storeRepo.Remove(store);
+            try
+            {
+                _storeRepo.Remove(store);
+            } 
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw new StoreNotFoundException($"Store with Id of {id} does not exist.", e);
+            }
         }
 
         internal Store GetStoreById(int id)

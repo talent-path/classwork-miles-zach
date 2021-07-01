@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddressFormComponent } from './address-form/address-form.component';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HomeComponent } from './home/home.component';
-import { TableComponent } from './table/table.component';
-import { TreeComponent } from './tree/tree.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DragDropComponent } from './components/drag-drop/drag-drop.component';
+import { HomeComponent } from './components/home/home.component';
+import { OrderStepperComponent } from './components/order-stepper/order-stepper.component';
+import { TableComponent } from './components/table/table.component';
+import { TreeComponent } from './components/tree/tree.component';
 
 const routes: Routes = [
   {path: '*', component: AppComponent},
   {path: '', component: HomeComponent},
-  {path: 'customer/addressform', component: AddressFormComponent},
+  {path: 'placeorder', component: OrderStepperComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'table', component: TableComponent},
-  {path: 'tree', component: TreeComponent}
+  {path: 'tree', component: TreeComponent},
+  {path: 'dragndrop', component: DragDropComponent}
 ];
 
 @NgModule({

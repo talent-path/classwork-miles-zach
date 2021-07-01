@@ -1,0 +1,15 @@
+import { Customer } from "./customer";
+import { OrderItem } from "./orderitem";
+import { Store } from "./store";
+
+export class Order {
+    id?: Number;
+    customerId?: Number;
+    storeId?: Number;
+    timeIn?: Date;
+    timeOut?: Date;
+    delivered?: boolean;
+    customer?: Customer;
+    store?: Store;
+    orderItems?: OrderItem[];
+}

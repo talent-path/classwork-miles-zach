@@ -11,13 +11,13 @@ namespace PizzaDelivery.Models
         [Required]
         public string Phone { get; set; }
         [Required]
-        public string Street { get; set; }
+        public string Address { get; set; }
         [Required]
         public string City { get; set; }
         [Required]
         public string State { get; set; }
         [Required]
-        public string Zip { get; set; }
+        public string PostalCode { get; set; }
 
         public List<Order> Orders { get; set; }
 

@@ -1,0 +1,16 @@
+<mat-stepper [linear]="false" #stepper>
+    <mat-step [stepControl]="firstFormGroup" label="Select your items">
+      <app-order-details></app-order-details>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Fill out your information">
+      <app-address-form></app-address-form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Place Order</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="submitOrder()">Submit</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
