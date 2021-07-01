@@ -15,7 +15,6 @@ namespace PizzaDelivery.Models
         [ForeignKey("Ingredient")]
         public int IngredientId { get; set; }
         public decimal Quantity { get; set; }
-        public string Units { get; set; }
         public Item Item { get; set; }
         public Ingredient Ingredient { get; set; }
 

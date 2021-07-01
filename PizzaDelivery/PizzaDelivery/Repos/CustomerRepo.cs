@@ -46,6 +46,13 @@ namespace PizzaDelivery.Repos
                 .ToList();
         }
 
+        internal Customer FindCustomerInfo(string name, string phone)
+        {
+            return context.Customers
+                .Where(customer => customer.Name == name && customer.Phone == phone)
+                .FirstOrDefault();
+        }
+
         internal void Remove(Customer customer)
         {
             context.Customers.Remove(customer);

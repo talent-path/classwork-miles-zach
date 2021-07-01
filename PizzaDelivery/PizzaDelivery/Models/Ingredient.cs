@@ -10,6 +10,7 @@ namespace PizzaDelivery.Models
     {
         public int Id { get; set; }
         [MaxLength(100)]
+        [Required]
         public string Name { get; set; }
         public List<ItemIngredient> ItemIngredients { get; set; }
 

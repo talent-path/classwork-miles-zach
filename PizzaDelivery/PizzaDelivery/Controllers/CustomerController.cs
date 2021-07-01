@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PizzaDelivery.Models;
 using PizzaDelivery.Repos;
+using PizzaDelivery.Requests;
 using PizzaDelivery.Services;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,12 @@ namespace PizzaDelivery.Controllers
         public IActionResult GetCustomerById(int id)
         {
             return Ok(_service.GetCustomerById(id));
+        }
+
+        [HttpGet("previous")]
+        public IActionResult GetPreviousCustomerInfo(PreviousCustomerRequest request)
+        {
+            return Ok(_service.GetPreviousCustomerInfo(request));
         }
 
         [HttpPost]

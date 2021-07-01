@@ -8,8 +8,11 @@ namespace PizzaDelivery.Models
     {
         public int Id { get; set; }
         [MaxLength(100)]
+        [Required]
         public string Name { get; set; }
+        [Required]
         public decimal Price { get; set; }
+        public string ImageUrl { get; set; }
         public List<ItemIngredient> ItemIngredients { get; set; }
         public List<OrderItem> OrderItems { get; set; }
 

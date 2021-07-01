@@ -1,5 +1,6 @@
 ﻿using PizzaDelivery.Models;
 using PizzaDelivery.Repos;
+using PizzaDelivery.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,11 @@ namespace PizzaDelivery.Services
         internal List<Item> GetItemsForOrder(int orderId)
         {
             return _itemRepo.FindItemsForOrder(orderId);
+        }
+
+        internal Customer GetPreviousCustomerInfo(PreviousCustomerRequest request)
+        {
+            return _customerRepo.FindCustomerInfo(request.Name, request.Phone);
         }
 
         internal List<Order> GetOrdersByCustomer(int customerId)
@@ -157,6 +163,7 @@ namespace PizzaDelivery.Services
 
         internal Order CreateOrder(Order order)
         {
+            // TODO: Check to see if store has enough ingredients to make order items
             return _orderRepo.Add(order);
         }
 

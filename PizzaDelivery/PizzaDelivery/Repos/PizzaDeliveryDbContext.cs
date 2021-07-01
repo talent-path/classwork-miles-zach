@@ -27,7 +27,7 @@ namespace PizzaDelivery.Repos
             modelBuilder.Entity<Ingredient>().HasIndex(i => i.Name).IsUnique();
             modelBuilder.Entity<Item>().HasIndex(i => i.Name).IsUnique();
             modelBuilder.Entity<ItemIngredient>().Property(ig => ig.Quantity).HasPrecision(4, 2).IsRequired();
-            modelBuilder.Entity<Inventory>().Property(inv => inv.Stock).HasPrecision(10, 2).IsRequired();
+            modelBuilder.Entity<Inventory>().Property(inv => inv.Quantity).HasPrecision(10, 2).IsRequired();
         }
     }
 }
