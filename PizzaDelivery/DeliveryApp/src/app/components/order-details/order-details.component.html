@@ -1,22 +1,29 @@
-<form [formGroup]="orderForm">
-    <div class="row">
-        <div class="col">
-            <mat-select placeholder="Item">
-                <mat-option *ngFor="let item of items">{{item.name}}</mat-option>
-            </mat-select>
-        </div>
-        <div class="col">
-            <mat-select placeholder="Quantity">
-                <mat-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]">{{n}}</mat-option>
-            </mat-select>
+<form [formGroup]="orderForm" *ngIf="orderForm">
+    <div formArrayName="orderItems" *ngFor="let orderItem of orderForm.get('orderItems')['controls']; index as i">
+        <div [formGroupName]="i" class="row">
+            <mat-form-field appearance="fill" class="col">
+                <mat-select placeholder="Item" formControlName="itemId" (selectionChange)="orderChange()">
+                    <mat-option *ngFor="let item of menuItems" [value]="item.id" [disabled]="hasUserSelected(item.id)">
+                        {{item.name}} (${{item.price}})
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col">
+                <mat-select placeholder="Quantity" formControlName="quantity" (selectionChange)="orderChange()">
+                    <mat-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]" [value]="n">{{n}}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div>
-            <button mat-button color="accent">Add Item</button>
+            <button mat-button color="accent" (click)="addOrderItem()">Add Item</button>
         </div>
         <div>
-            <button mat-button color="warn" *ngIf="order.orderItems.length > 1">Remove Item</button>
+            <button mat-button color="warn" *ngIf="orderedItems && orderedItems.length > 1" (click)="removePreviousItem()">Remove Item</button>
         </div>
+    </div>
+    <div class="row">
+        <button mat-button matStepperNext>Next</button>
     </div>
 </form>

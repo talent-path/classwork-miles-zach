@@ -1,7 +1,7 @@
 import { Order } from "./order";
 
 export class Customer {
-    id?: Number;
+    id?: number;
     name: string;
     phone: string;
     address: string;

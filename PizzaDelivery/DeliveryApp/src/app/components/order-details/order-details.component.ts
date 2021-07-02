@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Item } from 'src/app/models/item';
-import { Order } from 'src/app/models/order';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -11,21 +10,44 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  items: Item[];
-
-  order: Order = {
-    orderItems: []
-  };
-
+  menuItems: Item[];
   orderForm: FormGroup;
-  constructor(private itemService: ItemService) { }
+  orderedItems: FormArray;
+  @Output() orderChanged: EventEmitter<FormGroup> = new EventEmitter();
+
+  constructor(private itemService: ItemService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.itemService.getItems()
-      .subscribe(items => this.items = items);
-    this.orderForm = new FormGroup({
-      orderItems: new FormArray([new FormControl(this.items[0])])
-    });
+    this.itemService.getItems().subscribe(items => {
+      this.menuItems = items
+      this.orderForm = this.fb.group({
+        orderItems: this.fb.array([ this.createItem() ])
+      })
+    })
+  }
+
+  createItem(): FormGroup {
+    return this.fb.group({
+      itemId: [null, Validators.required],
+      quantity: [null, Validators.required]
+    })
+  }
+
+  addOrderItem(): void {
+    this.orderedItems = this.orderForm.get('orderItems') as FormArray;
+    this.orderedItems.push(this.createItem());
+  }
+
+  removePreviousItem(): void {
+    this.orderedItems.removeAt(this.orderedItems.length - 1);
+  }
+
+  orderChange(): void {
+    this.orderChanged.emit(this.orderForm);
+  }
+
+  hasUserSelected(id: number): boolean {
+    return this.orderForm.value.orderItems.some(e => e.itemId === id);
   }
 
 }

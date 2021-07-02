@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-address-form',
@@ -12,15 +12,12 @@ export class AddressFormComponent {
     lastName: [null, Validators.required],
     phone: [null, Validators.required],
     address: [null, Validators.required],
-    address2: null,
     city: [null, Validators.required],
     state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
+    postalCode: [null, Validators.required]
   });
 
-  hasUnitNumber = false;
+  @Output() customerChanged: EventEmitter<FormGroup> = new EventEmitter();
 
   states = [
     {name: 'Alabama', abbreviation: 'AL'},
@@ -79,7 +76,7 @@ export class AddressFormComponent {
 
   constructor(private fb: FormBuilder) {}
 
-  onSubmit(): void {
-    alert('Thanks!');
+  customerChange() {
+    this.customerChanged.emit(this.addressForm);
   }
 }

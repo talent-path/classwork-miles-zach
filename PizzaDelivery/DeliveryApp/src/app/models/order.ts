@@ -3,9 +3,9 @@ import { OrderItem } from "./orderitem";
 import { Store } from "./store";
 
 export class Order {
-    id?: Number;
-    customerId?: Number;
-    storeId?: Number;
+    id?: number;
+    customerId?: number;
+    storeId?: number;
     timeIn?: Date;
     timeOut?: Date;
     delivered?: boolean;

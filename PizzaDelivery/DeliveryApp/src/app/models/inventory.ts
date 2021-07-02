@@ -2,10 +2,10 @@ import { Ingredient } from "./ingredient";
 import { Store } from "./store";
 
 export class Inventory {
-    id?: Number;
-    storeId: Number;
-    ingredientId: Number;
-    quantity: Number;
+    id?: number;
+    storeId: number;
+    ingredientId: number;
+    quantity: number;
     store: Store;
     ingredient: Ingredient;
 }

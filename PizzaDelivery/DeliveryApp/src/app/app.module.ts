@@ -32,6 +32,9 @@ import { HomeComponent } from './components/home/home.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrderStepperComponent } from './components/order-stepper/order-stepper.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -69,7 +72,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatPaginatorModule,
     MatSortModule,
     MatTreeModule,
-    DragDropModule
+    DragDropModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

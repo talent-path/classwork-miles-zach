@@ -1,6 +1,6 @@
 import { ItemIngredient } from "./itemingredient";
 
 export class Ingredient {
-    id?: Number;
+    id?: number;
     name: string;
 }

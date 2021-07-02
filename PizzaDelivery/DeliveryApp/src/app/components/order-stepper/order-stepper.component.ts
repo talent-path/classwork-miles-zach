@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
+import { Customer } from 'src/app/models/customer';
+import { Order } from 'src/app/models/order';
+import { OrderItem } from 'src/app/models/orderitem';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-order-stepper',
@@ -9,24 +13,34 @@ import { fromEventPattern } from 'rxjs';
 })
 export class OrderStepperComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  isEditable = false;
+  orderItems: FormGroup;
+  customer: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private _orderService: OrderService) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.orderItems = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
+    })
+    this.customer = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
-    });
+    })
   }
   
   submitOrder() {
-    alert("Order submitted!");
+    let order = new Order();
+    order.orderItems = this.orderItems.value;
+    console.log(order);
   }
+
+  orderChangeHandler(event: FormGroup) {
+    this.orderItems = event;
+  }
+
+  customerChangeHandler(event: FormGroup) {
+    console.log(event);
+    this.customer = event;
+  } 
 }
 
 

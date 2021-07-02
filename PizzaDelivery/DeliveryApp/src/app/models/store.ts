@@ -2,7 +2,7 @@ import { Inventory } from "./inventory";
 import { Order } from "./order";
 
 export class Store {
-    id?: Number;
+    id?: number;
     phone: string;
     address: string;
     city: string;

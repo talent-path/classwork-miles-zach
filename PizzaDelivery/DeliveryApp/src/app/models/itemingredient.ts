@@ -2,9 +2,9 @@ import { Ingredient } from "./ingredient";
 import { Item } from "./item";
 
 export class ItemIngredient {
-    itemId: Number;
-    ingredientId: Number;
-    quantity: Number;
+    itemId: number;
+    ingredientId: number;
+    quantity: number;
     item: Item;
     ingredient: Ingredient;
 }
