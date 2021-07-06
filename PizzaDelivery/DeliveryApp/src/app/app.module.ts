@@ -32,7 +32,10 @@ import { HomeComponent } from './components/home/home.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrderStepperComponent } from './components/order-stepper/order-stepper.component';
 import {MatStepperModule} from '@angular/material/stepper';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -73,6 +76,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatSortModule,
     MatTreeModule,
     DragDropModule,
+    MatDatepickerModule,
+    NgxMaterialTimepickerModule,
+    MatNativeDateModule,
     NgxMaskModule.forRoot()
   ],
   providers: [],

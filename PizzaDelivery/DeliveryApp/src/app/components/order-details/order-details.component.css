@@ -16,3 +16,7 @@
   form {
     min-height: 100%;
   }
+
+  .subtotal {
+    float:right;
+  }

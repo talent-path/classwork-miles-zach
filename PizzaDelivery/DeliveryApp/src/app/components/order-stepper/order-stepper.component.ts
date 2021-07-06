@@ -1,10 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { fromEventPattern } from 'rxjs';
-import { Customer } from 'src/app/models/customer';
 import { Order } from 'src/app/models/order';
-import { OrderItem } from 'src/app/models/orderitem';
 import { OrderService } from 'src/app/services/order.service';
+import moment from 'moment';
 
 @Component({
   selector: 'app-order-stepper',
@@ -26,11 +24,25 @@ export class OrderStepperComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     })
   }
+
+  get today() {
+    return new Date();
+  }
+
+  get oneWeekFromToday() {
+    return new Date(moment(this.today).add(1, 'weeks').format('YYYY-MM-DD'));
+  }
+
+  get thirtyMinutesFromNow() {
+    const now = moment(Date.now());
+    const remainder = 30 - (now.minute() % 30);
+ 
+    return moment(now).add(remainder, "minutes").format('LT');
+  }
   
   submitOrder() {
     let order = new Order();
     order.orderItems = this.orderItems.value;
-    console.log(order);
   }
 
   orderChangeHandler(event: FormGroup) {
@@ -38,7 +50,6 @@ export class OrderStepperComponent implements OnInit {
   }
 
   customerChangeHandler(event: FormGroup) {
-    console.log(event);
     this.customer = event;
   } 
 }

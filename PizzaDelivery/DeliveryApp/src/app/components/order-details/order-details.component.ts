@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Item } from 'src/app/models/item';
 import { ItemService } from 'src/app/services/item.service';
 
@@ -23,7 +23,20 @@ export class OrderDetailsComponent implements OnInit {
       this.orderForm = this.fb.group({
         orderItems: this.fb.array([ this.createItem() ])
       })
+      this.orderedItems = this.orderForm.get('orderItems') as FormArray;
     })
+  }
+
+  get total() {
+    if(this.orderedItems) {
+      return this.orderedItems.value.reduce((total, item) => {
+        if(item.itemId && item.quantity) {
+          return total += this.menuItems.find(e => e.id === item.itemId).price * item.quantity;
+        }
+        return total;
+      }, 0.00);
+    }
+    return 0.00.toFixed(2);
   }
 
   createItem(): FormGroup {

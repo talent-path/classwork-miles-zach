@@ -1,14 +1,14 @@
 <form [formGroup]="orderForm" *ngIf="orderForm">
     <div formArrayName="orderItems" *ngFor="let orderItem of orderForm.get('orderItems')['controls']; index as i">
         <div [formGroupName]="i" class="row">
-            <mat-form-field appearance="fill" class="col">
+            <mat-form-field appearance="fill" class="col" color="accent">
                 <mat-select placeholder="Item" formControlName="itemId" (selectionChange)="orderChange()">
                     <mat-option *ngFor="let item of menuItems" [value]="item.id" [disabled]="hasUserSelected(item.id)">
                         {{item.name}} (${{item.price}})
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="fill" class="col">
+            <mat-form-field appearance="fill" class="col" color="accent">
                 <mat-select placeholder="Quantity" formControlName="quantity" (selectionChange)="orderChange()">
                     <mat-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]" [value]="n">{{n}}</mat-option>
                 </mat-select>
@@ -25,5 +25,8 @@
     </div>
     <div class="row">
         <button mat-button matStepperNext>Next</button>
+    </div>
+    <div class="row" class="subtotal">
+        <p>Subtotal: ${{total}}</p>
     </div>
 </form>
