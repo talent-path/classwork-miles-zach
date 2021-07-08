@@ -9,6 +9,8 @@ namespace PizzaDelivery.Models
     public class Store
     {
         public int Id { get; set; }
+
+        public string StoreNumber { get; set; }
         [Required]
         public string Phone { get; set; }
         [Required]
@@ -18,7 +20,7 @@ namespace PizzaDelivery.Models
         [Required]
         public string State { get; set; }
         [Required]
-        public string PostalCode { get; set; }
+        public string Zip { get; set; }
         public List<Inventory> Inventory { get; set; }
         public List<Order> Orders { get; set; }
     }

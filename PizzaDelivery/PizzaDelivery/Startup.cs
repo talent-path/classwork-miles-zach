@@ -34,7 +34,10 @@ namespace PizzaDelivery
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200");
+                                      builder
+                                      .AllowAnyOrigin()
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod();
                                   });
             });
             services.AddDbContext<PizzaDeliveryDbContext>(options => options.UseSqlServer("name=ConnectionStrings:DevDb"));

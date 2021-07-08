@@ -20,7 +20,8 @@
             <button mat-button color="accent" (click)="addOrderItem()">Add Item</button>
         </div>
         <div>
-            <button mat-button color="warn" *ngIf="orderedItems && orderedItems.length > 1" (click)="removePreviousItem()">Remove Item</button>
+            <button mat-button color="warn" *ngIf="orderedItems && orderedItems.length > 1"
+                (click)="removePreviousItem()">Remove Item</button>
         </div>
     </div>
     <div class="row">

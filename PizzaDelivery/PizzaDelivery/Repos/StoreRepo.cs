@@ -65,5 +65,19 @@ namespace PizzaDelivery.Repos
                 //.ThenInclude(ord => ord.Customer)
                 .ToList();
         }
+
+        internal List<Store> FindByZip(string zip)
+        {
+            return context.Stores
+                .Where(store => store.Zip == zip)
+                .ToList();
+        }
+
+        internal List<Store> FindByCity(string city)
+        {
+            return context.Stores
+                .Where(store => store.City == city)
+                .ToList();
+        }
     }
 }

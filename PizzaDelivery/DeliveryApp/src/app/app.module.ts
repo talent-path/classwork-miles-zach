@@ -36,6 +36,9 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { OrdertrackingComponent } from './components/ordertracking/ordertracking.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -50,7 +53,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     DragDropComponent,
     HomeComponent,
     OrderDetailsComponent,
-    OrderStepperComponent
+    OrderStepperComponent,
+    SnackbarComponent,
+    OrdertrackingComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatDatepickerModule,
     NgxMaterialTimepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     NgxMaskModule.forRoot()
   ],
   providers: [],

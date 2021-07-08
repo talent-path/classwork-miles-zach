@@ -165,7 +165,17 @@ namespace PizzaDelivery.Services
 
         internal Order CreateOrder(Order order)
         {
-            // TODO: Check to see if store has enough ingredients to make order items
+            List<Store> nearestByZip = _storeRepo.FindByZip(order.Customer.Zip);
+            if(nearestByZip.Count == 0)
+            {
+                List<Store> nearestByCity = _storeRepo.FindByCity(order.Customer.City);
+                order.StoreId = nearestByCity[0].Id;
+            } 
+            else
+            {
+                order.StoreId = nearestByZip[0].Id;
+            }
+            // Check to see if store has enough ingredients to make order items
             return _orderRepo.Add(order);
         }
 

@@ -17,7 +17,7 @@ namespace PizzaDelivery.Models
         [Required]
         public string State { get; set; }
         [Required]
-        public string PostalCode { get; set; }
+        public string Zip { get; set; }
 
         public List<Order> Orders { get; set; }
 
