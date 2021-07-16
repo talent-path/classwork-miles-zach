@@ -27,6 +27,10 @@ export class OrderDetailsComponent implements OnInit {
     })
   }
 
+  get addItemDisplayed() {
+    return this.orderedItems.length < this.menuItems.length;
+  }
+
   get total() {
     if(this.orderedItems) {
       return this.orderedItems.value.reduce((total, item) => {

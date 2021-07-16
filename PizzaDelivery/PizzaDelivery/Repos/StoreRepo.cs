@@ -73,10 +73,10 @@ namespace PizzaDelivery.Repos
                 .ToList();
         }
 
-        internal List<Store> FindByCity(string city)
+        internal List<Store> FindByCityAndState(string city, string state)
         {
             return context.Stores
-                .Where(store => store.City == city)
+                .Where(store => store.City == city && store.State == state)
                 .ToList();
         }
     }

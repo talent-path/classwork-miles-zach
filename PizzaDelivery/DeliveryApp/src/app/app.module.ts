@@ -39,6 +39,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { OrdertrackingComponent } from './components/ordertracking/ordertracking.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -85,6 +87,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     NgxMaterialTimepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatProgressBarModule,
+    MatCarouselModule.forRoot(),
     NgxMaskModule.forRoot()
   ],
   providers: [],

@@ -7,6 +7,7 @@ import { Customer } from 'src/app/models/customer';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.component';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-stepper',
@@ -20,7 +21,7 @@ export class OrderStepperComponent implements OnInit {
   deliveryDate: Date = new Date();
   deliveryTime: string = this.thirtyMinutesFromNow;
 
-  constructor(private _formBuilder: FormBuilder, private _orderService: OrderService, public snackBar: MatSnackBar, private router: Router) {}
+  constructor(private _formBuilder: FormBuilder, private _orderService: OrderService, public snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.orderItems = this._formBuilder.group({
@@ -29,6 +30,10 @@ export class OrderStepperComponent implements OnInit {
     this.addressForm = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     })
+  }
+
+  get submitOrderDisabled() {
+    return this.addressForm.invalid || this.orderItems.invalid;
   }
 
   get today() {
@@ -40,12 +45,9 @@ export class OrderStepperComponent implements OnInit {
   }
 
   get thirtyMinutesFromNow() {
-    const now = moment(Date.now());
-    const remainder = 30 - (now.minute() % 30);
- 
-    return moment(now).add(remainder, "minutes").format('LT');
+    return this.round(moment(Date.now()).add(30, 'm').toDate(), moment.duration(10, "minutes"), "ceil").format('LT');
   }
-  
+
   submitOrder() {
     let order = new Order();
     order.orderItems = this.orderItems.value.orderItems;
@@ -57,15 +59,17 @@ export class OrderStepperComponent implements OnInit {
     order.customer.zip = this.addressForm.get('zip').value;
     order.customer.phone = this.addressForm.get('phone').value;
     order.timeIn = new Date(this.deliveryDate.toLocaleDateString('en-US') + ' ' + this.deliveryTime);
-    console.log(order);
-    this._orderService.createOrder(order).subscribe(res => {
-      //if res then popup order placed successfully and redirect to order tracking page
+    this._orderService.createOrder(order).subscribe(order => {
       this.snackBar.openFromComponent(SnackbarComponent, {
-        data: 'Order was placed!',
+        data: 'Order was placed successfully!',
         panelClass: ['success-snackbar'],
         duration: 5000
       })
-      this.router.navigate(['/orderstatus', res.id])
+      this.router.navigate(['/orderstatus', order.guid])
+    }), (error: HttpErrorResponse) => this.snackBar.openFromComponent(SnackbarComponent, {
+      data: error.message,
+      panelClass: ['error-snackbar'],
+      duration: 5000
     })
   }
 
@@ -75,10 +79,10 @@ export class OrderStepperComponent implements OnInit {
 
   customerChangeHandler(event: FormGroup) {
     this.addressForm = event;
-  } 
+  }
 
   dateChanged(event) {
-    if(event.value > this.today) {
+    if (event.value > this.today) {
       this.deliveryTime = '10:00 am';
     } else {
       this.deliveryTime = this.thirtyMinutesFromNow;
@@ -87,6 +91,10 @@ export class OrderStepperComponent implements OnInit {
 
   timeChanged(event) {
     this.deliveryTime = event;
+  }
+
+  round(date: Date, duration: moment.Duration, method: string) {
+    return moment(Math[method]((+date) / (+duration)) * (+duration)); 
   }
 }
 

@@ -44,6 +44,17 @@ namespace PizzaDelivery.Repos
                 .ToList();
         }
 
+        internal Order FindByGuid(Guid guid)
+        {
+            return context.Orders
+                .Where(order => order.Guid == guid)
+                .Include(order => order.Customer)
+                .Include(order => order.Store)
+                .Include(order => order.OrderItems)
+                .ThenInclude(oi => oi.Item)
+                .Single();
+        }
+
         internal void Remove(Order order)
         {
             context.Orders.Remove(order);

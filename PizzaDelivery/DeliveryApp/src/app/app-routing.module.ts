@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'placeorder', component: OrderStepperComponent},
   {path: 'orderstatus', component: OrdertrackingComponent},
-  {path: 'orderstatus/:id?', component: OrdertrackingComponent},
+  {path: 'orderstatus/:guid', component: OrdertrackingComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'table', component: TableComponent},
   {path: 'tree', component: TreeComponent},

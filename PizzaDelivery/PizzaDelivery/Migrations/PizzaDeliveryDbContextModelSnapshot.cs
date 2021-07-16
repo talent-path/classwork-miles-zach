@@ -157,13 +157,22 @@ namespace PizzaDelivery.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Delivered")
-                        .HasColumnType("bit");
+                    b.Property<DateTime?>("DeliveryTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
 
                     b.Property<int>("StoreId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TimeIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TimeInOven")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("TimeOut")

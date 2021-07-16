@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PizzaDelivery.Exceptions;
 using PizzaDelivery.Models;
 using PizzaDelivery.Repos;
@@ -6,6 +7,7 @@ using PizzaDelivery.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace PizzaDelivery.Services
@@ -18,6 +20,7 @@ namespace PizzaDelivery.Services
         ItemRepo _itemRepo;
         OrderRepo _orderRepo;
         StoreRepo _storeRepo;
+        static readonly HttpClient client = new HttpClient();
 
         public PizzaDeliveryService(PizzaDeliveryDbContext context)
         {
@@ -32,6 +35,11 @@ namespace PizzaDelivery.Services
         internal Ingredient GetIngredientById(int id)
         {
             return _ingredientRepo.FindById(id);
+        }
+
+        internal Order GetOrderByGuid(Guid guid)
+        {
+            return _orderRepo.FindByGuid(guid);
         }
 
         internal List<Item> GetItemsForOrder(int orderId)
@@ -64,7 +72,7 @@ namespace PizzaDelivery.Services
             return _ingredientRepo.FindAll();
         }
 
-        internal object GetInventoryByStore(int storeId)
+        internal List<Inventory> GetInventoryByStore(int storeId)
         {
             return _inventoryRepo.FindInventoryForStore(storeId);
         }
@@ -163,17 +171,26 @@ namespace PizzaDelivery.Services
             _customerRepo.Remove(customer);
         }
 
-        internal Order CreateOrder(Order order)
+        internal async Task<Order> CreateOrderAsync(Order order)
         {
-            List<Store> nearestByZip = _storeRepo.FindByZip(order.Customer.Zip);
-            if(nearestByZip.Count == 0)
+            List<Store> storesByZip = _storeRepo.FindByZip(order.Customer.Zip);
+            if(storesByZip.Count == 0)
             {
-                List<Store> nearestByCity = _storeRepo.FindByCity(order.Customer.City);
-                order.StoreId = nearestByCity[0].Id;
-            } 
+                var zipcodeApiRequest = await client.GetAsync($"https://www.zipcodeapi.com/rest/fgMQXzoHcQOKR5bgSK9M6bcDHSfyJDSgTlgXxxquj5kRQMqkGWZWW392C7XyOM1y/radius.json/{order.Customer.Zip}/5/mile");
+                zipcodeApiRequest.EnsureSuccessStatusCode();
+                string json = await zipcodeApiRequest.Content.ReadAsStringAsync();
+                var zipcodes = JsonConvert.DeserializeObject<Zipcodes>(json);
+                List<Zipcode> nearbyZipcodes = zipcodes.zip_codes.OrderBy(zip => zip.distance).ToList();
+                List<Store> nearbyStoresByZip = new List<Store>();
+                for(int i = 0; i < nearbyZipcodes.Count && nearbyStoresByZip.Count == 0; i++)
+                {
+                    nearbyStoresByZip = _storeRepo.FindByZip(nearbyZipcodes[i].zip_code);
+                }
+                order.StoreId = nearbyStoresByZip[0].Id;
+                }
             else
             {
-                order.StoreId = nearestByZip[0].Id;
+                order.StoreId = storesByZip[0].Id;
             }
             // Check to see if store has enough ingredients to make order items
             return _orderRepo.Add(order);

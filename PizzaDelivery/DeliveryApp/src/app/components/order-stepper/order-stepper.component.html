@@ -1,4 +1,4 @@
-<mat-stepper linear #stepper>
+<mat-stepper linear="false" #stepper>
   <mat-step [stepControl]="orderItems" label="Select your items">
     <app-order-details (orderChanged)="orderChangeHandler($event)"></app-order-details>
   </mat-step>
@@ -31,7 +31,7 @@
     <p>Once you're ready click Submit to place your order!</p>
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="submitOrder()">Submit</button>
+      <button mat-button (click)="submitOrder()" [disabled]="submitOrderDisabled">Submit</button>
     </div>
   </mat-step>
 </mat-stepper>

@@ -20,6 +20,13 @@ export class OrderService {
       );
   }
 
+  findByGuid(guid: string) {
+    return this.http.get(`${this.baseUrl}/tracking/${guid}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   findById(id: number) {
     return this.http.get(`${this.baseUrl}/${id}`)
       .pipe(

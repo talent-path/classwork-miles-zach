@@ -115,6 +115,7 @@ export class AddressFormComponent {
       .then(res => res.json())
       .catch(err => Promise.reject(err));
 
+      console.log(promise);
     if (promise[0].metadata.precision !== 'Unknown') {
       this.addressForm.patchValue({
         valid: true
